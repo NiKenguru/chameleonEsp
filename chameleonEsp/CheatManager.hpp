@@ -56,7 +56,7 @@ private:
 	bool ResolveContext(FrameContext& ctx);
 	// Per-player helpers. The actor being processed (actor and its BaseClass cast) is passed in
 	// explicitly rather than stashed on the object, so nothing here depends on shared mutable state.
-	std::string ResolvePlayerName(SDK::AActor* actor, SDK::ABP_FirstPersonCharacter_cLeon_Character_C* baseClass);
+	std::string ResolvePlayerName(SDK::UWorld* world, SDK::AActor* actor);
 	void UpdateForcedVisibility(SDK::AActor* actor, SDK::ABP_FirstPersonCharacter_cLeon_Character_C* baseClass);
 	bool IsDead(SDK::AActor* actor);
 	bool IsSurvivor(SDK::AActor* actor);
@@ -108,7 +108,6 @@ public:
 	}
 	std::unordered_set<SDK::AActor*> forcedVisibleActors;
 	std::unordered_set<SDK::AActor*> deadActors;										// actors seen ragdolling; latched so ESP stays off after the corpse stops simulating physics
-	std::unordered_map<SDK::AActor*, std::string> playerNameCache; // last-known name per actor, so ESP survives PlayerState replication blips
 	void Init();																										// GAME THREAD: scan the world and publish a fresh snapshot
 	void RenderEsp();																								// RENDER THREAD: draw the latest published snapshot
 	void DumpBones(SDK::ABP_FirstPersonCharacter_cLeon_Character_C* baseClass);

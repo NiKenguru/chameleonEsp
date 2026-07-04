@@ -105,7 +105,7 @@ void CheatManager::Init()
 			continue;
 
 		const auto Location = baseClass->K2_GetActorLocation();
-		const std::string PlayerName = ResolvePlayerName(actor, baseClass);
+		const std::string PlayerName = ResolvePlayerName(ctx.World, actor);
 		const bool IsVisible = ctx.PlayerController->LineOfSightTo(
 			actor, { 0, 0, 0 }, false); // visible check
 
@@ -281,40 +281,44 @@ bool CheatManager::ResolveContext(FrameContext& ctx)
 	return true;
 }
 
-// Resolve the display name for the current actor, falling back to the
-// last-known cached name.
-std::string CheatManager::ResolvePlayerName(
-	SDK::AActor* actor,
-	SDK::ABP_FirstPersonCharacter_cLeon_Character_C* baseClass)
+// Prefer the custom in-game name (CustomPlayerName) over the platform/Steam
+// name (PlayerNamePrivate). Guard the cast with IsA in case a non-Online
+// PlayerState shows up. Returns null if neither name has replicated in yet.
+static SDK::FString* PreferredPlayerStateName(SDK::APlayerState* ps)
 {
-	// PlayerState replicates as its own actor, independently of the pawn, so on
-	// clients its pointer routinely blips to null for a frame or two even while
-	// the pawn is fully valid. Don't drop the whole ESP over that - just fall
-	// back to the last name we saw for this actor.
-	if (!baseClass->PlayerState)
-	{
-		auto it = playerNameCache.find(actor);
-		return it != playerNameCache.end() ? it->second : "Unknown";
-	}
+	if (!ps)
+		return nullptr;
 
-	// Prefer the custom in-game name (CustomPlayerName) over the platform/Steam
-	// name (PlayerNamePrivate). Guard the cast with IsA in case a non-Online
-	// PlayerState shows up, and fall back to the Steam name if the custom name
-	// hasn't replicated in yet.
-	SDK::FString* Name = &baseClass->PlayerState->PlayerNamePrivate;
-	if (baseClass->PlayerState->IsA(SDK::ABP_FirstPersonPlayerState_Online_C::StaticClass()))
+	SDK::FString* Name = &ps->PlayerNamePrivate;
+	if (ps->IsA(SDK::ABP_FirstPersonPlayerState_Online_C::StaticClass()))
 	{
-		auto* ps = static_cast<SDK::ABP_FirstPersonPlayerState_Online_C*>(
-			baseClass->PlayerState);
-		if (ps->CustomPlayerName.IsValid())
-			Name = &ps->CustomPlayerName;
+		auto* online = static_cast<SDK::ABP_FirstPersonPlayerState_Online_C*>(ps);
+		if (online->CustomPlayerName.IsValid())
+			Name = &online->CustomPlayerName;
 	}
+	return Name->IsValid() ? Name : nullptr;
+}
 
-	if (Name->IsValid())
+// Resolve the display name for the current actor by matching it against the
+// world's GameState player list - populated centrally for every connected
+// player, rather than this pawn's own PlayerState pointer which can blip null
+// independently of the pawn's validity.
+std::string CheatManager::ResolvePlayerName(SDK::UWorld* world, SDK::AActor* actor)
+{
+	if (!world || !world->GameState)
+		return "Unknown";
+
+	auto& PlayerArray = world->GameState->PlayerArray;
+	for (int i = 0; i < PlayerArray.Num(); i++)
 	{
-		std::string PlayerName = Name->ToString();
-		playerNameCache[actor] = PlayerName; // remember it for the null windows
-		return PlayerName;
+		if (!PlayerArray.IsValidIndex(i))
+			continue;
+		SDK::APlayerState* ps = PlayerArray[i];
+		if (!ps || ps->PawnPrivate != actor)
+			continue;
+		if (SDK::FString* Name = PreferredPlayerStateName(ps))
+			return Name->ToString();
+		break;
 	}
 
 	return "Unknown";
