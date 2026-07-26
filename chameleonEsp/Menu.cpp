@@ -27,7 +27,7 @@ void Menu::Init()
 	ImGui::SetNextWindowSize({ 300, 510 }, ImGuiCond_Once);
 	ImGui::Begin("ChameleonESP", nullptr, 0);
 
-	const float footerH = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing() + ImGui::GetStyle().WindowPadding.y;
+	const float footerH = ImGui::GetFrameHeightWithSpacing() * 2 + ImGui::GetStyle().WindowPadding.y;
 
 	ImGui::BeginChild("##content", ImVec2(0, -footerH), false, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 
