@@ -24,7 +24,7 @@ void Menu::Init()
 {
 	const auto& L = Loc();
 
-	ImGui::SetNextWindowSize({ 300, 480 }, ImGuiCond_Once);
+	ImGui::SetNextWindowSize({ 300, 510 }, ImGuiCond_Once);
 	ImGui::Begin("ChameleonESP", nullptr, 0);
 
 	const float footerH = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing() + ImGui::GetStyle().WindowPadding.y;
@@ -291,7 +291,7 @@ void Menu::Init()
 
 	ImGui::Separator();
 
-	// Language selector
+	// Footer: row 1 — language selector + Active checkbox
 	ImGui::Text("%s", L.language);
 	ImGui::SameLine();
 	const char* langOptions[] = { "EN", "RU" };
@@ -311,19 +311,19 @@ void Menu::Init()
 	}
 
 	ImGui::SameLine();
+	float checkboxW = ImGui::CalcTextSize(L.active).x + ImGui::GetFrameHeight() + ImGui::GetStyle().ItemInnerSpacing.x;
+	ImGui::SetCursorPosX(ImGui::GetWindowWidth() - checkboxW - ImGui::GetStyle().WindowPadding.x);
+	ImGui::Checkbox(L.active, &cfg->bInitHooks);
+
+	// Footer: row 2 — Save / Load
 	float buttonW = 55.0f;
-	float rightSpace = buttonW * 2 + ImGui::GetStyle().ItemSpacing.x;
-	ImGui::SetCursorPosX(ImGui::GetWindowWidth() - rightSpace - ImGui::GetStyle().WindowPadding.x);
+	float row2W = buttonW * 2 + ImGui::GetStyle().ItemSpacing.x;
+	ImGui::SetCursorPosX(ImGui::GetWindowWidth() - row2W - ImGui::GetStyle().WindowPadding.x);
 	if (ImGui::Button(L.save, ImVec2(buttonW, 0)))
 		cfg->SaveSettings();
 	ImGui::SameLine();
 	if (ImGui::Button(L.load, ImVec2(buttonW, 0)))
 		cfg->LoadSettings();
-
-	ImGui::SameLine();
-	float checkboxW = ImGui::CalcTextSize(L.active).x + ImGui::GetFrameHeight() + ImGui::GetStyle().ItemInnerSpacing.x;
-	ImGui::SetCursorPosX(ImGui::GetWindowWidth() - checkboxW - ImGui::GetStyle().WindowPadding.x);
-	ImGui::Checkbox(L.active, &cfg->bInitHooks);
 
 	ImGui::End();
 }
