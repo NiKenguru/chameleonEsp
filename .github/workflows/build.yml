@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -23,13 +26,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: chameleonEsp
-          path: chameleonEsp/x64/Release/chameleonEsp.dll
+          path: x64/Release/chameleonEsp.dll
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
-          files: chameleonEsp/x64/Release/chameleonEsp.dll
+          files: x64/Release/chameleonEsp.dll
           draft: false
           prerelease: false
