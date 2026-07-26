@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
+#include "MovieScene_structs.hpp"
 #include "Niagara_structs.hpp"
 #include "MovieSceneTracks_structs.hpp"
-#include "MovieScene_structs.hpp"
 
 
 SDK_NAMESPACE_START

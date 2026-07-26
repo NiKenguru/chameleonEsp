@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ChaosMover_structs.hpp"
+#include "CoreUObject_classes.hpp"
 #include "Mover_classes.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "CoreUObject_classes.hpp"
+#include "ChaosMover_structs.hpp"
 
 
 SDK_NAMESPACE_START

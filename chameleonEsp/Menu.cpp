@@ -22,7 +22,7 @@ static const char* KeyName(int vk)
 void Menu::Init()
 {
 	ImGui::SetNextWindowSize({ 300, 480 }, ImGuiCond_Once);
-	ImGui::Begin("phxgg esp", nullptr, 0);
+	ImGui::Begin("ChameleonESP", nullptr, 0);
 
 	const float footerH = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing() + ImGui::GetStyle().WindowPadding.y;
 
@@ -34,28 +34,28 @@ void Menu::Init()
 		{
 			ImGui::BeginChild("##esp_list", ImVec2(0, 0), false);
 
-			ImGui::Checkbox("Fov Changer", &cfg->bFovChanger);
+			ImGui::Checkbox("Изменение FOV", &cfg->bFovChanger);
 			if (cfg->bFovChanger)
-				ImGui::SliderFloat("Fov Value", &cfg->fFovValue, 50.0f, 180.0f);
+				ImGui::SliderFloat("Значение FOV", &cfg->fFovValue, 50.0f, 180.0f);
 
-			ImGui::Checkbox("Enemy Only", &cfg->bEnemyOnly);
-			ImGui::Checkbox("Character Visibility (Infection Mode)", &cfg->bForceCharacterVisibility);
-			ImGui::Checkbox("Box", &cfg->bBox);
-			ImGui::Checkbox("Lines", &cfg->bLines);
-			ImGui::Checkbox("Name", &cfg->bNames);
-			ImGui::Checkbox("Roles", &cfg->bRoles);
-			ImGui::Checkbox("Skeleton", &cfg->bSkeleton);
-			ImGui::Checkbox("Distance", &cfg->bDistance);
-			// ImGui::Checkbox("Hunter Ammo", &cfg->bHunterAmmo);
-			ImGui::Checkbox("Decoys", &cfg->bDecoys);
+			ImGui::Checkbox("Только враги", &cfg->bEnemyOnly);
+			ImGui::Checkbox("Видимость персонажа (заражение)", &cfg->bForceCharacterVisibility);
+			ImGui::Checkbox("Рамка", &cfg->bBox);
+			ImGui::Checkbox("Линии", &cfg->bLines);
+			ImGui::Checkbox("Имя", &cfg->bNames);
+			ImGui::Checkbox("Роль", &cfg->bRoles);
+			ImGui::Checkbox("Скелет", &cfg->bSkeleton);
+			ImGui::Checkbox("Дистанция", &cfg->bDistance);
+			// ImGui::Checkbox("Патроны охотника", &cfg->bHunterAmmo);
+			ImGui::Checkbox("Приманки", &cfg->bDecoys);
 
 			ImGui::Separator();
-			ImGui::Text("Colors");
+			ImGui::Text("Цвета");
 
 			if (ImGui::ColorButton("##colVisible", *(ImVec4*)cfg->colVisible))
 				ImGui::OpenPopup("popup_colVisible");
 			ImGui::SameLine();
-			ImGui::Text("Visible");
+			ImGui::Text("Видимый");
 			if (ImGui::BeginPopup("popup_colVisible"))
 			{
 				ImGui::ColorPicker4("##pick", cfg->colVisible);
@@ -65,7 +65,7 @@ void Menu::Init()
 			if (ImGui::ColorButton("##colNotVisible", *(ImVec4*)cfg->colNotVisible))
 				ImGui::OpenPopup("popup_colNotVisible");
 			ImGui::SameLine();
-			ImGui::Text("Not Visible");
+			ImGui::Text("Невидимый");
 			if (ImGui::BeginPopup("popup_colNotVisible"))
 			{
 				ImGui::ColorPicker4("##pick", cfg->colNotVisible);
@@ -75,7 +75,7 @@ void Menu::Init()
 			if (ImGui::ColorButton("##colLines", *(ImVec4*)cfg->colLines))
 				ImGui::OpenPopup("popup_colLines");
 			ImGui::SameLine();
-			ImGui::Text("Lines");
+			ImGui::Text("Линии");
 			if (ImGui::BeginPopup("popup_colLines"))
 			{
 				ImGui::ColorPicker4("##pick", cfg->colLines);
@@ -85,7 +85,7 @@ void Menu::Init()
 			if (ImGui::ColorButton("##colDecoy", *(ImVec4*)cfg->colDecoy))
 				ImGui::OpenPopup("popup_colDecoy");
 			ImGui::SameLine();
-			ImGui::Text("Decoy");
+			ImGui::Text("Приманки");
 			if (ImGui::BeginPopup("popup_colDecoy"))
 			{
 				ImGui::ColorPicker4("##pick", cfg->colDecoy);
@@ -96,13 +96,13 @@ void Menu::Init()
 			ImGui::EndTabItem();
 		}
 
-		if (ImGui::BeginTabItem("Teleport"))
+		if (ImGui::BeginTabItem("Телепорт"))
 		{
 			ImGui::BeginChild("##tp_list", ImVec2(0, 0), false);
 
 			if (cheat->PlayerInfos.empty())
 			{
-				ImGui::TextDisabled("No players found");
+				ImGui::TextDisabled("Игроки не найдены");
 			}
 			else
 			{
@@ -121,26 +121,26 @@ void Menu::Init()
 			ImGui::EndTabItem();
 		}
 
-		if (ImGui::BeginTabItem("Tools"))
+		if (ImGui::BeginTabItem("Инструменты"))
 		{
 			ImGui::BeginChild("##tools_list", ImVec2(0, 0), false);
 
-			ImGui::Text("Survivors");
+			ImGui::Text("Выжившие");
 			ImGui::Separator();
-			ImGui::Checkbox("Anti Detection", &cfg->bAntiDetection);
-			ImGui::Checkbox("No Decoy Cooldown", &cfg->bNoDecoyCooldown);
+			ImGui::Checkbox("Антиобнаружение", &cfg->bAntiDetection);
+			ImGui::Checkbox("Бесконечная перезарядка приманок", &cfg->bNoDecoyCooldown);
 
 			ImGui::Separator();
-			ImGui::Text("Hunters");
+			ImGui::Text("Охотник");
 			ImGui::Separator();
-			ImGui::Checkbox("No Gun Cooldown", &cfg->bNoGunCooldown);
-			ImGui::Checkbox("Infinite Bullets", &cfg->bInfiniteBullets);
+			ImGui::Checkbox("Бесконечная перезарядка оружия", &cfg->bNoGunCooldown);
+			ImGui::Checkbox("Бесконечные патроны", &cfg->bInfiniteBullets);
 
 			// Magnet toggle key rebind: click the button, then press any key (ESC cancels).
 			static bool bindingMagnet = false;
-			ImGui::Text("Magnet Key:");
+			ImGui::Text("Клавиша магнита:");
 			ImGui::SameLine();
-			if (ImGui::Button(bindingMagnet ? "Press a key..." : KeyName(cfg->iMagnetKey)))
+			if (ImGui::Button(bindingMagnet ? "Нажмите любую клавишу..." : KeyName(cfg->iMagnetKey)))
 				bindingMagnet = true;
 			if (bindingMagnet)
 			{
@@ -159,17 +159,17 @@ void Menu::Init()
 				}
 			}
 
-			if (ImGui::Button("Kill All Survivors"))
+			if (ImGui::Button("Убить всех выживших"))
 				cheat->RequestKillAllSurvivors();
 
 			ImGui::Separator();
-			ImGui::Text("Kill Specific Player");
+			ImGui::Text("Убить конкретного игрока");
 
 			// Track the pick by actor pointer, not list index - PlayerInfos is rebuilt every frame and
 			// indices can drift. Resolve the selected actor's current name for the combo preview, and
 			// drop the selection if that actor no longer exists this frame.
 			static SDK::AActor* selectedKillActor = nullptr;
-			const char* killPreview = "Select survivor";
+			const char* killPreview = "Выберите выжившего";
 			bool killStillPresent = false;
 			int survivorCount = 0;
 			for (const auto& p : cheat->PlayerInfos)
@@ -186,10 +186,10 @@ void Menu::Init()
 			if (!killStillPresent)
 				selectedKillActor = nullptr;
 			if (survivorCount == 0)
-				killPreview = "No survivors found";
+				killPreview = "Выжившие не найдены";
 
 			// Combo on the left filling the row, fixed-width "Kill" button on the right.
-			const float killBtnW = ImGui::CalcTextSize("Kill").x + ImGui::GetStyle().FramePadding.x * 2.0f;
+			const float killBtnW = ImGui::CalcTextSize("Убить").x + ImGui::GetStyle().FramePadding.x * 2.0f;
 			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - killBtnW - ImGui::GetStyle().ItemSpacing.x);
 			if (ImGui::BeginCombo("##kill_target", killPreview))
 			{
@@ -209,29 +209,29 @@ void Menu::Init()
 			}
 
 			ImGui::SameLine();
-			if (ImGui::Button("Kill", ImVec2(killBtnW, 0)) && selectedKillActor)
+			if (ImGui::Button("Убить", ImVec2(killBtnW, 0)) && selectedKillActor)
 				cheat->RequestKillSurvivor(selectedKillActor);
 
 			ImGui::Separator();
-			ImGui::Text("General");
+			ImGui::Text("Общее");
 			ImGui::Separator();
-			ImGui::Checkbox("Anti Server Kick", &cfg->bPreventKick);
+			ImGui::Checkbox("Защита от кика", &cfg->bPreventKick);
 
 			ImGui::Separator();
 
-			if (ImGui::Button("Dump Bones (Debugging)"))
+			if (ImGui::Button("Дамп костей (отладка)"))
 				cfg->bDumpBones = true;
 
 			ImGui::EndChild();
 			ImGui::EndTabItem();
 		}
 
-		if (ImGui::BeginTabItem("Name Changer"))
+		if (ImGui::BeginTabItem("Смена имени"))
 		{
 			ImGui::BeginChild("##name_list", ImVec2(0, 0), false);
 
 			static SDK::AActor* selectedNameActor = nullptr;
-			const char* namePreview = "Select player";
+			const char* namePreview = "Выберите игрока";
 			std::string selectedName;
 			bool nameStillPresent = false;
 			for (const auto& p : cheat->PlayerInfos)
@@ -246,9 +246,9 @@ void Menu::Init()
 			if (!nameStillPresent)
 				selectedNameActor = nullptr;
 			if (cheat->PlayerInfos.empty())
-				namePreview = "No players found";
+				namePreview = "Игроки не найдены";
 
-			const float nameBtnW = ImGui::CalcTextSize("Change").x + ImGui::GetStyle().FramePadding.x * 2.0f;
+			const float nameBtnW = ImGui::CalcTextSize("Изменить").x + ImGui::GetStyle().FramePadding.x * 2.0f;
 			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - nameBtnW - ImGui::GetStyle().ItemSpacing.x);
 			if (ImGui::BeginCombo("##name_target", namePreview))
 			{
@@ -266,16 +266,16 @@ void Menu::Init()
 			}
 
 			ImGui::SameLine();
-			if (ImGui::Button("Change", ImVec2(nameBtnW, 0)) && selectedNameActor && !selectedName.empty())
+			if (ImGui::Button("Изменить", ImVec2(nameBtnW, 0)) && selectedNameActor && !selectedName.empty())
 				cheat->RequestChangeName(selectedName);
 
 			// Custom name: type anything and apply it to our own player.
 			static char customName[64] = "";
-			const float setBtnW = ImGui::CalcTextSize("Set").x + ImGui::GetStyle().FramePadding.x * 2.0f;
+			const float setBtnW = ImGui::CalcTextSize("Установить").x + ImGui::GetStyle().FramePadding.x * 2.0f;
 			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - setBtnW - ImGui::GetStyle().ItemSpacing.x);
 			const bool nameEntered = ImGui::InputText("##custom_name", customName, sizeof(customName), ImGuiInputTextFlags_EnterReturnsTrue);
 			ImGui::SameLine();
-			if ((ImGui::Button("Set", ImVec2(setBtnW, 0)) || nameEntered) && customName[0] != '\0')
+			if ((ImGui::Button("Установить", ImVec2(setBtnW, 0)) || nameEntered) && customName[0] != '\0')
 				cheat->RequestChangeName(customName);
 
 			ImGui::EndChild();
@@ -290,16 +290,16 @@ void Menu::Init()
 	ImGui::Separator();
 
 	float buttonW = 55.0f;
-	if (ImGui::Button("Save", ImVec2(buttonW, 0)))
+	if (ImGui::Button("Сохранить", ImVec2(buttonW, 0)))
 		cfg->SaveSettings();
 	ImGui::SameLine();
-	if (ImGui::Button("Load", ImVec2(buttonW, 0)))
+	if (ImGui::Button("Загрузить", ImVec2(buttonW, 0)))
 		cfg->LoadSettings();
 
 	ImGui::SameLine();
-	float checkboxW = ImGui::CalcTextSize("Enable").x + ImGui::GetFrameHeight() + ImGui::GetStyle().ItemInnerSpacing.x;
+	float checkboxW = ImGui::CalcTextSize("Активно").x + ImGui::GetFrameHeight() + ImGui::GetStyle().ItemInnerSpacing.x;
 	ImGui::SetCursorPosX(ImGui::GetWindowWidth() - checkboxW - ImGui::GetStyle().WindowPadding.x);
-	ImGui::Checkbox("Enable", &cfg->bInitHooks);
+	ImGui::Checkbox("Активно", &cfg->bInitHooks);
 
 	ImGui::End();
 }

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "CoreUObject_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -36,8 +36,8 @@ public:
 	struct FVector2D                              RandomPositonUp;                                   // 0x0308(0x0010)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void Generate(const struct FRandomStream& Seed, int32 DepthIndex);
 	void ExecuteUbergraph_LBPC_GrowPoint(int32 EntryPoint);
+	void Generate(const struct FRandomStream& Seed, int32 DepthIndex);
 
 public:
 	static class UClass* StaticClass()

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
 #include "Engine_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "UINavigation_classes.hpp"
 
 
@@ -46,21 +46,22 @@ public:
 	bool                                          ActiveState;                                       // 0x09E8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_9E9[0x7];                                      // 0x09E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UMaterialInstanceDynamic*               DynamicButtonMaterial;                             // 0x09F0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	float                                         FontSize;                                          // 0x09F8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void UpdateCompressedTextIndex(int32 CompressedTextIndex);
-	void ToNavigation();
-	void SetRandomMiniPneguinText();
-	void SetActiveState(bool ActiveState);
-	void PushAfter();
-	void PreConstruct(bool IsDesignTime_PreConstruct);
-	class FText GetText();
-	void FromNavigation();
-	void ExecuteUbergraph_LongTapButton_OnAnimation(int32 EntryPoint);
-	void BndEvt__LongTapButton_OnAnimation_UINavButtonBase_87_K2Node_ComponentBoundEvent_7_OnButtonHoverEvent__DelegateSignature();
-	void BndEvt__LongTapButton_OnAnimation_UINavButtonBase_87_K2Node_ComponentBoundEvent_6_OnButtonHoverEvent__DelegateSignature();
-	void BndEvt__LongTapButton_OnAnimation_UINavButtonBase_87_K2Node_ComponentBoundEvent_3_OnButtonReleasedEvent__DelegateSignature();
 	void BndEvt__LongTapButton_OnAnimation_UINavButtonBase_87_K2Node_ComponentBoundEvent_2_OnButtonPressedEvent__DelegateSignature();
+	void BndEvt__LongTapButton_OnAnimation_UINavButtonBase_87_K2Node_ComponentBoundEvent_3_OnButtonReleasedEvent__DelegateSignature();
+	void BndEvt__LongTapButton_OnAnimation_UINavButtonBase_87_K2Node_ComponentBoundEvent_6_OnButtonHoverEvent__DelegateSignature();
+	void BndEvt__LongTapButton_OnAnimation_UINavButtonBase_87_K2Node_ComponentBoundEvent_7_OnButtonHoverEvent__DelegateSignature();
+	void ExecuteUbergraph_LongTapButton_OnAnimation(int32 EntryPoint);
+	void FromNavigation();
+	class FText GetText();
+	void PreConstruct(bool IsDesignTime);
+	void PushAfter();
+	void SetActiveState(bool ActiveState_0);
+	void SetRandomMiniPneguinText();
+	void ToNavigation();
+	void UpdateCompressedTextIndex(int32 CompressedTextIndex_0);
 
 public:
 	static class UClass* StaticClass()

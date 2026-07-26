@@ -34,10 +34,10 @@ public:
 	double                                        LockOnScale;                                       // 0x0390(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ValueVisible(bool State);
-	void SetValue(const class FString& StringValue);
-	void SetMultiplyValue(double Value);
 	void SetColor(double Value);
+	void SetMultiplyValue(double Value);
+	void SetValue(const class FString& StringValue);
+	void ValueVisible(bool State);
 
 public:
 	static class UClass* StaticClass()

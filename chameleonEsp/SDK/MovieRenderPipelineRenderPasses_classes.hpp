@@ -12,11 +12,11 @@
 
 #include "MovieRenderPipelineCore_structs.hpp"
 #include "MovieRenderPipelineCore_classes.hpp"
+#include "Engine_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "MovieRenderPipelineRenderPasses_structs.hpp"
 #include "ActorLayerUtilities_structs.hpp"
 #include "OpenColorIO_structs.hpp"
-#include "Engine_structs.hpp"
-#include "MovieRenderPipelineRenderPasses_structs.hpp"
-#include "CoreUObject_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -46,54 +46,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UMovieGraphImagePassBaseNode;
-
-// Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode
-// 0x0120 (0x01E0 - 0x00C0)
-class UMovieGraphImageSequenceOutputNode : public UMovieGraphFileOutputNode
-{
-public:
-	uint8                                         bOverride_OCIOConfiguration : 1;                   // 0x00C0(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bOverride_OCIOContext : 1;                         // 0x00C0(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FOpenColorIODisplayConfiguration       OCIOConfiguration;                                 // 0x00C8(0x00A8)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	TMap<class FString, class FString>            OCIOContext;                                       // 0x0170(0x0050)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C0[0x20];                                     // 0x01C0(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MovieGraphImageSequenceOutputNode")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MovieGraphImageSequenceOutputNode")
-	}
-	static class UMovieGraphImageSequenceOutputNode* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMovieGraphImageSequenceOutputNode>();
-	}
-};
-DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode;
-
-// Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode_PNG
-// 0x0000 (0x01E0 - 0x01E0)
-class UMovieGraphImageSequenceOutputNode_PNG final : public UMovieGraphImageSequenceOutputNode
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MovieGraphImageSequenceOutputNode_PNG")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MovieGraphImageSequenceOutputNode_PNG")
-	}
-	static class UMovieGraphImageSequenceOutputNode_PNG* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMovieGraphImageSequenceOutputNode_PNG>();
-	}
-};
-DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode_PNG;
 
 // Class MovieRenderPipelineRenderPasses.MovieGraphDeferredPanoramicNode
 // 0x0020 (0x00E8 - 0x00C8)
@@ -193,6 +145,83 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UMovieGraphDeferredRenderPassNode;
+
+// Class MovieRenderPipelineRenderPasses.MoviePipelineImageSequenceOutputBase
+// 0x0020 (0x0068 - 0x0048)
+class UMoviePipelineImageSequenceOutputBase : public UMoviePipelineOutputBase
+{
+public:
+	uint8                                         Pad_48[0x20];                                      // 0x0048(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MoviePipelineImageSequenceOutputBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MoviePipelineImageSequenceOutputBase")
+	}
+	static class UMoviePipelineImageSequenceOutputBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMoviePipelineImageSequenceOutputBase>();
+	}
+};
+DUMPER7_ASSERTS_UMoviePipelineImageSequenceOutputBase;
+
+// Class MovieRenderPipelineRenderPasses.MoviePipelineImageSequenceOutput_EXR
+// 0x0008 (0x0070 - 0x0068)
+class UMoviePipelineImageSequenceOutput_EXR final : public UMoviePipelineImageSequenceOutputBase
+{
+public:
+	EEXRCompressionFormat                         Compression;                                       // 0x0068(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMultilayer;                                       // 0x0069(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMultipart;                                        // 0x006A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_6B[0x5];                                       // 0x006B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MoviePipelineImageSequenceOutput_EXR")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MoviePipelineImageSequenceOutput_EXR")
+	}
+	static class UMoviePipelineImageSequenceOutput_EXR* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMoviePipelineImageSequenceOutput_EXR>();
+	}
+};
+DUMPER7_ASSERTS_UMoviePipelineImageSequenceOutput_EXR;
+
+// Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode
+// 0x0120 (0x01E0 - 0x00C0)
+class UMovieGraphImageSequenceOutputNode : public UMovieGraphFileOutputNode
+{
+public:
+	uint8                                         bOverride_OCIOConfiguration : 1;                   // 0x00C0(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bOverride_OCIOContext : 1;                         // 0x00C0(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FOpenColorIODisplayConfiguration       OCIOConfiguration;                                 // 0x00C8(0x00A8)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	TMap<class FString, class FString>            OCIOContext;                                       // 0x0170(0x0050)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C0[0x20];                                     // 0x01C0(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MovieGraphImageSequenceOutputNode")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MovieGraphImageSequenceOutputNode")
+	}
+	static class UMovieGraphImageSequenceOutputNode* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMovieGraphImageSequenceOutputNode>();
+	}
+};
+DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode;
 
 // Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode_EXR
 // 0x0008 (0x01E8 - 0x01E0)
@@ -322,6 +351,26 @@ public:
 };
 DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode_MultiLayerEXR;
 
+// Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode_BMP
+// 0x0000 (0x01E0 - 0x01E0)
+class UMovieGraphImageSequenceOutputNode_BMP final : public UMovieGraphImageSequenceOutputNode
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MovieGraphImageSequenceOutputNode_BMP")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MovieGraphImageSequenceOutputNode_BMP")
+	}
+	static class UMovieGraphImageSequenceOutputNode_BMP* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMovieGraphImageSequenceOutputNode_BMP>();
+	}
+};
+DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode_BMP;
+
 // Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode_JPG
 // 0x0000 (0x01E0 - 0x01E0)
 class UMovieGraphImageSequenceOutputNode_JPG final : public UMovieGraphImageSequenceOutputNode
@@ -342,25 +391,49 @@ public:
 };
 DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode_JPG;
 
-// Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode_BMP
+// Class MovieRenderPipelineRenderPasses.MovieGraphImageSequenceOutputNode_PNG
 // 0x0000 (0x01E0 - 0x01E0)
-class UMovieGraphImageSequenceOutputNode_BMP final : public UMovieGraphImageSequenceOutputNode
+class UMovieGraphImageSequenceOutputNode_PNG final : public UMovieGraphImageSequenceOutputNode
 {
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("MovieGraphImageSequenceOutputNode_BMP")
+		STATIC_CLASS_IMPL("MovieGraphImageSequenceOutputNode_PNG")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"MovieGraphImageSequenceOutputNode_BMP")
+		STATIC_NAME_IMPL(L"MovieGraphImageSequenceOutputNode_PNG")
 	}
-	static class UMovieGraphImageSequenceOutputNode_BMP* GetDefaultObj()
+	static class UMovieGraphImageSequenceOutputNode_PNG* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UMovieGraphImageSequenceOutputNode_BMP>();
+		return GetDefaultObjImpl<UMovieGraphImageSequenceOutputNode_PNG>();
 	}
 };
-DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode_BMP;
+DUMPER7_ASSERTS_UMovieGraphImageSequenceOutputNode_PNG;
+
+// Class MovieRenderPipelineRenderPasses.MoviePipelineDeferredPass_PathTracer
+// 0x0008 (0x0280 - 0x0278)
+class UMoviePipelineDeferredPass_PathTracer final : public UMoviePipelineDeferredPassBase
+{
+public:
+	bool                                          bReferenceMotionBlur;                              // 0x0278(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_279[0x7];                                      // 0x0279(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MoviePipelineDeferredPass_PathTracer")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MoviePipelineDeferredPass_PathTracer")
+	}
+	static class UMoviePipelineDeferredPass_PathTracer* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMoviePipelineDeferredPass_PathTracer>();
+	}
+};
+DUMPER7_ASSERTS_UMoviePipelineDeferredPass_PathTracer;
 
 // Class MovieRenderPipelineRenderPasses.MovieGraphPathTracerRenderPassNode
 // 0x0048 (0x0110 - 0x00C8)
@@ -492,79 +565,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UMoviePipelineDeferredPass_ReflectionsOnly;
-
-// Class MovieRenderPipelineRenderPasses.MoviePipelineDeferredPass_PathTracer
-// 0x0008 (0x0280 - 0x0278)
-class UMoviePipelineDeferredPass_PathTracer final : public UMoviePipelineDeferredPassBase
-{
-public:
-	bool                                          bReferenceMotionBlur;                              // 0x0278(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_279[0x7];                                      // 0x0279(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MoviePipelineDeferredPass_PathTracer")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MoviePipelineDeferredPass_PathTracer")
-	}
-	static class UMoviePipelineDeferredPass_PathTracer* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMoviePipelineDeferredPass_PathTracer>();
-	}
-};
-DUMPER7_ASSERTS_UMoviePipelineDeferredPass_PathTracer;
-
-// Class MovieRenderPipelineRenderPasses.MoviePipelineImageSequenceOutputBase
-// 0x0020 (0x0068 - 0x0048)
-class UMoviePipelineImageSequenceOutputBase : public UMoviePipelineOutputBase
-{
-public:
-	uint8                                         Pad_48[0x20];                                      // 0x0048(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MoviePipelineImageSequenceOutputBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MoviePipelineImageSequenceOutputBase")
-	}
-	static class UMoviePipelineImageSequenceOutputBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMoviePipelineImageSequenceOutputBase>();
-	}
-};
-DUMPER7_ASSERTS_UMoviePipelineImageSequenceOutputBase;
-
-// Class MovieRenderPipelineRenderPasses.MoviePipelineImageSequenceOutput_EXR
-// 0x0008 (0x0070 - 0x0068)
-class UMoviePipelineImageSequenceOutput_EXR final : public UMoviePipelineImageSequenceOutputBase
-{
-public:
-	EEXRCompressionFormat                         Compression;                                       // 0x0068(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bMultilayer;                                       // 0x0069(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bMultipart;                                        // 0x006A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_6B[0x5];                                       // 0x006B(0x0005)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MoviePipelineImageSequenceOutput_EXR")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MoviePipelineImageSequenceOutput_EXR")
-	}
-	static class UMoviePipelineImageSequenceOutput_EXR* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMoviePipelineImageSequenceOutput_EXR>();
-	}
-};
-DUMPER7_ASSERTS_UMoviePipelineImageSequenceOutput_EXR;
 
 // Class MovieRenderPipelineRenderPasses.MoviePipelineImageSequenceOutput_BMP
 // 0x0000 (0x0068 - 0x0068)

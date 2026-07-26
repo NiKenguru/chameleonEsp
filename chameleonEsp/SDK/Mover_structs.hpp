@@ -159,14 +159,42 @@ enum class EPathedPhysicsPlaybackBehavior : uint8
 	EPathedPhysicsPlaybackBehavior_MAX       = 4,
 };
 
-// ScriptStruct Mover.TransitionEvalResult
-// 0x0008 (0x0008 - 0x0000)
-struct FTransitionEvalResult final
+// ScriptStruct Mover.SplinePathPatternPointData
+// 0x0004 (0x0004 - 0x0000)
+struct FSplinePathPatternPointData final
 {
 public:
-	class FName                                   NextMode;                                          // 0x0000(0x0008)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SplinePointKey;                                    // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FTransitionEvalResult;
+DUMPER7_ASSERTS_FSplinePathPatternPointData;
+
+// ScriptStruct Mover.GroundMoveParams
+// 0x00F0 (0x00F0 - 0x0000)
+struct FGroundMoveParams final
+{
+public:
+	EMoveInputType                                MoveInputType;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                MoveInput;                                         // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               OrientationIntent;                                 // 0x0020(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                PriorVelocity;                                     // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               PriorOrientation;                                  // 0x0050(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         MaxSpeed;                                          // 0x0068(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Acceleration;                                      // 0x006C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Deceleration;                                      // 0x0070(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Friction;                                          // 0x0074(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TurningRate;                                       // 0x0078(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TurningBoost;                                      // 0x007C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                GroundNormal;                                      // 0x0080(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DeltaSeconds;                                      // 0x0098(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9C[0x4];                                       // 0x009C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                UpDirection;                                       // 0x00A0(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B8[0x8];                                       // 0x00B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  WorldToGravityQuat;                                // 0x00C0(0x0020)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseAccelerationForVelocityMove;                   // 0x00E0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E1[0xF];                                       // 0x00E1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FGroundMoveParams;
 
 // ScriptStruct Mover.MoverDataCollection
 // 0x0010 (0x0010 - 0x0000)
@@ -186,6 +214,29 @@ public:
 };
 DUMPER7_ASSERTS_FMoverAuxStateContext;
 
+// ScriptStruct Mover.FreeMoveParams
+// 0x00B0 (0x00B0 - 0x0000)
+struct FFreeMoveParams final
+{
+public:
+	EMoveInputType                                MoveInputType;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                MoveInput;                                         // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               OrientationIntent;                                 // 0x0020(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                PriorVelocity;                                     // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               PriorOrientation;                                  // 0x0050(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         MaxSpeed;                                          // 0x0068(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Acceleration;                                      // 0x006C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Deceleration;                                      // 0x0070(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TurningBoost;                                      // 0x0074(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TurningRate;                                       // 0x0078(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DeltaSeconds;                                      // 0x007C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FQuat                                  WorldToGravityQuat;                                // 0x0080(0x0020)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseAccelerationForVelocityMove;                   // 0x00A0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A1[0xF];                                       // 0x00A1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FFreeMoveParams;
+
 // ScriptStruct Mover.MoverInputCmdContext
 // 0x0010 (0x0010 - 0x0000)
 struct FMoverInputCmdContext final
@@ -194,6 +245,15 @@ public:
 	struct FMoverDataCollection                   InputCollection;                                   // 0x0000(0x0010)(BlueprintVisible, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FMoverInputCmdContext;
+
+// ScriptStruct Mover.MovementModifierHandle
+// 0x0002 (0x0002 - 0x0000)
+struct alignas(0x02) FMovementModifierHandle final
+{
+public:
+	uint8                                         Pad_0[0x2];                                        // 0x0000(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FMovementModifierHandle;
 
 // ScriptStruct Mover.LayeredMoveGroup
 // 0x0040 (0x0040 - 0x0000)
@@ -229,55 +289,34 @@ public:
 };
 DUMPER7_ASSERTS_FMoverSyncState;
 
-// ScriptStruct Mover.GroundMoveParams
-// 0x00F0 (0x00F0 - 0x0000)
-struct FGroundMoveParams final
+// ScriptStruct Mover.NetworkPhysicsMoverState
+// 0x0078 (0x00A0 - 0x0028)
+struct FNetworkPhysicsMoverState final : public FNetworkPhysicsData
 {
 public:
-	EMoveInputType                                MoveInputType;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                MoveInput;                                         // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               OrientationIntent;                                 // 0x0020(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                PriorVelocity;                                     // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               PriorOrientation;                                  // 0x0050(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         MaxSpeed;                                          // 0x0068(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Acceleration;                                      // 0x006C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Deceleration;                                      // 0x0070(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Friction;                                          // 0x0074(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TurningRate;                                       // 0x0078(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TurningBoost;                                      // 0x007C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                GroundNormal;                                      // 0x0080(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DeltaSeconds;                                      // 0x0098(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9C[0x4];                                       // 0x009C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                UpDirection;                                       // 0x00A0(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B8[0x8];                                       // 0x00B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  WorldToGravityQuat;                                // 0x00C0(0x0020)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseAccelerationForVelocityMove;                   // 0x00E0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E1[0xF];                                       // 0x00E1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FMoverSyncState                        SyncStateContext;                                  // 0x0028(0x0078)(NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FGroundMoveParams;
+DUMPER7_ASSERTS_FNetworkPhysicsMoverState;
 
-// ScriptStruct Mover.MovementModifierHandle
-// 0x0002 (0x0002 - 0x0000)
-struct alignas(0x02) FMovementModifierHandle final
+// ScriptStruct Mover.MovementSubstep
+// 0x0028 (0x0028 - 0x0000)
+struct alignas(0x08) FMovementSubstep final
 {
 public:
-	uint8                                         Pad_0[0x2];                                        // 0x0000(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_0[0x28];                                       // 0x0000(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FMovementModifierHandle;
+DUMPER7_ASSERTS_FMovementSubstep;
 
-// ScriptStruct Mover.MovementModifierBase
+// ScriptStruct Mover.MovingComponentSet
 // 0x0018 (0x0018 - 0x0000)
-struct alignas(0x08) FMovementModifierBase
+struct FMovingComponentSet final
 {
 public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         DurationMs;                                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         StartSimTimeMs;                                    // 0x000C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FMovementModifierHandle                LocalModifierHandle;                               // 0x0010(0x0002)(NoDestructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class USceneComponent>         UpdatedComponent;                                  // 0x0000(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TWeakObjectPtr<class UPrimitiveComponent>     UpdatedPrimitive;                                  // 0x0008(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TWeakObjectPtr<class UMoverComponent>         MoverComponent;                                    // 0x0010(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FMovementModifierBase;
+DUMPER7_ASSERTS_FMovingComponentSet;
 
 // ScriptStruct Mover.MoverTimeStep
 // 0x0010 (0x0010 - 0x0000)
@@ -291,17 +330,14 @@ public:
 };
 DUMPER7_ASSERTS_FMoverTimeStep;
 
-// ScriptStruct Mover.PointMovementPathPoint
-// 0x0040 (0x0040 - 0x0000)
-struct FPointMovementPathPoint final
+// ScriptStruct Mover.MoverStandaloneSimulateMovementTickFunction
+// 0x0008 (0x0030 - 0x0028)
+struct FMoverStandaloneSimulateMovementTickFunction final : public FTickFunction
 {
 public:
-	EPointMovementLocationBasis                   Basis;                                             // 0x0000(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                Location;                                          // 0x0008(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_20[0x20];                                      // 0x0020(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FPointMovementPathPoint;
+DUMPER7_ASSERTS_FMoverStandaloneSimulateMovementTickFunction;
 
 // ScriptStruct Mover.ProposedMove
 // 0x0058 (0x0058 - 0x0000)
@@ -318,26 +354,16 @@ public:
 };
 DUMPER7_ASSERTS_FProposedMove;
 
-// ScriptStruct Mover.LayeredMoveFinishVelocitySettings
-// 0x0020 (0x0020 - 0x0000)
-struct FLayeredMoveFinishVelocitySettings final
+// ScriptStruct Mover.MoverOnImpactParams
+// 0x0120 (0x0120 - 0x0000)
+struct FMoverOnImpactParams final
 {
 public:
-	struct FVector                                SetVelocity;                                       // 0x0000(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ClampVelocity;                                     // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ELayeredMoveFinishVelocityMode                FinishVelocityMode;                                // 0x001C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   MovementModeName;                                  // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FHitResult                             HitResult;                                         // 0x0008(0x0100)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FVector                                AttemptedMoveDelta;                                // 0x0108(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FLayeredMoveFinishVelocitySettings;
-
-// ScriptStruct Mover.MoverStandaloneProduceInputTickFunction
-// 0x0008 (0x0030 - 0x0028)
-struct FMoverStandaloneProduceInputTickFunction final : public FTickFunction
-{
-public:
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FMoverStandaloneProduceInputTickFunction;
+DUMPER7_ASSERTS_FMoverOnImpactParams;
 
 // ScriptStruct Mover.MoverTickStartData
 // 0x0098 (0x0098 - 0x0000)
@@ -349,6 +375,18 @@ public:
 	struct FMoverAuxStateContext                  AuxState;                                          // 0x0088(0x0010)(BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FMoverTickStartData;
+
+// ScriptStruct Mover.LayeredMoveFinishVelocitySettings
+// 0x0020 (0x0020 - 0x0000)
+struct FLayeredMoveFinishVelocitySettings final
+{
+public:
+	struct FVector                                SetVelocity;                                       // 0x0000(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ClampVelocity;                                     // 0x0018(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ELayeredMoveFinishVelocityMode                FinishVelocityMode;                                // 0x001C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FLayeredMoveFinishVelocitySettings;
 
 // ScriptStruct Mover.LayeredMoveBase
 // 0x0038 (0x0038 - 0x0000)
@@ -366,68 +404,6 @@ public:
 };
 DUMPER7_ASSERTS_FLayeredMoveBase;
 
-// ScriptStruct Mover.LayeredMove_MultiJump
-// 0x0010 (0x0048 - 0x0038)
-struct FLayeredMove_MultiJump final : public FLayeredMoveBase
-{
-public:
-	int32                                         MaximumInAirJumps;                                 // 0x0038(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         UpwardsSpeed;                                      // 0x003C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         JumpsInAirRemaining;                               // 0x0040(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         TimeOfLastJumpMS;                                  // 0x0044(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-};
-DUMPER7_ASSERTS_FLayeredMove_MultiJump;
-
-// ScriptStruct Mover.FreeMoveParams
-// 0x00B0 (0x00B0 - 0x0000)
-struct FFreeMoveParams final
-{
-public:
-	EMoveInputType                                MoveInputType;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                MoveInput;                                         // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               OrientationIntent;                                 // 0x0020(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                PriorVelocity;                                     // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               PriorOrientation;                                  // 0x0050(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         MaxSpeed;                                          // 0x0068(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Acceleration;                                      // 0x006C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Deceleration;                                      // 0x0070(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TurningBoost;                                      // 0x0074(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TurningRate;                                       // 0x0078(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DeltaSeconds;                                      // 0x007C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FQuat                                  WorldToGravityQuat;                                // 0x0080(0x0020)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseAccelerationForVelocityMove;                   // 0x00A0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A1[0xF];                                       // 0x00A1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FFreeMoveParams;
-
-// ScriptStruct Mover.MoverDataPersistence
-// 0x0010 (0x0010 - 0x0000)
-struct FMoverDataPersistence final
-{
-public:
-	class UScriptStruct*                          RequiredType;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, TObjectPtr)
-	bool                                          bCopyFromPriorFrame;                               // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FMoverDataPersistence;
-
-// ScriptStruct Mover.StanceModifier
-// 0x0008 (0x0020 - 0x0018)
-struct FStanceModifier : public FMovementModifierBase
-{
-public:
-	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FStanceModifier;
-
-// ScriptStruct Mover.PhysicsStanceModifier
-// 0x0000 (0x0020 - 0x0020)
-struct FPhysicsStanceModifier final : public FStanceModifier
-{
-};
-DUMPER7_ASSERTS_FPhysicsStanceModifier;
-
 // ScriptStruct Mover.LayeredMove_AnimRootMotion
 // 0x0010 (0x0048 - 0x0038)
 struct FLayeredMove_AnimRootMotion final : public FLayeredMoveBase
@@ -439,22 +415,6 @@ public:
 };
 DUMPER7_ASSERTS_FLayeredMove_AnimRootMotion;
 
-// ScriptStruct Mover.UpdateWaterSplineDataParams
-// 0x0048 (0x0048 - 0x0000)
-struct FUpdateWaterSplineDataParams final
-{
-public:
-	float                                         TargetImmersionDepth;                              // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         WaterVelocityDepthForMax;                          // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         WaterVelocityMinMultiplier;                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                PlayerVelocity;                                    // 0x0010(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                PlayerLocation;                                    // 0x0028(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CapsuleHalfHeight;                                 // 0x0040(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FUpdateWaterSplineDataParams;
-
 // ScriptStruct Mover.InstantMovementEffect
 // 0x0008 (0x0008 - 0x0000)
 struct alignas(0x08) FInstantMovementEffect
@@ -463,6 +423,82 @@ public:
 	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FInstantMovementEffect;
+
+// ScriptStruct Mover.ApplyVelocityPhysicsEffect
+// 0x0028 (0x0030 - 0x0008)
+struct FApplyVelocityPhysicsEffect final : public FInstantMovementEffect
+{
+public:
+	struct FVector                                VelocityToApply;                                   // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAdditiveVelocity;                                 // 0x0020(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   ForceMovementMode;                                 // 0x0024(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FApplyVelocityPhysicsEffect;
+
+// ScriptStruct Mover.TeleportEffect
+// 0x0038 (0x0040 - 0x0008)
+struct FTeleportEffect : public FInstantMovementEffect
+{
+public:
+	struct FVector                                TargetLocation;                                    // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseActorRotation;                                 // 0x0020(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRotator                               TargetRotation;                                    // 0x0028(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FTeleportEffect;
+
+// ScriptStruct Mover.AsyncTeleportEffect
+// 0x0000 (0x0040 - 0x0040)
+struct FAsyncTeleportEffect final : public FTeleportEffect
+{
+};
+DUMPER7_ASSERTS_FAsyncTeleportEffect;
+
+// ScriptStruct Mover.JumpImpulseEffect
+// 0x0008 (0x0010 - 0x0008)
+struct FJumpImpulseEffect final : public FInstantMovementEffect
+{
+public:
+	float                                         UpwardsSpeed;                                      // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FJumpImpulseEffect;
+
+// ScriptStruct Mover.TransitionEvalResult
+// 0x0008 (0x0008 - 0x0000)
+struct FTransitionEvalResult final
+{
+public:
+	class FName                                   NextMode;                                          // 0x0000(0x0008)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FTransitionEvalResult;
+
+// ScriptStruct Mover.ApplyVelocityEffect
+// 0x0028 (0x0030 - 0x0008)
+struct FApplyVelocityEffect final : public FInstantMovementEffect
+{
+public:
+	struct FVector                                VelocityToApply;                                   // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAdditiveVelocity;                                 // 0x0020(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   ForceMovementMode;                                 // 0x0024(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FApplyVelocityEffect;
+
+// ScriptStruct Mover.LayeredMove_LinearVelocity
+// 0x0028 (0x0060 - 0x0038)
+struct FLayeredMove_LinearVelocity final : public FLayeredMoveBase
+{
+public:
+	struct FVector                                Velocity;                                          // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UCurveFloat*                            MagnitudeOverTime;                                 // 0x0050(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, TObjectPtr)
+	uint8                                         SettingsFlags;                                     // 0x0058(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FLayeredMove_LinearVelocity;
 
 // ScriptStruct Mover.WaterFlowSplineData
 // 0x00E8 (0x00E8 - 0x0000)
@@ -484,121 +520,6 @@ public:
 	struct FWaterFlowSplineData                   WaterSplineData;                                   // 0x0108(0x00E8)(Edit, BlueprintVisible, BlueprintReadOnly, DisableEditOnTemplate, EditConst, NoDestructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FWaterCheckResult;
-
-// ScriptStruct Mover.ApplyVelocityPhysicsEffect
-// 0x0028 (0x0030 - 0x0008)
-struct FApplyVelocityPhysicsEffect final : public FInstantMovementEffect
-{
-public:
-	struct FVector                                VelocityToApply;                                   // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAdditiveVelocity;                                 // 0x0020(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   ForceMovementMode;                                 // 0x0024(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FApplyVelocityPhysicsEffect;
-
-// ScriptStruct Mover.MoverDataStructBase
-// 0x0008 (0x0008 - 0x0000)
-struct alignas(0x08) FMoverDataStructBase
-{
-public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FMoverDataStructBase;
-
-// ScriptStruct Mover.MoverAIInputs
-// 0x0018 (0x0020 - 0x0008)
-struct FMoverAIInputs final : public FMoverDataStructBase
-{
-public:
-	struct FVector                                RVOVelocityDelta;                                  // 0x0008(0x0018)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FMoverAIInputs;
-
-// ScriptStruct Mover.TeleportEffect
-// 0x0038 (0x0040 - 0x0008)
-struct FTeleportEffect : public FInstantMovementEffect
-{
-public:
-	struct FVector                                TargetLocation;                                    // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseActorRotation;                                 // 0x0020(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRotator                               TargetRotation;                                    // 0x0028(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FTeleportEffect;
-
-// ScriptStruct Mover.MovementSettingsInputs
-// 0x0008 (0x0010 - 0x0008)
-struct FMovementSettingsInputs final : public FMoverDataStructBase
-{
-public:
-	float                                         MaxSpeed;                                          // 0x0008(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Acceleration;                                      // 0x000C(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FMovementSettingsInputs;
-
-// ScriptStruct Mover.AsyncTeleportEffect
-// 0x0000 (0x0040 - 0x0040)
-struct FAsyncTeleportEffect final : public FTeleportEffect
-{
-};
-DUMPER7_ASSERTS_FAsyncTeleportEffect;
-
-// ScriptStruct Mover.JumpImpulseEffect
-// 0x0008 (0x0010 - 0x0008)
-struct FJumpImpulseEffect final : public FInstantMovementEffect
-{
-public:
-	float                                         UpwardsSpeed;                                      // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FJumpImpulseEffect;
-
-// ScriptStruct Mover.ApplyVelocityEffect
-// 0x0028 (0x0030 - 0x0008)
-struct FApplyVelocityEffect final : public FInstantMovementEffect
-{
-public:
-	struct FVector                                VelocityToApply;                                   // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAdditiveVelocity;                                 // 0x0020(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x3];                                       // 0x0021(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   ForceMovementMode;                                 // 0x0024(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FApplyVelocityEffect;
-
-// ScriptStruct Mover.MoverOnImpactParams
-// 0x0120 (0x0120 - 0x0000)
-struct FMoverOnImpactParams final
-{
-public:
-	class FName                                   MovementModeName;                                  // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FHitResult                             HitResult;                                         // 0x0008(0x0100)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-	struct FVector                                AttemptedMoveDelta;                                // 0x0108(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FMoverOnImpactParams;
-
-// ScriptStruct Mover.LayeredMove_LinearVelocity
-// 0x0028 (0x0060 - 0x0038)
-struct FLayeredMove_LinearVelocity final : public FLayeredMoveBase
-{
-public:
-	struct FVector                                Velocity;                                          // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UCurveFloat*                            MagnitudeOverTime;                                 // 0x0050(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, TObjectPtr)
-	uint8                                         SettingsFlags;                                     // 0x0058(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FLayeredMove_LinearVelocity;
-
-// ScriptStruct Mover.MoverStandaloneApplyStateTickFunction
-// 0x0008 (0x0030 - 0x0028)
-struct FMoverStandaloneApplyStateTickFunction final : public FTickFunction
-{
-public:
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FMoverStandaloneApplyStateTickFunction;
 
 // ScriptStruct Mover.LayeredMove_JumpImpulseOverDuration
 // 0x0008 (0x0040 - 0x0038)
@@ -624,17 +545,6 @@ public:
 	class UCurveFloat*                            TimeMappingCurve;                                  // 0x0068(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, TObjectPtr)
 };
 DUMPER7_ASSERTS_FLayeredMove_JumpTo;
-
-// ScriptStruct Mover.MoverLaunchInputs
-// 0x0020 (0x0028 - 0x0008)
-struct FMoverLaunchInputs final : public FMoverDataStructBase
-{
-public:
-	struct FVector                                LaunchVelocity;                                    // 0x0008(0x0018)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EMoverLaunchVelocityMode                      Mode;                                              // 0x0020(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FMoverLaunchInputs;
 
 // ScriptStruct Mover.LayeredMove_MoveTo
 // 0x0048 (0x0080 - 0x0038)
@@ -688,6 +598,15 @@ public:
 };
 DUMPER7_ASSERTS_FMoverSimulationEventData;
 
+// ScriptStruct Mover.NetworkPhysicsMoverInputs
+// 0x0010 (0x0038 - 0x0028)
+struct FNetworkPhysicsMoverInputs final : public FNetworkPhysicsData
+{
+public:
+	struct FMoverInputCmdContext                  InputCmdContext;                                   // 0x0028(0x0010)(NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FNetworkPhysicsMoverInputs;
+
 // ScriptStruct Mover.LandedEventData
 // 0x0108 (0x0118 - 0x0010)
 struct FLandedEventData final : public FMoverSimulationEventData
@@ -696,6 +615,31 @@ public:
 	uint8                                         Pad_10[0x108];                                     // 0x0010(0x0108)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FLandedEventData;
+
+// ScriptStruct Mover.UpdateWaterSplineDataParams
+// 0x0048 (0x0048 - 0x0000)
+struct FUpdateWaterSplineDataParams final
+{
+public:
+	float                                         TargetImmersionDepth;                              // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         WaterVelocityDepthForMax;                          // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         WaterVelocityMinMultiplier;                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                PlayerVelocity;                                    // 0x0010(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                PlayerLocation;                                    // 0x0028(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CapsuleHalfHeight;                                 // 0x0040(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FUpdateWaterSplineDataParams;
+
+// ScriptStruct Mover.MoverDataStructBase
+// 0x0008 (0x0008 - 0x0000)
+struct alignas(0x08) FMoverDataStructBase
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FMoverDataStructBase;
 
 // ScriptStruct Mover.FloorCheckResult
 // 0x0110 (0x0110 - 0x0000)
@@ -722,6 +666,32 @@ public:
 };
 DUMPER7_ASSERTS_FFloorResultData;
 
+// ScriptStruct Mover.WaterMoveParams
+// 0x00D0 (0x00D0 - 0x0000)
+struct FWaterMoveParams final
+{
+public:
+	EMoveInputType                                MoveInputType;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                MoveInput;                                         // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               OrientationIntent;                                 // 0x0020(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                PriorVelocity;                                     // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               PriorOrientation;                                  // 0x0050(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         MaxSpeed;                                          // 0x0068(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Acceleration;                                      // 0x006C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Deceleration;                                      // 0x0070(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Friction;                                          // 0x0074(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TurningRate;                                       // 0x0078(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TurningBoost;                                      // 0x007C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DeltaSeconds;                                      // 0x0080(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_84[0x4];                                       // 0x0084(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                MoveAcceleration;                                  // 0x0088(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MoveSpeed;                                         // 0x00A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_A4[0xC];                                       // 0x00A4(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  WorldToGravityQuat;                                // 0x00B0(0x0020)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FWaterMoveParams;
+
 // ScriptStruct Mover.PlanarConstraint
 // 0x0038 (0x0038 - 0x0000)
 struct FPlanarConstraint final
@@ -744,14 +714,18 @@ public:
 };
 DUMPER7_ASSERTS_FLayeredMove_Launch;
 
-// ScriptStruct Mover.MovementSubstep
-// 0x0028 (0x0028 - 0x0000)
-struct alignas(0x08) FMovementSubstep final
+// ScriptStruct Mover.MovementModifierBase
+// 0x0018 (0x0018 - 0x0000)
+struct alignas(0x08) FMovementModifierBase
 {
 public:
-	uint8                                         Pad_0[0x28];                                       // 0x0000(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         DurationMs;                                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         StartSimTimeMs;                                    // 0x000C(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnTemplate, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FMovementModifierHandle                LocalModifierHandle;                               // 0x0010(0x0002)(NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_12[0x6];                                       // 0x0012(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FMovementSubstep;
+DUMPER7_ASSERTS_FMovementModifierBase;
 
 // ScriptStruct Mover.MovementRecord
 // 0x0048 (0x0048 - 0x0000)
@@ -761,17 +735,6 @@ public:
 	uint8                                         Pad_0[0x48];                                       // 0x0000(0x0048)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FMovementRecord;
-
-// ScriptStruct Mover.MovingComponentSet
-// 0x0018 (0x0018 - 0x0000)
-struct FMovingComponentSet final
-{
-public:
-	TWeakObjectPtr<class USceneComponent>         UpdatedComponent;                                  // 0x0000(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TWeakObjectPtr<class UPrimitiveComponent>     UpdatedPrimitive;                                  // 0x0008(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TWeakObjectPtr<class UMoverComponent>         MoverComponent;                                    // 0x0010(0x0008)(Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FMovingComponentSet;
 
 // ScriptStruct Mover.CharacterDefaultInputs
 // 0x0078 (0x0080 - 0x0008)
@@ -870,14 +833,104 @@ public:
 };
 DUMPER7_ASSERTS_FMovementModeChangedEventData;
 
-// ScriptStruct Mover.MoverStandaloneSimulateMovementTickFunction
+// ScriptStruct Mover.MoverStandaloneProduceInputTickFunction
 // 0x0008 (0x0030 - 0x0028)
-struct FMoverStandaloneSimulateMovementTickFunction final : public FTickFunction
+struct FMoverStandaloneProduceInputTickFunction final : public FTickFunction
 {
 public:
 	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FMoverStandaloneSimulateMovementTickFunction;
+DUMPER7_ASSERTS_FMoverStandaloneProduceInputTickFunction;
+
+// ScriptStruct Mover.MoverStandaloneApplyStateTickFunction
+// 0x0008 (0x0030 - 0x0028)
+struct FMoverStandaloneApplyStateTickFunction final : public FTickFunction
+{
+public:
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FMoverStandaloneApplyStateTickFunction;
+
+// ScriptStruct Mover.MoverDataPersistence
+// 0x0010 (0x0010 - 0x0000)
+struct FMoverDataPersistence final
+{
+public:
+	class UScriptStruct*                          RequiredType;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, TObjectPtr)
+	bool                                          bCopyFromPriorFrame;                               // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FMoverDataPersistence;
+
+// ScriptStruct Mover.LayeredMove_MultiJump
+// 0x0010 (0x0048 - 0x0038)
+struct FLayeredMove_MultiJump final : public FLayeredMoveBase
+{
+public:
+	int32                                         MaximumInAirJumps;                                 // 0x0038(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         UpwardsSpeed;                                      // 0x003C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         JumpsInAirRemaining;                               // 0x0040(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         TimeOfLastJumpMS;                                  // 0x0044(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+};
+DUMPER7_ASSERTS_FLayeredMove_MultiJump;
+
+// ScriptStruct Mover.MovementSettingsInputs
+// 0x0008 (0x0010 - 0x0008)
+struct FMovementSettingsInputs final : public FMoverDataStructBase
+{
+public:
+	float                                         MaxSpeed;                                          // 0x0008(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Acceleration;                                      // 0x000C(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FMovementSettingsInputs;
+
+// ScriptStruct Mover.MoverAIInputs
+// 0x0018 (0x0020 - 0x0008)
+struct FMoverAIInputs final : public FMoverDataStructBase
+{
+public:
+	struct FVector                                RVOVelocityDelta;                                  // 0x0008(0x0018)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FMoverAIInputs;
+
+// ScriptStruct Mover.MoverLaunchInputs
+// 0x0020 (0x0028 - 0x0008)
+struct FMoverLaunchInputs final : public FMoverDataStructBase
+{
+public:
+	struct FVector                                LaunchVelocity;                                    // 0x0008(0x0018)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EMoverLaunchVelocityMode                      Mode;                                              // 0x0020(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FMoverLaunchInputs;
+
+// ScriptStruct Mover.StanceModifier
+// 0x0008 (0x0020 - 0x0018)
+struct FStanceModifier : public FMovementModifierBase
+{
+public:
+	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FStanceModifier;
+
+// ScriptStruct Mover.PhysicsStanceModifier
+// 0x0000 (0x0020 - 0x0020)
+struct FPhysicsStanceModifier final : public FStanceModifier
+{
+};
+DUMPER7_ASSERTS_FPhysicsStanceModifier;
+
+// ScriptStruct Mover.PointMovementPathPoint
+// 0x0040 (0x0040 - 0x0000)
+struct FPointMovementPathPoint final
+{
+public:
+	EPointMovementLocationBasis                   Basis;                                             // 0x0000(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                Location;                                          // 0x0008(0x0018)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_20[0x20];                                      // 0x0020(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FPointMovementPathPoint;
 
 // ScriptStruct Mover.LayeredMove_RootMotionAttribute
 // 0x0088 (0x00C0 - 0x0038)
@@ -888,59 +941,6 @@ public:
 	uint8                                         Pad_39[0x87];                                      // 0x0039(0x0087)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FLayeredMove_RootMotionAttribute;
-
-// ScriptStruct Mover.SplinePathPatternPointData
-// 0x0004 (0x0004 - 0x0000)
-struct FSplinePathPatternPointData final
-{
-public:
-	float                                         SplinePointKey;                                    // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSplinePathPatternPointData;
-
-// ScriptStruct Mover.WaterMoveParams
-// 0x00D0 (0x00D0 - 0x0000)
-struct FWaterMoveParams final
-{
-public:
-	EMoveInputType                                MoveInputType;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                MoveInput;                                         // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               OrientationIntent;                                 // 0x0020(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                PriorVelocity;                                     // 0x0038(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               PriorOrientation;                                  // 0x0050(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         MaxSpeed;                                          // 0x0068(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Acceleration;                                      // 0x006C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Deceleration;                                      // 0x0070(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Friction;                                          // 0x0074(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TurningRate;                                       // 0x0078(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TurningBoost;                                      // 0x007C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DeltaSeconds;                                      // 0x0080(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_84[0x4];                                       // 0x0084(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector                                MoveAcceleration;                                  // 0x0088(0x0018)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MoveSpeed;                                         // 0x00A0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A4[0xC];                                       // 0x00A4(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  WorldToGravityQuat;                                // 0x00B0(0x0020)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FWaterMoveParams;
-
-// ScriptStruct Mover.NetworkPhysicsMoverInputs
-// 0x0010 (0x0038 - 0x0028)
-struct FNetworkPhysicsMoverInputs final : public FNetworkPhysicsData
-{
-public:
-	struct FMoverInputCmdContext                  InputCmdContext;                                   // 0x0028(0x0010)(NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FNetworkPhysicsMoverInputs;
-
-// ScriptStruct Mover.NetworkPhysicsMoverState
-// 0x0078 (0x00A0 - 0x0028)
-struct FNetworkPhysicsMoverState final : public FNetworkPhysicsData
-{
-public:
-	struct FMoverSyncState                        SyncStateContext;                                  // 0x0028(0x0078)(NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FNetworkPhysicsMoverState;
 
 // ScriptStruct Mover.SwimmingControlSettings
 // 0x00A8 (0x00A8 - 0x0000)

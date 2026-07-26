@@ -1,56 +1,34 @@
-Currently updated for Game Version: **2.7.0**
+# ChameleonESP
 
-Internal extension for Meccha Chameleon
+<!-- BADGE_PLACEHOLDER -->
 
-> [!IMPORTANT]
-> This is a for fun project. Read the disclaimer below.
->
-> I will not be assisting with using this in a way that breaks other players' experiences.
+Адаптировано под версию игры **3.3.0** (русскоязычная версия).
 
-Credits to [Dumper7](https://github.com/Encryqed/Dumper-7), [Unreal-Internal-Base](https://github.com/GLX-ILLUSION/Unreal-Internal-Base) and [imgui](https://github.com/ocornut/imgui)
+## Описание
 
-Inject with your favorite injector, I use [Xenos](https://github.com/darthton/xenos)
+ESP и чит для игры **Meccha Chameleon** (UE5.6, DirectX 12).
 
-For **DirectX 12**.
+## Возможности
 
-### Build
+- ESP (видение игроков сквозь стены)
+- Aimbot
+- Magnet (притяжение)
+- No Gun Cooldown (без перезарядки)
+- Infinite Bullets (бесконечные патроны)
+- Kill Survivors (убийство выживших)
+- Kick Players (выкидывание игроков)
 
-Build with these settings in Visual Studio:
+## Сборка
 
-Platform Toolset: `v145 for Microsoft C++ Build Tools`
+Требуется Visual Studio 2022 (v143 toolset).
 
-Window SDK Version: `Windows 10.0 SDK (latest)`
+```
+msbuild chameleonEsp.slnx /t:Build /p:Configuration=Release /p:Platform=x64
+```
 
-C++ Language Standard option: `/std:c++latest`
+Выходной файл: `chameleonEsp/x64/Release/chameleonEsp.dll`
 
-### Features
+## Авторы
 
-- ESP (Box, Skeleton, Lines, Distance, Name, Role, Decoys)
-- Teleport (works only if you are the host)
-- Character Visibility (view other Survivors in Infection mode)
-- Anti Server Kick
-- Fov Changer
-- Name Changer
-- Name Stealer
-- Survivors:
-- - Anti Detection (your location will no longer reveal if you are "Too Buried")
-- - No Decoy Cooldown
-- Hunters:
-- - No Gun Cooldown
-- - Infinite Bullets
-- - Magnet -> Press **G** to toggle on/off (can be bound to a custom key). This will magnetize survivors in front of your POV.
-- - Select Survivor to Kill
-- - Kill All Survivors
-- Dump Bones (for debugging)
-
-Use **INSERT** to open the menu, and **END** to unload.
-
-### Media
-
-Videos: https://imgur.com/a/VnzkyA0
-
-<img width="1282" height="752" alt="PenguinHotel-Win64-Shipping_kJkLaVgomX" src="https://github.com/user-attachments/assets/c00a08d4-678e-48e5-be38-5c208dcda308" />
-
-## Disclaimer
-
-This project is intended solely for educational and research purposes. I am not responsible for any misuse, bans or other consequences that may arise from using this software. Use at your own risk.
+- **Оригинал**: [phxgg](https://github.com/phxgg/chameleonEsp)
+- **Русская версия**: [NiKenguru](https://github.com/NiKenguru/chameleonEsp)

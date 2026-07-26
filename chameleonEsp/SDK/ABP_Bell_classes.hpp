@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "AnimGraphRuntime_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "AnimGraphRuntime_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -29,7 +29,7 @@ public:
 	struct FAnimNode_Slot                         AnimGraphNode_Slot;                                // 0x0410(0x0048)()
 
 public:
-	void AnimGraph(struct FPoseLink* AnimGraph);
+	void AnimGraph(struct FPoseLink* AnimGraph_0);
 
 public:
 	static class UClass* StaticClass()

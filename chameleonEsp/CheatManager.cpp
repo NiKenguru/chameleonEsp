@@ -114,9 +114,6 @@ void CheatManager::Init()
 
 				if (IsObjectValid(hunter))
 				{
-					hunter->IsChater = false;
-					hunter->CheatCheck = 0;
-
 					if (cfg->bNoGunCooldown) {
 						hunter->GunCoolTime = 0.0;
 						hunter->Gun_Cool_TimeDefault = 0.0;
@@ -219,7 +216,7 @@ void CheatManager::RenderEsp()
 		const float redColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
 		const ImU32 colRed = ImGui::ColorConvertFloat4ToU32(*(ImVec4*)redColor);
 
-		const char* magnetText = "MAGNET ACTIVE";
+		const char* magnetText = "МАГНИТ АКТИВЕН";
 		const ImVec2 textSize = ImGui::CalcTextSize(magnetText);
 		const float textX = (drawSnapshot.screenX / 2.0f) - (textSize.x / 2.0f);
 		const float textY = drawSnapshot.screenY - 30.0f;
@@ -541,7 +538,7 @@ void CheatManager::BuildDecoyEntry(SDK::APlayerController* pc,
 	SDK::FVector Location,
 	SDK::FVector MyLocation)
 {
-	entry.name = "Decoy";
+	entry.name = "Приманка";
 	entry.isVisible = true;
 	entry.role = 3;
 	entry.distanceMeters = MyLocation.GetDistanceToInMeters(Location);
@@ -593,11 +590,11 @@ void CheatManager::DrawEntry(const EspEntry& entry)
 		{
 			const char* roleText;
 			if (entry.role == 1)
-				roleText = "Hunter";
+				roleText = "Охотник";
 			else if (entry.role == 2)
-				roleText = "Survivor";
+				roleText = "Выживший";
 			else if (entry.role == 3)
-				roleText = "Decoy";
+				roleText = "Приманка";
 			else
 				roleText = nullptr;
 

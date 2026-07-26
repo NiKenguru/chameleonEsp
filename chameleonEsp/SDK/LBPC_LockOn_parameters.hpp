@@ -14,15 +14,6 @@
 SDK_NAMESPACE_START
 SDK_PARAM_NAMESPACE_START
 
-// Function LBPC_LockOn.LBPC_LockOn_C.LockOnWidgetState
-// 0x0001 (0x0001 - 0x0000)
-struct LBPC_LockOn_C_LockOnWidgetState final
-{
-public:
-	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-DUMPER7_ASSERTS_LBPC_LockOn_C_LockOnWidgetState;
-
 // Function LBPC_LockOn.LBPC_LockOn_C.ExecuteUbergraph_LBPC_LockOn
 // 0x0040 (0x0040 - 0x0000)
 struct LBPC_LockOn_C_ExecuteUbergraph_LBPC_LockOn final
@@ -40,6 +31,15 @@ public:
 	class UWidgetComponent*                       CallFunc_Array_Get_Item;                           // 0x0038(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_LBPC_LockOn_C_ExecuteUbergraph_LBPC_LockOn;
+
+// Function LBPC_LockOn.LBPC_LockOn_C.LockOnWidgetState
+// 0x0001 (0x0001 - 0x0000)
+struct LBPC_LockOn_C_LockOnWidgetState final
+{
+public:
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+DUMPER7_ASSERTS_LBPC_LockOn_C_LockOnWidgetState;
 
 SDK_PARAM_NAMESPACE_END
 SDK_NAMESPACE_END

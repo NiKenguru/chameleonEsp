@@ -12,9 +12,9 @@
 
 #include "RigVM_structs.hpp"
 #include "RigVM_classes.hpp"
+#include "ControlRig_structs.hpp"
 #include "MovieSceneTracks_structs.hpp"
 #include "MovieSceneTracks_classes.hpp"
-#include "ControlRig_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
 #include "Engine_structs.hpp"

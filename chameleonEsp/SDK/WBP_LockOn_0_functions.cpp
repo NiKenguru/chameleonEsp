@@ -16,41 +16,21 @@
 
 SDK_NAMESPACE_START
 
-// Function WBP_LockOn.WBP_LockOn_C.ValueVisible
+// Function WBP_LockOn.WBP_LockOn_C.SetColor
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double                                  Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void WBP_LockOn_0::UWBP_LockOn_C::ValueVisible(bool State)
+void WBP_LockOn_0::UWBP_LockOn_C::SetColor(double Value)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_LockOn_C", "ValueVisible");
+		Func = Class->GetFunction("WBP_LockOn_C", "SetColor");
 
-	Params::WBP_LockOn_C_ValueVisible Parms{};
+	Params::WBP_LockOn_C_SetColor Parms{};
 
-	Parms.State = State;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function WBP_LockOn.WBP_LockOn_C.SetValue
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// const class FString&                    StringValue                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
-
-void WBP_LockOn_0::UWBP_LockOn_C::SetValue(const class FString& StringValue)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_LockOn_C", "SetValue");
-
-	Params::WBP_LockOn_C_SetValue Parms{};
-
-	Parms.StringValue = std::move(StringValue);
+	Parms.Value = Value;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -76,21 +56,41 @@ void WBP_LockOn_0::UWBP_LockOn_C::SetMultiplyValue(double Value)
 }
 
 
-// Function WBP_LockOn.WBP_LockOn_C.SetColor
+// Function WBP_LockOn.WBP_LockOn_C.SetValue
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// double                                  Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const class FString&                    StringValue                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void WBP_LockOn_0::UWBP_LockOn_C::SetColor(double Value)
+void WBP_LockOn_0::UWBP_LockOn_C::SetValue(const class FString& StringValue)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("WBP_LockOn_C", "SetColor");
+		Func = Class->GetFunction("WBP_LockOn_C", "SetValue");
 
-	Params::WBP_LockOn_C_SetColor Parms{};
+	Params::WBP_LockOn_C_SetValue Parms{};
 
-	Parms.Value = Value;
+	Parms.StringValue = std::move(StringValue);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function WBP_LockOn.WBP_LockOn_C.ValueVisible
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void WBP_LockOn_0::UWBP_LockOn_C::ValueVisible(bool State)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("WBP_LockOn_C", "ValueVisible");
+
+	Params::WBP_LockOn_C_ValueVisible Parms{};
+
+	Parms.State = State;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

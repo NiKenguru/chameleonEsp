@@ -81,6 +81,16 @@ public:
 };
 DUMPER7_ASSERTS_FDataRegistryType;
 
+// ScriptStruct DataRegistry.DataRegistryId
+// 0x0010 (0x0010 - 0x0000)
+struct FDataRegistryId final
+{
+public:
+	struct FDataRegistryType                      RegistryType;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, SaveGame, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   ItemName;                                          // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FDataRegistryId;
+
 // ScriptStruct DataRegistry.SoftDataRegistryOrTable
 // 0x0038 (0x0038 - 0x0000)
 struct FSoftDataRegistryOrTable final
@@ -92,25 +102,6 @@ public:
 	struct FDataRegistryType                      RegistryType;                                      // 0x0030(0x0008)(Edit, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSoftDataRegistryOrTable;
-
-// ScriptStruct DataRegistry.DataRegistryId
-// 0x0010 (0x0010 - 0x0000)
-struct FDataRegistryId final
-{
-public:
-	struct FDataRegistryType                      RegistryType;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, SaveGame, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   ItemName;                                          // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, SaveGame, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FDataRegistryId;
-
-// ScriptStruct DataRegistry.DataRegistrySourceItemId
-// 0x0040 (0x0040 - 0x0000)
-struct alignas(0x08) FDataRegistrySourceItemId final
-{
-public:
-	uint8                                         Pad_0[0x40];                                       // 0x0000(0x0040)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FDataRegistrySourceItemId;
 
 // ScriptStruct DataRegistry.DataRegistrySource_DataTableRules
 // 0x0008 (0x0008 - 0x0000)
@@ -146,6 +137,15 @@ public:
 	float                                         ForceReleaseSeconds;                               // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FDataRegistryCachePolicy;
+
+// ScriptStruct DataRegistry.DataRegistrySourceItemId
+// 0x0040 (0x0040 - 0x0000)
+struct alignas(0x08) FDataRegistrySourceItemId final
+{
+public:
+	uint8                                         Pad_0[0x40];                                       // 0x0000(0x0040)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FDataRegistrySourceItemId;
 
 // ScriptStruct DataRegistry.DataRegistryOrTableRow
 // 0x0028 (0x0028 - 0x0000)

@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "UDS_OcclusionShape_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "UDS_OcclusionShape_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -36,12 +36,12 @@ public:
 	ECollisionChannel                             Collision_Object_Type;                             // 0x02F8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void UserConstructionScript();
-	void ReceiveBeginPlay();
-	void Query_Blend_Radius(const struct FVector& Location, double* Multiplier);
-	void ExecuteUbergraph_UDS_Volume_Actor(int32 EntryPoint);
-	void Enable_Volume();
 	void Disable_Volume();
+	void Enable_Volume();
+	void ExecuteUbergraph_UDS_Volume_Actor(int32 EntryPoint);
+	void Query_Blend_Radius(const struct FVector& Location, double* Multiplier);
+	void ReceiveBeginPlay();
+	void UserConstructionScript();
 
 public:
 	static class UClass* StaticClass()
