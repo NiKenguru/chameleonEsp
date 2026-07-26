@@ -33,12 +33,3 @@ msbuild chameleonEsp.slnx /t:Build /p:Configuration=Release /p:Platform=x64
 - **Оригинал**: [phxgg](https://github.com/phxgg/chameleonEsp)
 - **Русская версия**: [NiKenguru](https://github.com/NiKenguru/chameleonEsp)
 
-## Contributors
-
-<a href="https://github.com/phxgg/chameleonEsp/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=phxgg/chameleonEsp" />
-</a>
-
-<a href="https://github.com/NiKenguru/chameleonEsp/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NiKenguru/chameleonEsp" />
-</a>
