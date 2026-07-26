@@ -27,6 +27,7 @@ public:
 	float colNotVisible[4];
 	float colLines[4];
 	float colDecoy[4];
+	int iLanguage; // 0 = English, 1 = Russian
 	void InitializeSettings();
 	void SaveSettings();
 	void LoadSettings();

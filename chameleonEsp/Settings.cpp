@@ -26,6 +26,7 @@ void Settings::InitializeSettings()
 	this->bPreventKick = false;
 	this->bInfiniteBullets = false;
 	this->bNoDecoyCooldown = false;
+	this->iLanguage = 0;
 	float colVisible[4] = { 0.0f, 1.0f, 0.0f, 1.0f };
 	float colNotVisible[4] = { 0.706f, 0.392f, 1.0f, 1.0f };
 	float colLines[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
