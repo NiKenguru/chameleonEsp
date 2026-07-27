@@ -117,11 +117,11 @@ void ABP_DamageTool_Base_V2_C::SetMeshDatas(bool KeepScale)
 // Function BP_DamageTool_Base_V2.BP_DamageTool_Base_V2_C.Shot
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    PressState_Shot                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// double                                  PushTime_Shot                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class ABP_FirstPersonCharacter_Main_C*  SourcePlayer_Shot                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// bool                                    PressState                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// double                                  PushTime                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class ABP_FirstPersonCharacter_Main_C*  SourcePlayer                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_DamageTool_Base_V2_C::Shot(bool PressState_Shot, double PushTime_Shot, class ABP_FirstPersonCharacter_Main_C* SourcePlayer_Shot)
+void ABP_DamageTool_Base_V2_C::Shot(bool PressState, double PushTime, class ABP_FirstPersonCharacter_Main_C* SourcePlayer)
 {
 	static class UFunction* Func = nullptr;
 
@@ -130,9 +130,9 @@ void ABP_DamageTool_Base_V2_C::Shot(bool PressState_Shot, double PushTime_Shot, 
 
 	Params::BP_DamageTool_Base_V2_C_Shot Parms{};
 
-	Parms.PressState_Shot = PressState_Shot;
-	Parms.PushTime_Shot = PushTime_Shot;
-	Parms.SourcePlayer_Shot = SourcePlayer_Shot;
+	Parms.PressState = PressState;
+	Parms.PushTime = PushTime;
+	Parms.SourcePlayer = SourcePlayer;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

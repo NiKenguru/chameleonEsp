@@ -73,9 +73,9 @@ void ABP_TimeStopArea_C::TimeReStart(class AActor* Actor)
 // Function BP_TimeStopArea.BP_TimeStopArea_C.SetTimeStopState
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    State_SetTimeStopState                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_TimeStopArea_C::SetTimeStopState(bool State_SetTimeStopState)
+void ABP_TimeStopArea_C::SetTimeStopState(bool State)
 {
 	static class UFunction* Func = nullptr;
 
@@ -84,7 +84,7 @@ void ABP_TimeStopArea_C::SetTimeStopState(bool State_SetTimeStopState)
 
 	Params::BP_TimeStopArea_C_SetTimeStopState Parms{};
 
-	Parms.State_SetTimeStopState = State_SetTimeStopState;
+	Parms.State = State;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

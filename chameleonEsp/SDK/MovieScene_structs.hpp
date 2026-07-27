@@ -769,6 +769,13 @@ public:
 };
 DUMPER7_ASSERTS_FMovieSceneChannel;
 
+// ScriptStruct MovieScene.MovieSceneKeyHandleMap
+// 0x0000 (0x0088 - 0x0088)
+struct FMovieSceneKeyHandleMap final : public FKeyHandleLookupTable
+{
+};
+DUMPER7_ASSERTS_FMovieSceneKeyHandleMap;
+
 // ScriptStruct MovieScene.MovieSceneTangentData
 // 0x0014 (0x0014 - 0x0000)
 struct FMovieSceneTangentData final
@@ -796,13 +803,6 @@ public:
 	uint8                                         Pad_1F[0x1];                                       // 0x001F(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FMovieSceneDoubleValue;
-
-// ScriptStruct MovieScene.MovieSceneKeyHandleMap
-// 0x0000 (0x0088 - 0x0088)
-struct FMovieSceneKeyHandleMap final : public FKeyHandleLookupTable
-{
-};
-DUMPER7_ASSERTS_FMovieSceneKeyHandleMap;
 
 // ScriptStruct MovieScene.MovieSceneDoubleChannel
 // 0x00C8 (0x0118 - 0x0050)

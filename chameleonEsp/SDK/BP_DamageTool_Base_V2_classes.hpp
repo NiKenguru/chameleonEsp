@@ -45,7 +45,7 @@ public:
 	void DefaultMontagePlay();
 	void PickState(bool State, class ABP_FirstPersonCharacter_Main_C* Character, int32 SlotIndex);
 	void SetMeshDatas(bool KeepScale);
-	void Shot(bool PressState_Shot, double PushTime_Shot, class ABP_FirstPersonCharacter_Main_C* SourcePlayer_Shot);
+	void Shot(bool PressState, double PushTime, class ABP_FirstPersonCharacter_Main_C* SourcePlayer);
 	void ReceiveBeginPlay();
 	void Attack_AC_Remote(double TimeRange, class FName ComponentName, double DamageMultiply, double StanMultiply);
 	void Combo(double TimeRange, class FName ComboName);

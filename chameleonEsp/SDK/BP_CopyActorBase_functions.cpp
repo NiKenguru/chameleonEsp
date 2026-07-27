@@ -67,10 +67,10 @@ void ABP_CopyActorBase_C::Delete()
 // Function BP_CopyActorBase.BP_CopyActorBase_C.Reverse
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// const struct FTransform&                NewPosition_Reverse                                    (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// const struct FVector&                   HitNormal_Reverse                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FTransform&                NewPosition                                            (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// const struct FVector&                   HitNormal                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_CopyActorBase_C::Reverse(const struct FTransform& NewPosition_Reverse, const struct FVector& HitNormal_Reverse)
+void ABP_CopyActorBase_C::Reverse(const struct FTransform& NewPosition, const struct FVector& HitNormal)
 {
 	static class UFunction* Func = nullptr;
 
@@ -79,8 +79,8 @@ void ABP_CopyActorBase_C::Reverse(const struct FTransform& NewPosition_Reverse, 
 
 	Params::BP_CopyActorBase_C_Reverse Parms{};
 
-	Parms.NewPosition_Reverse = std::move(NewPosition_Reverse);
-	Parms.HitNormal_Reverse = std::move(HitNormal_Reverse);
+	Parms.NewPosition = std::move(NewPosition);
+	Parms.HitNormal = std::move(HitNormal);
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -207,12 +207,12 @@ void ABP_CopyActorBase_C::UserConstructionScript()
 // Function BP_CopyActorBase.BP_CopyActorBase_C.GetCopyClass
 // (Public, HasOutParams, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UStaticMeshComponent*             CentorComponent_GetCopyClass                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-// class UClass**                          Class_GetCopyClass_0                                   (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-// double*                                 Scale_GetCopyClass                                     (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FVector*                         DefaultScale_GetCopyClass                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class UStaticMeshComponent*             CentorComponent                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+// class UClass**                          Class_0                                                (Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// double*                                 Scale                                                  (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FVector*                         DefaultScale                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_CopyActorBase_C::GetCopyClass(class UStaticMeshComponent* CentorComponent_GetCopyClass, class UClass** Class_GetCopyClass_0, double* Scale_GetCopyClass, struct FVector* DefaultScale_GetCopyClass)
+void ABP_CopyActorBase_C::GetCopyClass(class UStaticMeshComponent* CentorComponent, class UClass** Class_0, double* Scale, struct FVector* DefaultScale)
 {
 	static class UFunction* Func = nullptr;
 
@@ -221,18 +221,18 @@ void ABP_CopyActorBase_C::GetCopyClass(class UStaticMeshComponent* CentorCompone
 
 	Params::BP_CopyActorBase_C_GetCopyClass Parms{};
 
-	Parms.CentorComponent_GetCopyClass = CentorComponent_GetCopyClass;
+	Parms.CentorComponent = CentorComponent;
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (Class_GetCopyClass_0 != nullptr)
-		*Class_GetCopyClass_0 = Parms.Class_GetCopyClass_0;
+	if (Class_0 != nullptr)
+		*Class_0 = Parms.Class_0;
 
-	if (Scale_GetCopyClass != nullptr)
-		*Scale_GetCopyClass = Parms.Scale_GetCopyClass;
+	if (Scale != nullptr)
+		*Scale = Parms.Scale;
 
-	if (DefaultScale_GetCopyClass != nullptr)
-		*DefaultScale_GetCopyClass = std::move(Parms.DefaultScale_GetCopyClass);
+	if (DefaultScale != nullptr)
+		*DefaultScale = std::move(Parms.DefaultScale);
 }
 
 

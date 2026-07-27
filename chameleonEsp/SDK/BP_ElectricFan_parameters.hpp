@@ -32,7 +32,7 @@ DUMPER7_ASSERTS_BP_ElectricFan_C_SetWindTrailSize;
 struct BP_ElectricFan_C_SetTimeStopState final
 {
 public:
-	bool                                          State_SetTimeStopState;                            // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          State;                                             // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_ElectricFan_C_SetTimeStopState;
 

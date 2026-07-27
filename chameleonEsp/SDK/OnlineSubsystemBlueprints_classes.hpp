@@ -10,13 +10,39 @@
 
 #include "Basic.hpp"
 
+#include "OnlineSubsystemBlueprints_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "OnlineSubsystemBlueprints_structs.hpp"
 #include "CoreUObject_classes.hpp"
 
 
 SDK_NAMESPACE_START
+
+// Class OnlineSubsystemBlueprints.PartyId
+// 0x0010 (0x0038 - 0x0028)
+class UPartyId final : public UObject
+{
+public:
+	uint8                                         Pad_28[0x10];                                      // 0x0028(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	class FString ToDebugString();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("PartyId")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PartyId")
+	}
+	static class UPartyId* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UPartyId>();
+	}
+};
+DUMPER7_ASSERTS_UPartyId;
 
 // Class OnlineSubsystemBlueprints.OnlineAchievementsSubsystem
 // 0x0088 (0x00B8 - 0x0030)
@@ -79,91 +105,61 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineAchievementsSubsystemWriteAchievements;
 
-// Class OnlineSubsystemBlueprints.VoiceChatUser
-// 0x0150 (0x0178 - 0x0028)
-class UVoiceChatUser final : public UObject
+// Class OnlineSubsystemBlueprints.OnlineUserRef
+// 0x0020 (0x0048 - 0x0028)
+class UOnlineUserRef : public UObject
 {
 public:
-	uint8                                         Pad_28[0x60];                                      // 0x0028(0x0060)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void()>              OnVoiceChatAvailableAudioDevicesChanged;           // 0x0088(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& playerName)> OnVoiceChatLoggedIn;             // 0x00A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_B0[0x8];                                       // 0x00B0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& playerName)> OnVoiceChatLoggedOut;            // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& ChannelName)> OnVoiceChatChannelJoined;       // 0x00D0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E0[0x8];                                       // 0x00E0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const struct FVoiceChatResultBP& Reason)> OnVoiceChatChannelExited; // 0x00E8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_F8[0x8];                                       // 0x00F8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName)> OnVoiceChatPlayerAdded; // 0x0100(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_110[0x8];                                      // 0x0110(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName)> OnVoiceChatPlayerRemoved; // 0x0118(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_128[0x8];                                      // 0x0128(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName, bool bIsTalking)> OnVoiceChatPlayerTalkingUpdated; // 0x0130(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_140[0x8];                                      // 0x0140(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName, bool bIsMuted)> OnVoiceChatPlayerMuteUpdated; // 0x0148(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_158[0x8];                                      // 0x0158(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName, float Volume)> OnVoiceChatPlayerVolumeUpdated; // 0x0160(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_170[0x8];                                      // 0x0170(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x20];                                      // 0x0028(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void BlockPlayers(const TArray<class FString>& PlayerNames);
-	bool GetAudioInputDeviceMuted();
-	float GetAudioInputVolume();
-	bool GetAudioOutputDeviceMuted();
-	float GetAudioOutputVolume();
-	TArray<struct FVoiceChatDeviceInfoBP> GetAvailableInputDeviceInfos();
-	TArray<struct FVoiceChatDeviceInfoBP> GetAvailableOutputDeviceInfos();
-	TArray<class FString> GetChannels();
-	EVoiceChatChannelType_ GetChannelType(const class FString& ChannelName);
-	struct FVoiceChatDeviceInfoBP GetDefaultInputDeviceInfo();
-	struct FVoiceChatDeviceInfoBP GetDefaultOutputDeviceInfo();
-	struct FVoiceChatDeviceInfoBP GetInputDeviceInfo();
-	class FString GetLoggedInPlayerName();
-	struct FVoiceChatDeviceInfoBP GetOutputDeviceInfo();
-	TArray<class FString> GetPlayersInChannel(const class FString& ChannelName);
-	float GetPlayerVolume(const class FString& playerName);
-	class FString GetSetting(const class FString& Name_0);
-	TSet<class FString> GetTransmitChannels();
-	EVoiceChatTransmitMode_ GetTransmitMode();
-	class FString InsecureGetJoinToken(const class FString& ChannelName, EVoiceChatChannelType_ ChannelType, const struct FVoiceChatChannel3dPropertiesBP& Channel3dProperties);
-	class FString InsecureGetLoginToken(const class FString& playerName);
-	bool IsChannelPlayerMuted(const class FString& ChannelName, const class FString& playerName);
-	bool IsLoggedIn();
-	bool IsLoggingIn();
-	bool IsPlayerMuted(const class FString& playerName);
-	bool IsPlayerTalking(const class FString& playerName);
-	void Set3DPosition(const class FString& ChannelName, const struct FVector& SpeakerPosition);
-	void SetAudioInputDeviceMuted(bool bIsMuted);
-	void SetAudioInputVolume(float Volume);
-	void SetAudioOutputDeviceMuted(bool bIsMuted);
-	void SetAudioOutputVolume(float Volume);
-	void SetChannelPlayerMuted(const class FString& ChannelName, const class FString& playerName, bool bAudioMuted);
-	void SetInputDeviceId(const class FString& InputDeviceId);
-	void SetOutputDeviceId(const class FString& OutputDeviceId);
-	void SetPlayerMuted(const class FString& playerName, bool bMuted);
-	void SetPlayerVolume(const class FString& playerName, float Volume);
-	void SetSetting(const class FString& Name_0, const class FString& Value);
-	void TransmitToAllChannels();
-	void TransmitToNoChannels();
-	void TransmitToSpecificChannels(const TSet<class FString>& ChannelNames);
-	void UnblockPlayers(const TArray<class FString>& PlayerNames);
+	class FString GetDisplayName();
+	class FString GetRealName();
+	class FString GetUserAttribute(const class FString& Key, bool* Found);
+	struct FUniqueNetIdRepl GetUserId();
+	void SetUserLocalAttribute(const class FString& Key, const class FString& Value, bool* Success);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("VoiceChatUser")
+		STATIC_CLASS_IMPL("OnlineUserRef")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"VoiceChatUser")
+		STATIC_NAME_IMPL(L"OnlineUserRef")
 	}
-	static class UVoiceChatUser* GetDefaultObj()
+	static class UOnlineUserRef* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UVoiceChatUser>();
+		return GetDefaultObjImpl<UOnlineUserRef>();
 	}
 };
-DUMPER7_ASSERTS_UVoiceChatUser;
+DUMPER7_ASSERTS_UOnlineUserRef;
+
+// Class OnlineSubsystemBlueprints.OnlineRecentPlayerRef
+// 0x0010 (0x0058 - 0x0048)
+class UOnlineRecentPlayerRef final : public UOnlineUserRef
+{
+public:
+	uint8                                         Pad_48[0x10];                                      // 0x0048(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	struct FDateTime GetLastSeen();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlineRecentPlayerRef")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlineRecentPlayerRef")
+	}
+	static class UOnlineRecentPlayerRef* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlineRecentPlayerRef>();
+	}
+};
+DUMPER7_ASSERTS_UOnlineRecentPlayerRef;
 
 // Class OnlineSubsystemBlueprints.OnlineAchievementsSubsystemQueryAchievements
 // 0x0068 (0x0098 - 0x0030)
@@ -283,6 +279,35 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineAvatarSubsystemGetAvatar;
 
+// Class OnlineSubsystemBlueprints.VoiceChatUserLeaveChannel
+// 0x0038 (0x0068 - 0x0030)
+class UVoiceChatUserLeaveChannel final : public UBlueprintAsyncActionBase
+{
+public:
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const struct FVoiceChatResultBP& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const struct FVoiceChatResultBP& Result)> OnVoiceChatChannelLeaveComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UVoiceChatUser*                         __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__ChannelName;                              // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UVoiceChatUserLeaveChannel* LeaveChannel(class UVoiceChatUser* Subsystem, const class FString& ChannelName);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("VoiceChatUserLeaveChannel")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"VoiceChatUserLeaveChannel")
+	}
+	static class UVoiceChatUserLeaveChannel* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UVoiceChatUserLeaveChannel>();
+	}
+};
+DUMPER7_ASSERTS_UVoiceChatUserLeaveChannel;
+
 // Class OnlineSubsystemBlueprints.OnlineAvatarSubsystemGetAvatarUrl
 // 0x00A8 (0x00D8 - 0x0030)
 class UOnlineAvatarSubsystemGetAvatarUrl final : public UBlueprintAsyncActionBase
@@ -367,46 +392,6 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineChatSubsystem;
 
-// Class OnlineSubsystemBlueprints.RedpointOSSv1BlueprintFunctionLibrary
-// 0x0000 (0x0028 - 0x0028)
-class URedpointOSSv1BlueprintFunctionLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FOnlineSessionSettingBP Conv_BoolToFOnlineSessionSettingBP(bool InData);
-	static struct FVariantDataBP Conv_BoolToFVariantDataBP(bool InData);
-	static struct FOnlineSessionSettingBP Conv_DoubleToFOnlineSessionSettingBP(double InData);
-	static struct FVariantDataBP Conv_DoubleToFVariantDataBP(double InData);
-	static bool Conv_FOnlineSessionSettingBPToBool(const struct FOnlineSessionSettingBP& InData);
-	static double Conv_FOnlineSessionSettingBPToDouble(const struct FOnlineSessionSettingBP& InData);
-	static int64 Conv_FOnlineSessionSettingBPToInt64(const struct FOnlineSessionSettingBP& InData);
-	static class FString Conv_FOnlineSessionSettingBPToString(const struct FOnlineSessionSettingBP& InData);
-	static bool Conv_FVariantDataBPToBool(const struct FVariantDataBP& InData);
-	static double Conv_FVariantDataBPToDouble(const struct FVariantDataBP& InData);
-	static int64 Conv_FVariantDataBPToInt64(const struct FVariantDataBP& InData);
-	static class FString Conv_FVariantDataBPToString(const struct FVariantDataBP& InData);
-	static struct FOnlineSessionSettingBP Conv_Int64ToFOnlineSessionSettingBP(int64 InData);
-	static struct FVariantDataBP Conv_Int64ToFVariantDataBP(int64 InData);
-	static struct FOnlineSessionSettingBP Conv_StringToFOnlineSessionSettingBP(const class FString& InData);
-	static struct FVariantDataBP Conv_StringToFVariantDataBP(const class FString& InData);
-	static bool EqualEqual_FOnlineSessionSettingBPFOnlineSessionSettingBP(const struct FOnlineSessionSettingBP& InA, const struct FOnlineSessionSettingBP& InB);
-	static bool EqualEqual_FVariantDataBPFVariantDataBP(const struct FVariantDataBP& InA, const struct FVariantDataBP& InB);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("RedpointOSSv1BlueprintFunctionLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"RedpointOSSv1BlueprintFunctionLibrary")
-	}
-	static class URedpointOSSv1BlueprintFunctionLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<URedpointOSSv1BlueprintFunctionLibrary>();
-	}
-};
-DUMPER7_ASSERTS_URedpointOSSv1BlueprintFunctionLibrary;
-
 // Class OnlineSubsystemBlueprints.OnlineEntitlementsSubsystem
 // 0x0088 (0x00B8 - 0x0030)
 class UOnlineEntitlementsSubsystem final : public UGameInstanceSubsystem
@@ -469,39 +454,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlineEntitlementsSubsystemQueryEntitlements;
-
-// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemSendInvite
-// 0x0080 (0x00B0 - 0x0030)
-class UOnlineFriendsSubsystemSendInvite final : public UBlueprintAsyncActionBase
-{
-public:
-	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const class FString& ErrorStr)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const class FString& ErrorStr)> OnSendInviteComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         __Store__LocalUserNum;                             // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FUniqueNetIdRepl                       __Store__FriendId;                                 // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class FString                                 __Store__ListName;                                 // 0x00A0(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UOnlineFriendsSubsystemSendInvite* SendInvite(class UOnlineFriendsSubsystem* Subsystem, int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineFriendsSubsystemSendInvite")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemSendInvite")
-	}
-	static class UOnlineFriendsSubsystemSendInvite* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineFriendsSubsystemSendInvite>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineFriendsSubsystemSendInvite;
 
 // Class OnlineSubsystemBlueprints.OnlineEventsSubsystem
 // 0x0070 (0x00A0 - 0x0030)
@@ -663,70 +615,38 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineExternalUISubsystemShowAccountCreationUI;
 
-// Class OnlineSubsystemBlueprints.OnlinePurchaseSubsystem
-// 0x0088 (0x00B8 - 0x0030)
-class UOnlinePurchaseSubsystem final : public UGameInstanceSubsystem
+// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemDeleteFriendAlias
+// 0x0080 (0x00B0 - 0x0030)
+class UOnlineFriendsSubsystemDeleteFriendAlias final : public UBlueprintAsyncActionBase
 {
 public:
-	uint8                                         Pad_30[0x78];                                      // 0x0030(0x0078)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& UserId)> OnUnexpectedPurchaseReceipt; // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const struct FOnlineErrorInfo& Error)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const struct FOnlineErrorInfo& Error)> OnDeleteFriendAliasComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         __Store__LocalUserNum;                             // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FUniqueNetIdRepl                       __Store__FriendId;                                 // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FString                                 __Store__ListName;                                 // 0x00A0(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	void FinalizePurchase(const struct FUniqueNetIdRepl& UserId, const class FString& ReceiptId, const class FString& ReceiptInfo);
-	void GetReceipts(const struct FUniqueNetIdRepl& UserId, TArray<class UPurchaseReceipt*>* OutReceipts);
-	bool IsAllowedToPurchase(const struct FUniqueNetIdRepl& UserId);
-	bool IsSubsystemAvailable();
+	static class UOnlineFriendsSubsystemDeleteFriendAlias* DeleteFriendAlias(class UOnlineFriendsSubsystem* Subsystem, int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlinePurchaseSubsystem")
+		STATIC_CLASS_IMPL("OnlineFriendsSubsystemDeleteFriendAlias")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlinePurchaseSubsystem")
+		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemDeleteFriendAlias")
 	}
-	static class UOnlinePurchaseSubsystem* GetDefaultObj()
+	static class UOnlineFriendsSubsystemDeleteFriendAlias* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlinePurchaseSubsystem>();
+		return GetDefaultObjImpl<UOnlineFriendsSubsystemDeleteFriendAlias>();
 	}
 };
-DUMPER7_ASSERTS_UOnlinePurchaseSubsystem;
-
-// Class OnlineSubsystemBlueprints.OnlineSessionSearch
-// 0x0088 (0x00B0 - 0x0028)
-class UOnlineSessionSearch final : public UObject
-{
-public:
-	uint8                                         Pad_28[0x20];                                      // 0x0028(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         MaxSearchResults;                                  // 0x0048(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIsLanQuery;                                       // 0x004C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4D[0x3];                                       // 0x004D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         PingBucketSize;                                    // 0x0050(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         PlatformHash;                                      // 0x0054(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         TimeoutInSeconds;                                  // 0x0058(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, struct FSessionSearchParamBP> SearchParams;                                    // 0x0060(0x0050)(Edit, BlueprintVisible, DisableEditOnTemplate, NativeAccessSpecifierPublic)
-
-public:
-	TArray<struct FOnlineSessionSearchResultBP> GetSearchResults() const;
-	EOnlineAsyncTaskState_ GetSearchState() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineSessionSearch")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineSessionSearch")
-	}
-	static class UOnlineSessionSearch* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineSessionSearch>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineSessionSearch;
+DUMPER7_ASSERTS_UOnlineFriendsSubsystemDeleteFriendAlias;
 
 // Class OnlineSubsystemBlueprints.OnlineExternalUISubsystemShowWebURL
 // 0x0080 (0x00B0 - 0x0030)
@@ -886,38 +806,91 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineExternalUISubsystemShowSendMessageUI;
 
-// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemBlockPlayer
-// 0x0078 (0x00A8 - 0x0030)
-class UOnlineFriendsSubsystemBlockPlayer final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.VoiceChatUser
+// 0x0150 (0x0178 - 0x0028)
+class UVoiceChatUser final : public UObject
 {
 public:
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UniqueID, const class FString& ListName, const class FString& ErrorStr)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UniqueID, const class FString& ListName, const class FString& ErrorStr)> OnBlockedPlayerComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         __Store__LocalUserNum;                             // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FUniqueNetIdRepl                       __Store__PlayerId;                                 // 0x0078(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_28[0x60];                                      // 0x0028(0x0060)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void()>              OnVoiceChatAvailableAudioDevicesChanged;           // 0x0088(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& playerName)> OnVoiceChatLoggedIn;             // 0x00A0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B0[0x8];                                       // 0x00B0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& playerName)> OnVoiceChatLoggedOut;            // 0x00B8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C8[0x8];                                       // 0x00C8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& ChannelName)> OnVoiceChatChannelJoined;       // 0x00D0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E0[0x8];                                       // 0x00E0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const struct FVoiceChatResultBP& Reason)> OnVoiceChatChannelExited; // 0x00E8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_F8[0x8];                                       // 0x00F8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName)> OnVoiceChatPlayerAdded; // 0x0100(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_110[0x8];                                      // 0x0110(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName)> OnVoiceChatPlayerRemoved; // 0x0118(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_128[0x8];                                      // 0x0128(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName, bool bIsTalking)> OnVoiceChatPlayerTalkingUpdated; // 0x0130(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_140[0x8];                                      // 0x0140(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName, bool bIsMuted)> OnVoiceChatPlayerMuteUpdated; // 0x0148(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_158[0x8];                                      // 0x0158(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const class FString& ChannelName, const class FString& playerName, float Volume)> OnVoiceChatPlayerVolumeUpdated; // 0x0160(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_170[0x8];                                      // 0x0170(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	static class UOnlineFriendsSubsystemBlockPlayer* BlockPlayer(class UOnlineFriendsSubsystem* Subsystem, int32 LocalUserNum, const struct FUniqueNetIdRepl& PlayerId);
+	void BlockPlayers(const TArray<class FString>& PlayerNames);
+	bool GetAudioInputDeviceMuted();
+	float GetAudioInputVolume();
+	bool GetAudioOutputDeviceMuted();
+	float GetAudioOutputVolume();
+	TArray<struct FVoiceChatDeviceInfoBP> GetAvailableInputDeviceInfos();
+	TArray<struct FVoiceChatDeviceInfoBP> GetAvailableOutputDeviceInfos();
+	TArray<class FString> GetChannels();
+	EVoiceChatChannelType_ GetChannelType(const class FString& ChannelName);
+	struct FVoiceChatDeviceInfoBP GetDefaultInputDeviceInfo();
+	struct FVoiceChatDeviceInfoBP GetDefaultOutputDeviceInfo();
+	struct FVoiceChatDeviceInfoBP GetInputDeviceInfo();
+	class FString GetLoggedInPlayerName();
+	struct FVoiceChatDeviceInfoBP GetOutputDeviceInfo();
+	TArray<class FString> GetPlayersInChannel(const class FString& ChannelName);
+	float GetPlayerVolume(const class FString& playerName);
+	class FString GetSetting(const class FString& Name_0);
+	TSet<class FString> GetTransmitChannels();
+	EVoiceChatTransmitMode_ GetTransmitMode();
+	class FString InsecureGetJoinToken(const class FString& ChannelName, EVoiceChatChannelType_ ChannelType, const struct FVoiceChatChannel3dPropertiesBP& Channel3dProperties);
+	class FString InsecureGetLoginToken(const class FString& playerName);
+	bool IsChannelPlayerMuted(const class FString& ChannelName, const class FString& playerName);
+	bool IsLoggedIn();
+	bool IsLoggingIn();
+	bool IsPlayerMuted(const class FString& playerName);
+	bool IsPlayerTalking(const class FString& playerName);
+	void Set3DPosition(const class FString& ChannelName, const struct FVector& SpeakerPosition);
+	void SetAudioInputDeviceMuted(bool bIsMuted);
+	void SetAudioInputVolume(float Volume);
+	void SetAudioOutputDeviceMuted(bool bIsMuted);
+	void SetAudioOutputVolume(float Volume);
+	void SetChannelPlayerMuted(const class FString& ChannelName, const class FString& playerName, bool bAudioMuted);
+	void SetInputDeviceId(const class FString& InputDeviceId);
+	void SetOutputDeviceId(const class FString& OutputDeviceId);
+	void SetPlayerMuted(const class FString& playerName, bool bMuted);
+	void SetPlayerVolume(const class FString& playerName, float Volume);
+	void SetSetting(const class FString& Name_0, const class FString& Value);
+	void TransmitToAllChannels();
+	void TransmitToNoChannels();
+	void TransmitToSpecificChannels(const TSet<class FString>& ChannelNames);
+	void UnblockPlayers(const TArray<class FString>& PlayerNames);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlineFriendsSubsystemBlockPlayer")
+		STATIC_CLASS_IMPL("VoiceChatUser")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemBlockPlayer")
+		STATIC_NAME_IMPL(L"VoiceChatUser")
 	}
-	static class UOnlineFriendsSubsystemBlockPlayer* GetDefaultObj()
+	static class UVoiceChatUser* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlineFriendsSubsystemBlockPlayer>();
+		return GetDefaultObjImpl<UVoiceChatUser>();
 	}
 };
-DUMPER7_ASSERTS_UOnlineFriendsSubsystemBlockPlayer;
+DUMPER7_ASSERTS_UVoiceChatUser;
 
 // Class OnlineSubsystemBlueprints.OnlineExternalUISubsystemShowSendMessageToUserUI
 // 0x0148 (0x0178 - 0x0030)
@@ -1080,34 +1053,38 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineGameActivitySubsystemEndActivity;
 
-// Class OnlineSubsystemBlueprints.VoiceChatUserLeaveChannel
-// 0x0038 (0x0068 - 0x0030)
-class UVoiceChatUserLeaveChannel final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemSetFriendSettings
+// 0x0080 (0x00B0 - 0x0030)
+class UOnlineFriendsSubsystemSetFriendSettings final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const struct FVoiceChatResultBP& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const class FString& ChannelName, const struct FVoiceChatResultBP& Result)> OnVoiceChatChannelLeaveComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UVoiceChatUser*                         __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__ChannelName;                              // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& Param1, bool Param2, const class FString& Param3)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& Param1, bool Param2, const class FString& Param3)> OnSetFriendSettingsComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__UserId;                                   // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FString                                 __Store__Source;                                   // 0x0098(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          __Store__bNeverShowAgain;                          // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_A9[0x7];                                       // 0x00A9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	static class UVoiceChatUserLeaveChannel* LeaveChannel(class UVoiceChatUser* Subsystem, const class FString& ChannelName);
+	static class UOnlineFriendsSubsystemSetFriendSettings* SetFriendSettings(class UOnlineFriendsSubsystem* Subsystem, const struct FUniqueNetIdRepl& UserId, const class FString& Source, bool bNeverShowAgain);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("VoiceChatUserLeaveChannel")
+		STATIC_CLASS_IMPL("OnlineFriendsSubsystemSetFriendSettings")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"VoiceChatUserLeaveChannel")
+		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemSetFriendSettings")
 	}
-	static class UVoiceChatUserLeaveChannel* GetDefaultObj()
+	static class UOnlineFriendsSubsystemSetFriendSettings* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UVoiceChatUserLeaveChannel>();
+		return GetDefaultObjImpl<UOnlineFriendsSubsystemSetFriendSettings>();
 	}
 };
-DUMPER7_ASSERTS_UVoiceChatUserLeaveChannel;
+DUMPER7_ASSERTS_UOnlineFriendsSubsystemSetFriendSettings;
 
 // Class OnlineSubsystemBlueprints.OnlineGameActivitySubsystemResetAllActiveActivities
 // 0x0068 (0x0098 - 0x0030)
@@ -1267,35 +1244,38 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineGameActivitySubsystemSetActivityPriority;
 
-// Class OnlineSubsystemBlueprints.OnlinePartySubsystemCleanupParties
-// 0x0068 (0x0098 - 0x0030)
-class UOnlinePartySubsystemCleanupParties final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemSendInvite
+// 0x0080 (0x00B0 - 0x0030)
+class UOnlineFriendsSubsystemSendInvite final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnCleanupPartiesComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const class FString& ErrorStr)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const class FString& ErrorStr)> OnSendInviteComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
 	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         __Store__LocalUserNum;                             // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FUniqueNetIdRepl                       __Store__FriendId;                                 // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FString                                 __Store__ListName;                                 // 0x00A0(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	static class UOnlinePartySubsystemCleanupParties* CleanupParties(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId);
+	static class UOnlineFriendsSubsystemSendInvite* SendInvite(class UOnlineFriendsSubsystem* Subsystem, int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlinePartySubsystemCleanupParties")
+		STATIC_CLASS_IMPL("OnlineFriendsSubsystemSendInvite")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlinePartySubsystemCleanupParties")
+		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemSendInvite")
 	}
-	static class UOnlinePartySubsystemCleanupParties* GetDefaultObj()
+	static class UOnlineFriendsSubsystemSendInvite* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlinePartySubsystemCleanupParties>();
+		return GetDefaultObjImpl<UOnlineFriendsSubsystemSendInvite>();
 	}
 };
-DUMPER7_ASSERTS_UOnlinePartySubsystemCleanupParties;
+DUMPER7_ASSERTS_UOnlineFriendsSubsystemSendInvite;
 
 // Class OnlineSubsystemBlueprints.OnlineGameItemStatsSubsystem
 // 0x0070 (0x00A0 - 0x0030)
@@ -1452,38 +1432,38 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineGameItemStatsSubsystemItemMitigation;
 
-// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemDeleteFriendAlias
-// 0x0080 (0x00B0 - 0x0030)
-class UOnlineFriendsSubsystemDeleteFriendAlias final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlinePartySubsystemLeaveParty
+// 0x0078 (0x00A8 - 0x0030)
+class UOnlinePartySubsystemLeaveParty final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const struct FOnlineErrorInfo& Error)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName, const struct FOnlineErrorInfo& Error)> OnDeleteFriendAliasComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, ELeavePartyCompletionResult_ Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, ELeavePartyCompletionResult_ Result)> OnLeavePartyComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
 	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         __Store__LocalUserNum;                             // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FUniqueNetIdRepl                       __Store__FriendId;                                 // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class FString                                 __Store__ListName;                                 // 0x00A0(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UPartyId*                               __Store__PartyId;                                  // 0x0098(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	bool                                          __Store__bSynchronizeLeave;                        // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	static class UOnlineFriendsSubsystemDeleteFriendAlias* DeleteFriendAlias(class UOnlineFriendsSubsystem* Subsystem, int32 LocalUserNum, const struct FUniqueNetIdRepl& FriendId, const class FString& ListName);
+	static class UOnlinePartySubsystemLeaveParty* LeaveParty(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, bool bSynchronizeLeave);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlineFriendsSubsystemDeleteFriendAlias")
+		STATIC_CLASS_IMPL("OnlinePartySubsystemLeaveParty")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemDeleteFriendAlias")
+		STATIC_NAME_IMPL(L"OnlinePartySubsystemLeaveParty")
 	}
-	static class UOnlineFriendsSubsystemDeleteFriendAlias* GetDefaultObj()
+	static class UOnlinePartySubsystemLeaveParty* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlineFriendsSubsystemDeleteFriendAlias>();
+		return GetDefaultObjImpl<UOnlinePartySubsystemLeaveParty>();
 	}
 };
-DUMPER7_ASSERTS_UOnlineFriendsSubsystemDeleteFriendAlias;
+DUMPER7_ASSERTS_UOnlinePartySubsystemLeaveParty;
 
 // Class OnlineSubsystemBlueprints.OnlineGameItemStatsSubsystemItemAvailabilityChange
 // 0x0088 (0x00B8 - 0x0030)
@@ -1549,42 +1529,35 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineGameItemStatsSubsystemItemInventoryChange;
 
-// Class OnlineSubsystemBlueprints.OnlineUserCloudSubsystemWriteUserFile
-// 0x00C0 (0x00F0 - 0x0030)
-class UOnlineUserCloudSubsystemWriteUserFile final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlinePartySubsystemRestoreParties
+// 0x0068 (0x0098 - 0x0030)
+class UOnlinePartySubsystemRestoreParties final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnWriteUserFileComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnWriteUserFileProgress64; // 0x0050(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnWriteUserFileCanceled; // 0x0060(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineUserCloudSubsystem*              __Store__Subsystem;                                // 0x0070(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0078(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_88[0x18];                                      // 0x0088(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FUniqueNetIdRepl                       __Store__UserId;                                   // 0x00A0(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class FString                                 __Store__FileName;                                 // 0x00D0(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UFileData*                              __Store__FileContents;                             // 0x00E0(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	bool                                          __Store__bCompressBeforeUpload;                    // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnRestorePartiesComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	static class UOnlineUserCloudSubsystemWriteUserFile* WriteUserFile(class UOnlineUserCloudSubsystem* Subsystem, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, class UFileData* FileContents, bool bCompressBeforeUpload);
+	static class UOnlinePartySubsystemRestoreParties* RestoreParties(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlineUserCloudSubsystemWriteUserFile")
+		STATIC_CLASS_IMPL("OnlinePartySubsystemRestoreParties")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlineUserCloudSubsystemWriteUserFile")
+		STATIC_NAME_IMPL(L"OnlinePartySubsystemRestoreParties")
 	}
-	static class UOnlineUserCloudSubsystemWriteUserFile* GetDefaultObj()
+	static class UOnlinePartySubsystemRestoreParties* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlineUserCloudSubsystemWriteUserFile>();
+		return GetDefaultObjImpl<UOnlinePartySubsystemRestoreParties>();
 	}
 };
-DUMPER7_ASSERTS_UOnlineUserCloudSubsystemWriteUserFile;
+DUMPER7_ASSERTS_UOnlinePartySubsystemRestoreParties;
 
 // Class OnlineSubsystemBlueprints.OnlineGameItemStatsSubsystemItemLoadoutChange
 // 0x0088 (0x00B8 - 0x0030)
@@ -1646,37 +1619,38 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineGroupsSubsystem;
 
-// Class OnlineSubsystemBlueprints.OnlinePartySubsystemPromoteMember
-// 0x00A0 (0x00D0 - 0x0030)
-class UOnlinePartySubsystemPromoteMember final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemBlockPlayer
+// 0x0078 (0x00A8 - 0x0030)
+class UOnlineFriendsSubsystemBlockPlayer final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& MemberId, EPromoteMemberCompletionResult_ Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& MemberId, EPromoteMemberCompletionResult_ Result)> OnPromotePartyMemberComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UniqueID, const class FString& ListName, const class FString& ErrorStr)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UniqueID, const class FString& ListName, const class FString& ErrorStr)> OnBlockedPlayerComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
 	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UPartyId*                               __Store__PartyId;                                  // 0x0098(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	struct FUniqueNetIdRepl                       __Store__TargetMemberId;                           // 0x00A0(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         __Store__LocalUserNum;                             // 0x0070(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FUniqueNetIdRepl                       __Store__PlayerId;                                 // 0x0078(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	static class UOnlinePartySubsystemPromoteMember* PromoteMember(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& TargetMemberId);
+	static class UOnlineFriendsSubsystemBlockPlayer* BlockPlayer(class UOnlineFriendsSubsystem* Subsystem, int32 LocalUserNum, const struct FUniqueNetIdRepl& PlayerId);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlinePartySubsystemPromoteMember")
+		STATIC_CLASS_IMPL("OnlineFriendsSubsystemBlockPlayer")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlinePartySubsystemPromoteMember")
+		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemBlockPlayer")
 	}
-	static class UOnlinePartySubsystemPromoteMember* GetDefaultObj()
+	static class UOnlineFriendsSubsystemBlockPlayer* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlinePartySubsystemPromoteMember>();
+		return GetDefaultObjImpl<UOnlineFriendsSubsystemBlockPlayer>();
 	}
 };
-DUMPER7_ASSERTS_UOnlinePartySubsystemPromoteMember;
+DUMPER7_ASSERTS_UOnlineFriendsSubsystemBlockPlayer;
 
 // Class OnlineSubsystemBlueprints.OnlineHelpers
 // 0x0000 (0x0028 - 0x0028)
@@ -1721,16 +1695,17 @@ public:
 DUMPER7_ASSERTS_UOnlineHelpers;
 
 // Class OnlineSubsystemBlueprints.OnlineIdentitySubsystem
-// 0x0100 (0x0130 - 0x0030)
+// 0x0118 (0x0148 - 0x0030)
 class UOnlineIdentitySubsystem final : public UGameInstanceSubsystem
 {
 public:
-	uint8                                         Pad_30[0xB0];                                      // 0x0030(0x00B0)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(int32 LocalUserNum)> OnLoginChanged;                               // 0x00E0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(int32 LocalUserNum, EOnlineLoginStatus OldStatus, EOnlineLoginStatus NewStatus, const struct FUniqueNetIdRepl& NewId)> OnLoginStatusChanged; // 0x00F0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Error)> OnLoginComplete; // 0x0100(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful)> OnLogoutComplete;        // 0x0110(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const TArray<class FString>& LoginDomains)> OnLoginFlowLogout;     // 0x0120(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_30[0xB8];                                      // 0x0030(0x00B8)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(int32 LocalUserNum)> OnLoginChanged;                               // 0x00E8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(int32 LocalUserNum, EOnlineLoginStatus OldStatus, EOnlineLoginStatus NewStatus, const struct FUniqueNetIdRepl& NewId)> OnLoginStatusChanged; // 0x00F8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Error)> OnLoginComplete; // 0x0108(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful)> OnLogoutComplete;        // 0x0118(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const TArray<class FString>& LoginDomains)> OnLoginFlowLogout;     // 0x0128(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const class FString& ServiceName, EOnlineServerConnectionStatus_BP LastConnectionState, EOnlineServerConnectionStatus_BP ConnectionState)> OnConnectionStatusChanged; // 0x0138(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
 
 public:
 	void ClearCachedAuthToken(const struct FUniqueNetIdRepl& UserId);
@@ -1858,36 +1833,39 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineIdentitySubsystemLogout;
 
-// Class OnlineSubsystemBlueprints.OnlineUserCloudSubsystemEnumerateUserFiles
-// 0x0070 (0x00A0 - 0x0030)
-class UOnlineUserCloudSubsystemEnumerateUserFiles final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemUpdateSession
+// 0x01A0 (0x01D0 - 0x0030)
+class UOnlineSessionSubsystemUpdateSession final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId)> OnEnumerateUserFilesComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineUserCloudSubsystem*              __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnCallFailed;       // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnUpdateSessionComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
 	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FUniqueNetIdRepl                       __Store__UserId;                                   // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FName                                   __Store__SessionName;                              // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FOnlineSessionSettingsBP               __Store__UpdatedSessionSettings;                   // 0x0078(0x0150)(NativeAccessSpecifierPrivate)
+	bool                                          __Store__bShouldRefreshOnlineData;                 // 0x01C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_1C9[0x7];                                      // 0x01C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	static class UOnlineUserCloudSubsystemEnumerateUserFiles* EnumerateUserFiles(class UOnlineUserCloudSubsystem* Subsystem, const struct FUniqueNetIdRepl& UserId);
+	static class UOnlineSessionSubsystemUpdateSession* UpdateSession(class UOnlineSessionSubsystem* Subsystem, class FName SessionName, const struct FOnlineSessionSettingsBP& UpdatedSessionSettings, bool bShouldRefreshOnlineData);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlineUserCloudSubsystemEnumerateUserFiles")
+		STATIC_CLASS_IMPL("OnlineSessionSubsystemUpdateSession")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlineUserCloudSubsystemEnumerateUserFiles")
+		STATIC_NAME_IMPL(L"OnlineSessionSubsystemUpdateSession")
 	}
-	static class UOnlineUserCloudSubsystemEnumerateUserFiles* GetDefaultObj()
+	static class UOnlineSessionSubsystemUpdateSession* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlineUserCloudSubsystemEnumerateUserFiles>();
+		return GetDefaultObjImpl<UOnlineSessionSubsystemUpdateSession>();
 	}
 };
-DUMPER7_ASSERTS_UOnlineUserCloudSubsystemEnumerateUserFiles;
+DUMPER7_ASSERTS_UOnlineSessionSubsystemUpdateSession;
 
 // Class OnlineSubsystemBlueprints.OnlineIdentitySubsystemAutoLogin
 // 0x0048 (0x0078 - 0x0030)
@@ -1951,37 +1929,37 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineIdentitySubsystemRevokeAuthToken;
 
-// Class OnlineSubsystemBlueprints.OnlinePartySubsystemCancelInvitation
-// 0x00A0 (0x00D0 - 0x0030)
-class UOnlinePartySubsystemCancelInvitation final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlineVoiceAdminSubsystemKickParticipant
+// 0x00A8 (0x00D8 - 0x0030)
+class UOnlineVoiceAdminSubsystemKickParticipant final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& SenderUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& TargetUserId, const struct FOnlineErrorInfo& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& SenderUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& TargetUserId, const struct FOnlineErrorInfo& Result)> OnCancelPartyInvitationComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	TMulticastInlineDelegate<void(const struct FOnlineErrorInfo& Result, const struct FUniqueNetIdRepl& LocalUserId, const struct FUniqueNetIdRepl& TargetUserId)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FOnlineErrorInfo& Result, const struct FUniqueNetIdRepl& LocalUserId, const struct FUniqueNetIdRepl& TargetUserId)> OnVoiceAdminKickParticipantComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineVoiceAdminSubsystem*             __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
 	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__TargetUserId;                             // 0x0098(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UPartyId*                               __Store__PartyId;                                  // 0x00C8(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__ChannelName;                              // 0x0098(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__TargetUserId;                             // 0x00A8(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	static class UOnlinePartySubsystemCancelInvitation* CancelInvitation(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, const struct FUniqueNetIdRepl& TargetUserId, class UPartyId* PartyId);
+	static class UOnlineVoiceAdminSubsystemKickParticipant* KickParticipant(class UOnlineVoiceAdminSubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, const class FString& ChannelName, const struct FUniqueNetIdRepl& TargetUserId);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlinePartySubsystemCancelInvitation")
+		STATIC_CLASS_IMPL("OnlineVoiceAdminSubsystemKickParticipant")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlinePartySubsystemCancelInvitation")
+		STATIC_NAME_IMPL(L"OnlineVoiceAdminSubsystemKickParticipant")
 	}
-	static class UOnlinePartySubsystemCancelInvitation* GetDefaultObj()
+	static class UOnlineVoiceAdminSubsystemKickParticipant* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlinePartySubsystemCancelInvitation>();
+		return GetDefaultObjImpl<UOnlineVoiceAdminSubsystemKickParticipant>();
 	}
 };
-DUMPER7_ASSERTS_UOnlinePartySubsystemCancelInvitation;
+DUMPER7_ASSERTS_UOnlineVoiceAdminSubsystemKickParticipant;
 
 // Class OnlineSubsystemBlueprints.OnlineIdentitySubsystemGetUserPrivilege
 // 0x0070 (0x00A0 - 0x0030)
@@ -2047,37 +2025,36 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineLeaderboardsSubsystem;
 
-// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemCancelMatchmaking
-// 0x0078 (0x00A8 - 0x0030)
-class UOnlineSessionSubsystemCancelMatchmaking final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlineUserSubsystem
+// 0x0090 (0x00C0 - 0x0030)
+class UOnlineUserSubsystem final : public UGameInstanceSubsystem
 {
 public:
-	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnCallFailed;       // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnCancelMatchmakingComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FUniqueNetIdRepl                       __Store__SearchingPlayerId;                        // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class FName                                   __Store__SessionName;                              // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_30[0x80];                                      // 0x0030(0x0080)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const TArray<struct FUniqueNetIdRepl>& UserIds, const class FString& ErrorStr)> OnQueryUserInfoComplete; // 0x00B0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
 
 public:
-	static class UOnlineSessionSubsystemCancelMatchmaking* CancelMatchmaking(class UOnlineSessionSubsystem* Subsystem, const struct FUniqueNetIdRepl& SearchingPlayerId, class FName SessionName);
+	bool GetAllUserInfo(int32 LocalUserNum, TArray<class UOnlineUserRef*>* OutUsers);
+	struct FUniqueNetIdRepl GetExternalIdMapping(const struct FExternalIdQueryOptionsBP& QueryOptions, const class FString& ExternalId);
+	void GetExternalIdMappings(const struct FExternalIdQueryOptionsBP& QueryOptions, const TArray<class FString>& ExternalIds, TArray<struct FUniqueNetIdRepl>* OutIds);
+	class UOnlineUserRef* GetUserInfo(int32 LocalUserNum, const struct FUniqueNetIdRepl& UserId);
+	bool IsSubsystemAvailable();
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlineSessionSubsystemCancelMatchmaking")
+		STATIC_CLASS_IMPL("OnlineUserSubsystem")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlineSessionSubsystemCancelMatchmaking")
+		STATIC_NAME_IMPL(L"OnlineUserSubsystem")
 	}
-	static class UOnlineSessionSubsystemCancelMatchmaking* GetDefaultObj()
+	static class UOnlineUserSubsystem* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlineSessionSubsystemCancelMatchmaking>();
+		return GetDefaultObjImpl<UOnlineUserSubsystem>();
 	}
 };
-DUMPER7_ASSERTS_UOnlineSessionSubsystemCancelMatchmaking;
+DUMPER7_ASSERTS_UOnlineUserSubsystem;
 
 // Class OnlineSubsystemBlueprints.OnlineLeaderboardsSubsystemReadLeaderboards
 // 0x0058 (0x0088 - 0x0030)
@@ -2244,38 +2221,36 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineLeaderboardsSubsystemReadLeaderboardsAroundUser;
 
-// Class OnlineSubsystemBlueprints.OnlinePartySubsystemLeaveParty
-// 0x0078 (0x00A8 - 0x0030)
-class UOnlinePartySubsystemLeaveParty final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemPingSearchResults
+// 0x01F8 (0x0228 - 0x0030)
+class UOnlineSessionSubsystemPingSearchResults final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, ELeavePartyCompletionResult_ Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, ELeavePartyCompletionResult_ Result)> OnLeavePartyComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	TMulticastInlineDelegate<void(bool bWasSuccessful)> OnCallFailed;                                // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(bool bWasSuccessful)> OnPingSearchResultsComplete;                 // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
 	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UPartyId*                               __Store__PartyId;                                  // 0x0098(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	bool                                          __Store__bSynchronizeLeave;                        // 0x00A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FOnlineSessionSearchResultBP           __Store__SearchResult;                             // 0x0070(0x01B8)(NativeAccessSpecifierPrivate)
 
 public:
-	static class UOnlinePartySubsystemLeaveParty* LeaveParty(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, bool bSynchronizeLeave);
+	static class UOnlineSessionSubsystemPingSearchResults* PingSearchResults(class UOnlineSessionSubsystem* Subsystem, const struct FOnlineSessionSearchResultBP& SearchResult);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlinePartySubsystemLeaveParty")
+		STATIC_CLASS_IMPL("OnlineSessionSubsystemPingSearchResults")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlinePartySubsystemLeaveParty")
+		STATIC_NAME_IMPL(L"OnlineSessionSubsystemPingSearchResults")
 	}
-	static class UOnlinePartySubsystemLeaveParty* GetDefaultObj()
+	static class UOnlineSessionSubsystemPingSearchResults* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlinePartySubsystemLeaveParty>();
+		return GetDefaultObjImpl<UOnlineSessionSubsystemPingSearchResults>();
 	}
 };
-DUMPER7_ASSERTS_UOnlinePartySubsystemLeaveParty;
+DUMPER7_ASSERTS_UOnlineSessionSubsystemPingSearchResults;
 
 // Class OnlineSubsystemBlueprints.OnlineLobbySubsystem
 // 0x00E8 (0x0118 - 0x0030)
@@ -2440,37 +2415,37 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineLobbySubsystemDeleteLobby;
 
-// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemUnregisterPlayers
-// 0x0058 (0x0088 - 0x0030)
-class UOnlineSessionSubsystemUnregisterPlayers final : public UBlueprintAsyncActionBase
+// Class OnlineSubsystemBlueprints.OnlinePartySubsystemPromoteMember
+// 0x00A0 (0x00D0 - 0x0030)
+class UOnlinePartySubsystemPromoteMember final : public UBlueprintAsyncActionBase
 {
 public:
-	TMulticastInlineDelegate<void(class FName SessionName, const TArray<struct FUniqueNetIdRepl>& PlayerIds, bool bWasSuccessful)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class FName SessionName, const TArray<struct FUniqueNetIdRepl>& PlayerIds, bool bWasSuccessful)> OnUnregisterPlayersComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& MemberId, EPromoteMemberCompletionResult_ Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& MemberId, EPromoteMemberCompletionResult_ Result)> OnPromotePartyMemberComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
 	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   __Store__SessionName;                              // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TArray<struct FUniqueNetIdRepl>               __Store__Players;                                  // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UPartyId*                               __Store__PartyId;                                  // 0x0098(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	struct FUniqueNetIdRepl                       __Store__TargetMemberId;                           // 0x00A0(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	static class UOnlineSessionSubsystemUnregisterPlayers* UnregisterPlayers(class UOnlineSessionSubsystem* Subsystem, class FName SessionName, const TArray<struct FUniqueNetIdRepl>& Players);
+	static class UOnlinePartySubsystemPromoteMember* PromoteMember(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& TargetMemberId);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("OnlineSessionSubsystemUnregisterPlayers")
+		STATIC_CLASS_IMPL("OnlinePartySubsystemPromoteMember")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"OnlineSessionSubsystemUnregisterPlayers")
+		STATIC_NAME_IMPL(L"OnlinePartySubsystemPromoteMember")
 	}
-	static class UOnlineSessionSubsystemUnregisterPlayers* GetDefaultObj()
+	static class UOnlinePartySubsystemPromoteMember* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UOnlineSessionSubsystemUnregisterPlayers>();
+		return GetDefaultObjImpl<UOnlinePartySubsystemPromoteMember>();
 	}
 };
-DUMPER7_ASSERTS_UOnlineSessionSubsystemUnregisterPlayers;
+DUMPER7_ASSERTS_UOnlinePartySubsystemPromoteMember;
 
 // Class OnlineSubsystemBlueprints.OnlineLobbySubsystemConnectLobby
 // 0x0070 (0x00A0 - 0x0030)
@@ -2630,40 +2605,6 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineLobbySubsystemSearch;
 
-// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemUpdateSession
-// 0x01A0 (0x01D0 - 0x0030)
-class UOnlineSessionSubsystemUpdateSession final : public UBlueprintAsyncActionBase
-{
-public:
-	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnCallFailed;       // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnUpdateSessionComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   __Store__SessionName;                              // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FOnlineSessionSettingsBP               __Store__UpdatedSessionSettings;                   // 0x0078(0x0150)(NativeAccessSpecifierPrivate)
-	bool                                          __Store__bShouldRefreshOnlineData;                 // 0x01C8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_1C9[0x7];                                      // 0x01C9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UOnlineSessionSubsystemUpdateSession* UpdateSession(class UOnlineSessionSubsystem* Subsystem, class FName SessionName, const struct FOnlineSessionSettingsBP& UpdatedSessionSettings, bool bShouldRefreshOnlineData);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineSessionSubsystemUpdateSession")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineSessionSubsystemUpdateSession")
-	}
-	static class UOnlineSessionSubsystemUpdateSession* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineSessionSubsystemUpdateSession>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineSessionSubsystemUpdateSession;
-
 // Class OnlineSubsystemBlueprints.OnlineLobbySubsystemKickMember
 // 0x00A0 (0x00D0 - 0x0030)
 class UOnlineLobbySubsystemKickMember final : public UBlueprintAsyncActionBase
@@ -2815,6 +2756,38 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlineMessageSanitizerSubsystemSanitizeDisplayNames;
+
+// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemCancelMatchmaking
+// 0x0078 (0x00A8 - 0x0030)
+class UOnlineSessionSubsystemCancelMatchmaking final : public UBlueprintAsyncActionBase
+{
+public:
+	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnCallFailed;       // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class FName SessionName, bool bWasSuccessful)> OnCancelMatchmakingComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FUniqueNetIdRepl                       __Store__SearchingPlayerId;                        // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FName                                   __Store__SessionName;                              // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UOnlineSessionSubsystemCancelMatchmaking* CancelMatchmaking(class UOnlineSessionSubsystem* Subsystem, const struct FUniqueNetIdRepl& SearchingPlayerId, class FName SessionName);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlineSessionSubsystemCancelMatchmaking")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlineSessionSubsystemCancelMatchmaking")
+	}
+	static class UOnlineSessionSubsystemCancelMatchmaking* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlineSessionSubsystemCancelMatchmaking>();
+	}
+};
+DUMPER7_ASSERTS_UOnlineSessionSubsystemCancelMatchmaking;
 
 // Class OnlineSubsystemBlueprints.OnlineMessageSanitizerSubsystemQueryBlockedUser
 // 0x0060 (0x0090 - 0x0030)
@@ -2972,37 +2945,6 @@ public:
 };
 DUMPER7_ASSERTS_UOnlinePresenceSubsystemSetPresence;
 
-// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemPingSearchResults
-// 0x01F8 (0x0228 - 0x0030)
-class UOnlineSessionSubsystemPingSearchResults final : public UBlueprintAsyncActionBase
-{
-public:
-	TMulticastInlineDelegate<void(bool bWasSuccessful)> OnCallFailed;                                // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(bool bWasSuccessful)> OnPingSearchResultsComplete;                 // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FOnlineSessionSearchResultBP           __Store__SearchResult;                             // 0x0070(0x01B8)(NativeAccessSpecifierPrivate)
-
-public:
-	static class UOnlineSessionSubsystemPingSearchResults* PingSearchResults(class UOnlineSessionSubsystem* Subsystem, const struct FOnlineSessionSearchResultBP& SearchResult);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineSessionSubsystemPingSearchResults")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineSessionSubsystemPingSearchResults")
-	}
-	static class UOnlineSessionSubsystemPingSearchResults* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineSessionSubsystemPingSearchResults>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineSessionSubsystemPingSearchResults;
-
 // Class OnlineSubsystemBlueprints.OnlinePresenceSubsystemQueryPresence
 // 0x0068 (0x0098 - 0x0030)
 class UOnlinePresenceSubsystemQueryPresence final : public UBlueprintAsyncActionBase
@@ -3032,6 +2974,36 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlinePresenceSubsystemQueryPresence;
+
+// Class OnlineSubsystemBlueprints.OnlinePurchaseSubsystem
+// 0x0088 (0x00B8 - 0x0030)
+class UOnlinePurchaseSubsystem final : public UGameInstanceSubsystem
+{
+public:
+	uint8                                         Pad_30[0x78];                                      // 0x0030(0x0078)(Fixing Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& UserId)> OnUnexpectedPurchaseReceipt; // 0x00A8(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+
+public:
+	void FinalizePurchase(const struct FUniqueNetIdRepl& UserId, const class FString& ReceiptId, const class FString& ReceiptInfo);
+	void GetReceipts(const struct FUniqueNetIdRepl& UserId, TArray<class UPurchaseReceipt*>* OutReceipts);
+	bool IsAllowedToPurchase(const struct FUniqueNetIdRepl& UserId);
+	bool IsSubsystemAvailable();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlinePurchaseSubsystem")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlinePurchaseSubsystem")
+	}
+	static class UOnlinePurchaseSubsystem* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlinePurchaseSubsystem>();
+	}
+};
+DUMPER7_ASSERTS_UOnlinePurchaseSubsystem;
 
 // Class OnlineSubsystemBlueprints.OnlinePurchaseSubsystemCheckout
 // 0x0088 (0x00B8 - 0x0030)
@@ -3094,6 +3066,38 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlinePurchaseSubsystemRedeemCode;
+
+// Class OnlineSubsystemBlueprints.OnlineSessionSubsystemUnregisterPlayers
+// 0x0058 (0x0088 - 0x0030)
+class UOnlineSessionSubsystemUnregisterPlayers final : public UBlueprintAsyncActionBase
+{
+public:
+	TMulticastInlineDelegate<void(class FName SessionName, const TArray<struct FUniqueNetIdRepl>& PlayerIds, bool bWasSuccessful)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class FName SessionName, const TArray<struct FUniqueNetIdRepl>& PlayerIds, bool bWasSuccessful)> OnUnregisterPlayersComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineSessionSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   __Store__SessionName;                              // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TArray<struct FUniqueNetIdRepl>               __Store__Players;                                  // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+
+public:
+	static class UOnlineSessionSubsystemUnregisterPlayers* UnregisterPlayers(class UOnlineSessionSubsystem* Subsystem, class FName SessionName, const TArray<struct FUniqueNetIdRepl>& Players);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlineSessionSubsystemUnregisterPlayers")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlineSessionSubsystemUnregisterPlayers")
+	}
+	static class UOnlineSessionSubsystemUnregisterPlayers* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlineSessionSubsystemUnregisterPlayers>();
+	}
+};
+DUMPER7_ASSERTS_UOnlineSessionSubsystemUnregisterPlayers;
 
 // Class OnlineSubsystemBlueprints.OnlinePurchaseSubsystemQueryReceipts
 // 0x0070 (0x00A0 - 0x0030)
@@ -3763,6 +3767,37 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineUserCloudSubsystem;
 
+// Class OnlineSubsystemBlueprints.OnlineUserCloudSubsystemEnumerateUserFiles
+// 0x0070 (0x00A0 - 0x0030)
+class UOnlineUserCloudSubsystemEnumerateUserFiles final : public UBlueprintAsyncActionBase
+{
+public:
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId)> OnEnumerateUserFilesComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineUserCloudSubsystem*              __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FUniqueNetIdRepl                       __Store__UserId;                                   // 0x0070(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UOnlineUserCloudSubsystemEnumerateUserFiles* EnumerateUserFiles(class UOnlineUserCloudSubsystem* Subsystem, const struct FUniqueNetIdRepl& UserId);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlineUserCloudSubsystemEnumerateUserFiles")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlineUserCloudSubsystemEnumerateUserFiles")
+	}
+	static class UOnlineUserCloudSubsystemEnumerateUserFiles* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlineUserCloudSubsystemEnumerateUserFiles>();
+	}
+};
+DUMPER7_ASSERTS_UOnlineUserCloudSubsystemEnumerateUserFiles;
+
 // Class OnlineSubsystemBlueprints.OnlineUserCloudSubsystemReadUserFile
 // 0x0080 (0x00B0 - 0x0030)
 class UOnlineUserCloudSubsystemReadUserFile final : public UBlueprintAsyncActionBase
@@ -3794,6 +3829,43 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlineUserCloudSubsystemReadUserFile;
+
+// Class OnlineSubsystemBlueprints.OnlineUserCloudSubsystemWriteUserFile
+// 0x00C0 (0x00F0 - 0x0030)
+class UOnlineUserCloudSubsystemWriteUserFile final : public UBlueprintAsyncActionBase
+{
+public:
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnWriteUserFileComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnWriteUserFileProgress64; // 0x0050(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(bool bWasSuccessful, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, int64 BytesWritten)> OnWriteUserFileCanceled; // 0x0060(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlineUserCloudSubsystem*              __Store__Subsystem;                                // 0x0070(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0078(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_88[0x18];                                      // 0x0088(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FUniqueNetIdRepl                       __Store__UserId;                                   // 0x00A0(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FString                                 __Store__FileName;                                 // 0x00D0(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UFileData*                              __Store__FileContents;                             // 0x00E0(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	bool                                          __Store__bCompressBeforeUpload;                    // 0x00E8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_E9[0x7];                                       // 0x00E9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UOnlineUserCloudSubsystemWriteUserFile* WriteUserFile(class UOnlineUserCloudSubsystem* Subsystem, const struct FUniqueNetIdRepl& UserId, const class FString& Filename, class UFileData* FileContents, bool bCompressBeforeUpload);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlineUserCloudSubsystemWriteUserFile")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlineUserCloudSubsystemWriteUserFile")
+	}
+	static class UOnlineUserCloudSubsystemWriteUserFile* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlineUserCloudSubsystemWriteUserFile>();
+	}
+};
+DUMPER7_ASSERTS_UOnlineUserCloudSubsystemWriteUserFile;
 
 // Class OnlineSubsystemBlueprints.OnlineUserCloudSubsystemDeleteUserFile
 // 0x0088 (0x00B8 - 0x0030)
@@ -3829,37 +3901,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlineUserCloudSubsystemDeleteUserFile;
-
-// Class OnlineSubsystemBlueprints.OnlineUserSubsystem
-// 0x0090 (0x00C0 - 0x0030)
-class UOnlineUserSubsystem final : public UGameInstanceSubsystem
-{
-public:
-	uint8                                         Pad_30[0x80];                                      // 0x0030(0x0080)(Fixing Size After Last Property [ Dumper-7 ])
-	TMulticastInlineDelegate<void(int32 LocalUserNum, bool bWasSuccessful, const TArray<struct FUniqueNetIdRepl>& UserIds, const class FString& ErrorStr)> OnQueryUserInfoComplete; // 0x00B0(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-
-public:
-	bool GetAllUserInfo(int32 LocalUserNum, TArray<class UOnlineUserRef*>* OutUsers);
-	struct FUniqueNetIdRepl GetExternalIdMapping(const struct FExternalIdQueryOptionsBP& QueryOptions, const class FString& ExternalId);
-	void GetExternalIdMappings(const struct FExternalIdQueryOptionsBP& QueryOptions, const TArray<class FString>& ExternalIds, TArray<struct FUniqueNetIdRepl>* OutIds);
-	class UOnlineUserRef* GetUserInfo(int32 LocalUserNum, const struct FUniqueNetIdRepl& UserId);
-	bool IsSubsystemAvailable();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineUserSubsystem")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineUserSubsystem")
-	}
-	static class UOnlineUserSubsystem* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineUserSubsystem>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineUserSubsystem;
 
 // Class OnlineSubsystemBlueprints.OnlineUserSubsystemQueryUserInfo
 // 0x0058 (0x0088 - 0x0030)
@@ -3983,38 +4024,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlineVoiceAdminSubsystemCreateChannelCredentials;
-
-// Class OnlineSubsystemBlueprints.OnlineVoiceAdminSubsystemKickParticipant
-// 0x00A8 (0x00D8 - 0x0030)
-class UOnlineVoiceAdminSubsystemKickParticipant final : public UBlueprintAsyncActionBase
-{
-public:
-	TMulticastInlineDelegate<void(const struct FOnlineErrorInfo& Result, const struct FUniqueNetIdRepl& LocalUserId, const struct FUniqueNetIdRepl& TargetUserId)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FOnlineErrorInfo& Result, const struct FUniqueNetIdRepl& LocalUserId, const struct FUniqueNetIdRepl& TargetUserId)> OnVoiceAdminKickParticipantComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineVoiceAdminSubsystem*             __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class FString                                 __Store__ChannelName;                              // 0x0098(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__TargetUserId;                             // 0x00A8(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UOnlineVoiceAdminSubsystemKickParticipant* KickParticipant(class UOnlineVoiceAdminSubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, const class FString& ChannelName, const struct FUniqueNetIdRepl& TargetUserId);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineVoiceAdminSubsystemKickParticipant")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineVoiceAdminSubsystemKickParticipant")
-	}
-	static class UOnlineVoiceAdminSubsystemKickParticipant* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineVoiceAdminSubsystemKickParticipant>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineVoiceAdminSubsystemKickParticipant;
 
 // Class OnlineSubsystemBlueprints.OnlineVoiceAdminSubsystemSetParticipantHardMute
 // 0x00B0 (0x00E0 - 0x0030)
@@ -4312,36 +4321,6 @@ public:
 };
 DUMPER7_ASSERTS_UFileData;
 
-// Class OnlineSubsystemBlueprints.OnlineUserRef
-// 0x0020 (0x0048 - 0x0028)
-class UOnlineUserRef : public UObject
-{
-public:
-	uint8                                         Pad_28[0x20];                                      // 0x0028(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class FString GetDisplayName();
-	class FString GetRealName();
-	class FString GetUserAttribute(const class FString& Key, bool* Found);
-	struct FUniqueNetIdRepl GetUserId();
-	void SetUserLocalAttribute(const class FString& Key, const class FString& Value, bool* Success);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineUserRef")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineUserRef")
-	}
-	static class UOnlineUserRef* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineUserRef>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineUserRef;
-
 // Class OnlineSubsystemBlueprints.OnlineFriendRef
 // 0x0010 (0x0058 - 0x0048)
 class UOnlineFriendRef final : public UOnlineUserRef
@@ -4546,32 +4525,6 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineLobbyMemberTransaction;
 
-// Class OnlineSubsystemBlueprints.OnlineRecentPlayerRef
-// 0x0010 (0x0058 - 0x0048)
-class UOnlineRecentPlayerRef final : public UOnlineUserRef
-{
-public:
-	uint8                                         Pad_48[0x10];                                      // 0x0048(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	struct FDateTime GetLastSeen();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineRecentPlayerRef")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineRecentPlayerRef")
-	}
-	static class UOnlineRecentPlayerRef* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineRecentPlayerRef>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineRecentPlayerRef;
-
 // Class OnlineSubsystemBlueprints.UserOnlineAccountRef
 // 0x0010 (0x0058 - 0x0048)
 class UUserOnlineAccountRef final : public UOnlineUserRef
@@ -4713,32 +4666,6 @@ public:
 };
 DUMPER7_ASSERTS_UMutablePartyData;
 
-// Class OnlineSubsystemBlueprints.PartyId
-// 0x0010 (0x0038 - 0x0028)
-class UPartyId final : public UObject
-{
-public:
-	uint8                                         Pad_28[0x10];                                      // 0x0028(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class FString ToDebugString();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("PartyId")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"PartyId")
-	}
-	static class UPartyId* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UPartyId>();
-	}
-};
-DUMPER7_ASSERTS_UPartyId;
-
 // Class OnlineSubsystemBlueprints.OnlinePartyJoinInfo
 // 0x0010 (0x0038 - 0x0028)
 class UOnlinePartyJoinInfo final : public UObject
@@ -4871,6 +4798,41 @@ public:
 };
 DUMPER7_ASSERTS_UNamedOnlineSession;
 
+// Class OnlineSubsystemBlueprints.OnlineSessionSearch
+// 0x0088 (0x00B0 - 0x0028)
+class UOnlineSessionSearch final : public UObject
+{
+public:
+	uint8                                         Pad_28[0x20];                                      // 0x0028(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         MaxSearchResults;                                  // 0x0048(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsLanQuery;                                       // 0x004C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4D[0x3];                                       // 0x004D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         PingBucketSize;                                    // 0x0050(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         PlatformHash;                                      // 0x0054(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         TimeoutInSeconds;                                  // 0x0058(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, struct FSessionSearchParamBP> SearchParams;                                    // 0x0060(0x0050)(Edit, BlueprintVisible, DisableEditOnTemplate, NativeAccessSpecifierPublic)
+
+public:
+	TArray<struct FOnlineSessionSearchResultBP> GetSearchResults() const;
+	EOnlineAsyncTaskState_ GetSearchState() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlineSessionSearch")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlineSessionSearch")
+	}
+	static class UOnlineSessionSearch* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlineSessionSearch>();
+	}
+};
+DUMPER7_ASSERTS_UOnlineSessionSearch;
+
 // Class OnlineSubsystemBlueprints.OnlineStoreOffer
 // 0x0010 (0x0038 - 0x0028)
 class UOnlineStoreOffer final : public UObject
@@ -4908,6 +4870,46 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlineStoreOffer;
+
+// Class OnlineSubsystemBlueprints.RedpointOSSv1BlueprintFunctionLibrary
+// 0x0000 (0x0028 - 0x0028)
+class URedpointOSSv1BlueprintFunctionLibrary final : public UBlueprintFunctionLibrary
+{
+public:
+	static struct FOnlineSessionSettingBP Conv_BoolToFOnlineSessionSettingBP(bool InData);
+	static struct FVariantDataBP Conv_BoolToFVariantDataBP(bool InData);
+	static struct FOnlineSessionSettingBP Conv_DoubleToFOnlineSessionSettingBP(double InData);
+	static struct FVariantDataBP Conv_DoubleToFVariantDataBP(double InData);
+	static bool Conv_FOnlineSessionSettingBPToBool(const struct FOnlineSessionSettingBP& InData);
+	static double Conv_FOnlineSessionSettingBPToDouble(const struct FOnlineSessionSettingBP& InData);
+	static int64 Conv_FOnlineSessionSettingBPToInt64(const struct FOnlineSessionSettingBP& InData);
+	static class FString Conv_FOnlineSessionSettingBPToString(const struct FOnlineSessionSettingBP& InData);
+	static bool Conv_FVariantDataBPToBool(const struct FVariantDataBP& InData);
+	static double Conv_FVariantDataBPToDouble(const struct FVariantDataBP& InData);
+	static int64 Conv_FVariantDataBPToInt64(const struct FVariantDataBP& InData);
+	static class FString Conv_FVariantDataBPToString(const struct FVariantDataBP& InData);
+	static struct FOnlineSessionSettingBP Conv_Int64ToFOnlineSessionSettingBP(int64 InData);
+	static struct FVariantDataBP Conv_Int64ToFVariantDataBP(int64 InData);
+	static struct FOnlineSessionSettingBP Conv_StringToFOnlineSessionSettingBP(const class FString& InData);
+	static struct FVariantDataBP Conv_StringToFVariantDataBP(const class FString& InData);
+	static bool EqualEqual_FOnlineSessionSettingBPFOnlineSessionSettingBP(const struct FOnlineSessionSettingBP& InA, const struct FOnlineSessionSettingBP& InB);
+	static bool EqualEqual_FVariantDataBPFVariantDataBP(const struct FVariantDataBP& InA, const struct FVariantDataBP& InB);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("RedpointOSSv1BlueprintFunctionLibrary")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"RedpointOSSv1BlueprintFunctionLibrary")
+	}
+	static class URedpointOSSv1BlueprintFunctionLibrary* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<URedpointOSSv1BlueprintFunctionLibrary>();
+	}
+};
+DUMPER7_ASSERTS_URedpointOSSv1BlueprintFunctionLibrary;
 
 // Class OnlineSubsystemBlueprints.RedpointOSSv1OnlinePartyRequestToJoinInfo
 // 0x0010 (0x0038 - 0x0028)
@@ -5283,39 +5285,6 @@ public:
 };
 DUMPER7_ASSERTS_UOnlineFriendsSubsystemQueryFriendSettings;
 
-// Class OnlineSubsystemBlueprints.OnlineFriendsSubsystemSetFriendSettings
-// 0x0080 (0x00B0 - 0x0030)
-class UOnlineFriendsSubsystemSetFriendSettings final : public UBlueprintAsyncActionBase
-{
-public:
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& Param1, bool Param2, const class FString& Param3)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& Param1, bool Param2, const class FString& Param3)> OnSetFriendSettingsComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlineFriendsSubsystem*                __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__UserId;                                   // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class FString                                 __Store__Source;                                   // 0x0098(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          __Store__bNeverShowAgain;                          // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_A9[0x7];                                       // 0x00A9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UOnlineFriendsSubsystemSetFriendSettings* SetFriendSettings(class UOnlineFriendsSubsystem* Subsystem, const struct FUniqueNetIdRepl& UserId, const class FString& Source, bool bNeverShowAgain);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlineFriendsSubsystemSetFriendSettings")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlineFriendsSubsystemSetFriendSettings")
-	}
-	static class UOnlineFriendsSubsystemSetFriendSettings* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlineFriendsSubsystemSetFriendSettings>();
-	}
-};
-DUMPER7_ASSERTS_UOnlineFriendsSubsystemSetFriendSettings;
-
 // Class OnlineSubsystemBlueprints.OnlinePartySubsystem
 // 0x01F0 (0x0220 - 0x0030)
 class UOnlinePartySubsystem final : public UGameInstanceSubsystem
@@ -5382,36 +5351,6 @@ public:
 };
 DUMPER7_ASSERTS_UOnlinePartySubsystem;
 
-// Class OnlineSubsystemBlueprints.OnlinePartySubsystemRestoreParties
-// 0x0068 (0x0098 - 0x0030)
-class UOnlinePartySubsystemRestoreParties final : public UBlueprintAsyncActionBase
-{
-public:
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnRestorePartiesComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
-	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UOnlinePartySubsystemRestoreParties* RestoreParties(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("OnlinePartySubsystemRestoreParties")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"OnlinePartySubsystemRestoreParties")
-	}
-	static class UOnlinePartySubsystemRestoreParties* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UOnlinePartySubsystemRestoreParties>();
-	}
-};
-DUMPER7_ASSERTS_UOnlinePartySubsystemRestoreParties;
-
 // Class OnlineSubsystemBlueprints.OnlinePartySubsystemRestoreInvites
 // 0x0068 (0x0098 - 0x0030)
 class UOnlinePartySubsystemRestoreInvites final : public UBlueprintAsyncActionBase
@@ -5441,6 +5380,36 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlinePartySubsystemRestoreInvites;
+
+// Class OnlineSubsystemBlueprints.OnlinePartySubsystemCleanupParties
+// 0x0068 (0x0098 - 0x0030)
+class UOnlinePartySubsystemCleanupParties final : public UBlueprintAsyncActionBase
+{
+public:
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& LocalUserId, const struct FOnlineErrorInfo& Result)> OnCleanupPartiesComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UOnlinePartySubsystemCleanupParties* CleanupParties(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlinePartySubsystemCleanupParties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlinePartySubsystemCleanupParties")
+	}
+	static class UOnlinePartySubsystemCleanupParties* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlinePartySubsystemCleanupParties>();
+	}
+};
+DUMPER7_ASSERTS_UOnlinePartySubsystemCleanupParties;
 
 // Class OnlineSubsystemBlueprints.OnlinePartySubsystemCreateParty
 // 0x00B0 (0x00E0 - 0x0030)
@@ -5570,6 +5539,38 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UOnlinePartySubsystemSendInvitation;
+
+// Class OnlineSubsystemBlueprints.OnlinePartySubsystemCancelInvitation
+// 0x00A0 (0x00D0 - 0x0030)
+class UOnlinePartySubsystemCancelInvitation final : public UBlueprintAsyncActionBase
+{
+public:
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& SenderUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& TargetUserId, const struct FOnlineErrorInfo& Result)> OnCallFailed; // 0x0030(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FUniqueNetIdRepl& SenderUserId, class UPartyId* PartyId, const struct FUniqueNetIdRepl& TargetUserId, const struct FOnlineErrorInfo& Result)> OnCancelPartyInvitationComplete; // 0x0040(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	class UOnlinePartySubsystem*                  __Store__Subsystem;                                // 0x0050(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+	class FString                                 __Store__CallUniquenessId;                         // 0x0058(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__LocalUserId;                              // 0x0068(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FUniqueNetIdRepl                       __Store__TargetUserId;                             // 0x0098(0x0030)(HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UPartyId*                               __Store__PartyId;                                  // 0x00C8(0x0008)(ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate, TObjectPtr)
+
+public:
+	static class UOnlinePartySubsystemCancelInvitation* CancelInvitation(class UOnlinePartySubsystem* Subsystem, const struct FUniqueNetIdRepl& LocalUserId, const struct FUniqueNetIdRepl& TargetUserId, class UPartyId* PartyId);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("OnlinePartySubsystemCancelInvitation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnlinePartySubsystemCancelInvitation")
+	}
+	static class UOnlinePartySubsystemCancelInvitation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UOnlinePartySubsystemCancelInvitation>();
+	}
+};
+DUMPER7_ASSERTS_UOnlinePartySubsystemCancelInvitation;
 
 // Class OnlineSubsystemBlueprints.OnlinePartySubsystemKickMember
 // 0x00A0 (0x00D0 - 0x0030)

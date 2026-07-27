@@ -34,7 +34,7 @@ public:
 public:
 	void UpdateUnderBoxColor();
 	void UpdateOptions();
-	void PreConstruct(bool IsDesignTime_PreConstruct);
+	void PreConstruct(bool IsDesignTime);
 	void OnChangedValue();
 	void ExecuteUbergraph_WBP_NavOptionBox(int32 EntryPoint);
 	void Construct();

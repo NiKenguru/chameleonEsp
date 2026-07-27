@@ -25,7 +25,7 @@ public:
 
 public:
 	void ExecuteUbergraph_BTTask_AttackToPlayer(int32 EntryPoint);
-	void ReceiveExecuteAI(class AAIController* OwnerController_ReceiveExecuteAI, class APawn* ControlledPawn_ReceiveExecuteAI);
+	void ReceiveExecuteAI(class AAIController* OwnerController, class APawn* ControlledPawn);
 
 public:
 	static class UClass* StaticClass()

@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ClassType_structs.hpp"
 #include "Engine_structs.hpp"
-#include "PenguinHotel_classes.hpp"
-#include "ENUM_ItemBindType_structs.hpp"
 #include "ENUM_HandType_structs.hpp"
+#include "PenguinHotel_classes.hpp"
+#include "ENUM_ClassType_structs.hpp"
+#include "ENUM_ItemBindType_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -54,8 +54,8 @@ public:
 	void MakeUpdateGamePhaseSettings(const class FString& GamePhaseName, struct FOnlineSessionSettingsBP* StructOut);
 	void MakeUpdateCanJoinSettings(bool JoinState, struct FOnlineSessionSettingsBP* StructOut);
 	void MakeUpdaeNumPlayerSettings(int32 NewConnectionNum, struct FOnlineSessionSettingsBP* StructOut);
-	void K2_PostLogin(class APlayerController* NewPlayer_K2_PostLogin);
-	void K2_OnLogout(class AController* ExitingController_K2_OnLogout);
+	void K2_PostLogin(class APlayerController* NewPlayer);
+	void K2_OnLogout(class AController* ExitingController);
 	void JoinFillterCheck();
 	void ExecuteUbergraph_BP_FirstPersonGameMode_V2(int32 EntryPoint);
 	void DelayUpdate();

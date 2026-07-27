@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "UMG_structs.hpp"
+#include "UINavigation_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "EnhancedInput_structs.hpp"
-#include "UINavigation_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -24,7 +24,7 @@ SDK_PARAM_NAMESPACE_START
 struct BP_FirstPersonPlayerController_C_ReceiveTick final
 {
 public:
-	float                                         DeltaSeconds_ReceiveTick;                          // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DeltaSeconds;                                      // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_FirstPersonPlayerController_C_ReceiveTick;
 

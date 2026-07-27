@@ -53,10 +53,10 @@ void ABP_CraftedObject_GiftBox_1_C::ReceiveActorBeginOverlap(class AActor* Other
 // Function BP_CraftedObject_GiftBox_1.BP_CraftedObject_GiftBox_1_C.IsChangeImage
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool*                                   IsInteract_IsChangeImage                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class FText*                            OverrideText_IsChangeImage                             (Parm, OutParm)
+// bool*                                   IsInteract                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FText*                            OverrideText                                           (Parm, OutParm)
 
-void ABP_CraftedObject_GiftBox_1_C::IsChangeImage(bool* IsInteract_IsChangeImage, class FText* OverrideText_IsChangeImage)
+void ABP_CraftedObject_GiftBox_1_C::IsChangeImage(bool* IsInteract, class FText* OverrideText)
 {
 	static class UFunction* Func = nullptr;
 
@@ -67,28 +67,28 @@ void ABP_CraftedObject_GiftBox_1_C::IsChangeImage(bool* IsInteract_IsChangeImage
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (IsInteract_IsChangeImage != nullptr)
-		*IsInteract_IsChangeImage = Parms.IsInteract_IsChangeImage;
+	if (IsInteract != nullptr)
+		*IsInteract = Parms.IsInteract;
 
-	if (OverrideText_IsChangeImage != nullptr)
-		*OverrideText_IsChangeImage = std::move(Parms.OverrideText_IsChangeImage);
+	if (OverrideText != nullptr)
+		*OverrideText = std::move(Parms.OverrideText);
 }
 
 
 // Function BP_CraftedObject_GiftBox_1.BP_CraftedObject_GiftBox_1_C.GetItemInfo
 // (Public, HasOutParams, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// ENUM_HandType*                          HandType_GetItemInfo                                   (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// ENUM_ClassType*                         ClassType_GetItemInfo                                  (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool*                                   NotPickUp_GetItemInfo                                  (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FRotator*                        HaveRotation_GetItemInfo                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-// struct FVector*                         Add_Position_GetItemInfo                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool*                                   IsBoneAttach_GetItemInfo                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// ENUM_ItemBindType*                      BindType_GetItemInfo                                   (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// class FName*                            BoneName_GetItemInfo                                   (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// struct FST_ItemCoreDatas*               CoreDatas_GetItemInfo                                  (Parm, OutParm, HasGetValueTypeHash)
+// ENUM_HandType*                          HandType                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ENUM_ClassType*                         ClassType                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool*                                   NotPickUp                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FRotator*                        HaveRotation                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+// struct FVector*                         Add_Position                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool*                                   IsBoneAttach                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// ENUM_ItemBindType*                      BindType                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FName*                            BoneName                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// struct FST_ItemCoreDatas*               CoreDatas                                              (Parm, OutParm, HasGetValueTypeHash)
 
-void ABP_CraftedObject_GiftBox_1_C::GetItemInfo(ENUM_HandType* HandType_GetItemInfo, ENUM_ClassType* ClassType_GetItemInfo, bool* NotPickUp_GetItemInfo, struct FRotator* HaveRotation_GetItemInfo, struct FVector* Add_Position_GetItemInfo, bool* IsBoneAttach_GetItemInfo, ENUM_ItemBindType* BindType_GetItemInfo, class FName* BoneName_GetItemInfo, struct FST_ItemCoreDatas* CoreDatas_GetItemInfo)
+void ABP_CraftedObject_GiftBox_1_C::GetItemInfo(ENUM_HandType* HandType, ENUM_ClassType* ClassType, bool* NotPickUp, struct FRotator* HaveRotation, struct FVector* Add_Position, bool* IsBoneAttach, ENUM_ItemBindType* BindType, class FName* BoneName, struct FST_ItemCoreDatas* CoreDatas)
 {
 	static class UFunction* Func = nullptr;
 
@@ -99,32 +99,32 @@ void ABP_CraftedObject_GiftBox_1_C::GetItemInfo(ENUM_HandType* HandType_GetItemI
 
 	UObject::ProcessEvent(Func, &Parms);
 
-	if (HandType_GetItemInfo != nullptr)
-		*HandType_GetItemInfo = Parms.HandType_GetItemInfo;
+	if (HandType != nullptr)
+		*HandType = Parms.HandType;
 
-	if (ClassType_GetItemInfo != nullptr)
-		*ClassType_GetItemInfo = Parms.ClassType_GetItemInfo;
+	if (ClassType != nullptr)
+		*ClassType = Parms.ClassType;
 
-	if (NotPickUp_GetItemInfo != nullptr)
-		*NotPickUp_GetItemInfo = Parms.NotPickUp_GetItemInfo;
+	if (NotPickUp != nullptr)
+		*NotPickUp = Parms.NotPickUp;
 
-	if (HaveRotation_GetItemInfo != nullptr)
-		*HaveRotation_GetItemInfo = std::move(Parms.HaveRotation_GetItemInfo);
+	if (HaveRotation != nullptr)
+		*HaveRotation = std::move(Parms.HaveRotation);
 
-	if (Add_Position_GetItemInfo != nullptr)
-		*Add_Position_GetItemInfo = std::move(Parms.Add_Position_GetItemInfo);
+	if (Add_Position != nullptr)
+		*Add_Position = std::move(Parms.Add_Position);
 
-	if (IsBoneAttach_GetItemInfo != nullptr)
-		*IsBoneAttach_GetItemInfo = Parms.IsBoneAttach_GetItemInfo;
+	if (IsBoneAttach != nullptr)
+		*IsBoneAttach = Parms.IsBoneAttach;
 
-	if (BindType_GetItemInfo != nullptr)
-		*BindType_GetItemInfo = Parms.BindType_GetItemInfo;
+	if (BindType != nullptr)
+		*BindType = Parms.BindType;
 
-	if (BoneName_GetItemInfo != nullptr)
-		*BoneName_GetItemInfo = Parms.BoneName_GetItemInfo;
+	if (BoneName != nullptr)
+		*BoneName = Parms.BoneName;
 
-	if (CoreDatas_GetItemInfo != nullptr)
-		*CoreDatas_GetItemInfo = std::move(Parms.CoreDatas_GetItemInfo);
+	if (CoreDatas != nullptr)
+		*CoreDatas = std::move(Parms.CoreDatas);
 }
 
 

@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "OnlineSubsystemBlueprints_structs.hpp"
-#include "ENUM_ItemBindType_structs.hpp"
-#include "ENUM_HandType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
-#include "ENUM_ClassType_structs.hpp"
 #include "ST_ItemCoreDatas_structs.hpp"
+#include "OnlineSubsystemBlueprints_structs.hpp"
+#include "ENUM_ClassType_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "ENUM_HandType_structs.hpp"
+#include "ENUM_ItemBindType_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -213,7 +213,7 @@ DUMPER7_ASSERTS_BP_FirstPersonGameMode_V2_C_MakeUpdaeNumPlayerSettings;
 struct BP_FirstPersonGameMode_V2_C_K2_PostLogin final
 {
 public:
-	class APlayerController*                      NewPlayer_K2_PostLogin;                            // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class APlayerController*                      NewPlayer;                                         // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_FirstPersonGameMode_V2_C_K2_PostLogin;
 
@@ -222,7 +222,7 @@ DUMPER7_ASSERTS_BP_FirstPersonGameMode_V2_C_K2_PostLogin;
 struct BP_FirstPersonGameMode_V2_C_K2_OnLogout final
 {
 public:
-	class AController*                            ExitingController_K2_OnLogout;                     // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class AController*                            ExitingController;                                 // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_FirstPersonGameMode_V2_C_K2_OnLogout;
 

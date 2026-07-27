@@ -16,6 +16,44 @@
 
 SDK_NAMESPACE_START
 
+// Function GameplayAbilities.GameplayAbilityTargetActor.CancelTargeting
+// (RequiredAPI, Native, Public)
+
+void AGameplayAbilityTargetActor::CancelTargeting()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayAbilityTargetActor", "CancelTargeting");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function GameplayAbilities.GameplayAbilityTargetActor.ConfirmTargeting
+// (RequiredAPI, Native, Public)
+
+void AGameplayAbilityTargetActor::ConfirmTargeting()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayAbilityTargetActor", "ConfirmTargeting");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function GameplayAbilities.AbilityAsync.EndAction
 // (RequiredAPI, Native, Public, BlueprintCallable)
 
@@ -32,40 +70,6 @@ void UAbilityAsync::EndAction()
 	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
-}
-
-
-// Function GameplayAbilities.AbilityAsync_WaitGameplayTagQuery.WaitGameplayTagQueryOnActor
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
-// Parameters:
-// class AActor*                           TargetActor                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayTagQuery&         TagQuery                                               (ConstParm, Parm, NativeAccessSpecifierPublic)
-// const EWaitGameplayTagQueryTriggerConditionTriggerCondition                                       (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const bool                              bOnlyTriggerOnce                                       (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UAbilityAsync_WaitGameplayTagQuery*ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-class UAbilityAsync_WaitGameplayTagQuery* UAbilityAsync_WaitGameplayTagQuery::WaitGameplayTagQueryOnActor(class AActor* TargetActor, const struct FGameplayTagQuery& TagQuery, const EWaitGameplayTagQueryTriggerCondition TriggerCondition, const bool bOnlyTriggerOnce)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = StaticClass()->GetFunction("AbilityAsync_WaitGameplayTagQuery", "WaitGameplayTagQueryOnActor");
-
-	Params::AbilityAsync_WaitGameplayTagQuery_WaitGameplayTagQueryOnActor Parms{};
-
-	Parms.TargetActor = TargetActor;
-	Parms.TagQuery = std::move(TagQuery);
-	Parms.TriggerCondition = TriggerCondition;
-	Parms.bOnlyTriggerOnce = bOnlyTriggerOnce;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	GetDefaultObj()->ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -690,290 +694,6 @@ class UAbilityAsync_WaitGameplayEvent* UAbilityAsync_WaitGameplayEvent::WaitGame
 }
 
 
-// Function GameplayAbilities.GameplayCueNotify_Actor.K2_EndGameplayCue
-// (RequiredAPI, Native, Public, BlueprintCallable)
-
-void AGameplayCueNotify_Actor::K2_EndGameplayCue()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Actor", "K2_EndGameplayCue");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Actor.K2_HandleGameplayCue
-// (RequiredAPI, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// EGameplayCueEvent                       EventType                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void AGameplayCueNotify_Actor::K2_HandleGameplayCue(class AActor* MyTarget, EGameplayCueEvent EventType, const struct FGameplayCueParameters& Parameters)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Actor", "K2_HandleGameplayCue");
-
-	Params::GameplayCueNotify_Actor_K2_HandleGameplayCue Parms{};
-
-	Parms.MyTarget = MyTarget;
-	Parms.EventType = EventType;
-	Parms.Parameters = std::move(Parameters);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Actor.OnActive
-// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool AGameplayCueNotify_Actor::OnActive(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnActive");
-
-	Params::GameplayCueNotify_Actor_OnActive Parms{};
-
-	Parms.MyTarget = MyTarget;
-	Parms.Parameters = std::move(Parameters);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Actor.OnExecute
-// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool AGameplayCueNotify_Actor::OnExecute(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnExecute");
-
-	Params::GameplayCueNotify_Actor_OnExecute Parms{};
-
-	Parms.MyTarget = MyTarget;
-	Parms.Parameters = std::move(Parameters);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Actor.OnOwnerDestroyed
-// (RequiredAPI, Native, Public)
-// Parameters:
-// class AActor*                           DestroyedActor                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void AGameplayCueNotify_Actor::OnOwnerDestroyed(class AActor* DestroyedActor)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnOwnerDestroyed");
-
-	Params::GameplayCueNotify_Actor_OnOwnerDestroyed Parms{};
-
-	Parms.DestroyedActor = DestroyedActor;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Actor.OnRemove
-// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool AGameplayCueNotify_Actor::OnRemove(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnRemove");
-
-	Params::GameplayCueNotify_Actor_OnRemove Parms{};
-
-	Parms.MyTarget = MyTarget;
-	Parms.Parameters = std::move(Parameters);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Actor.WhileActive
-// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool AGameplayCueNotify_Actor::WhileActive(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Actor", "WhileActive");
-
-	Params::GameplayCueNotify_Actor_WhileActive Parms{};
-
-	Parms.MyTarget = MyTarget;
-	Parms.Parameters = std::move(Parameters);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Looping.OnApplication
-// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void AGameplayCueNotify_Looping::OnApplication(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnApplication");
-
-	Params::GameplayCueNotify_Looping_OnApplication Parms{};
-
-	Parms.Target = Target;
-	Parms.Parameters = std::move(Parameters);
-	Parms.SpawnResults = std::move(SpawnResults);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Looping.OnLoopingStart
-// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void AGameplayCueNotify_Looping::OnLoopingStart(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnLoopingStart");
-
-	Params::GameplayCueNotify_Looping_OnLoopingStart Parms{};
-
-	Parms.Target = Target;
-	Parms.Parameters = std::move(Parameters);
-	Parms.SpawnResults = std::move(SpawnResults);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Looping.OnRecurring
-// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void AGameplayCueNotify_Looping::OnRecurring(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnRecurring");
-
-	Params::GameplayCueNotify_Looping_OnRecurring Parms{};
-
-	Parms.Target = Target;
-	Parms.Parameters = std::move(Parameters);
-	Parms.SpawnResults = std::move(SpawnResults);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_Looping.OnRemoval
-// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void AGameplayCueNotify_Looping::OnRemoval(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnRemoval");
-
-	Params::GameplayCueNotify_Looping_OnRemoval Parms{};
-
-	Parms.Target = Target;
-	Parms.Parameters = std::move(Parameters);
-	Parms.SpawnResults = std::move(SpawnResults);
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
 // Function GameplayAbilities.AbilityAsync_WaitGameplayTagAdded.WaitGameplayTagAddToActor
 // (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
 // Parameters:
@@ -1026,6 +746,40 @@ class UAbilityAsync_WaitGameplayTagRemoved* UAbilityAsync_WaitGameplayTagRemoved
 	Parms.TargetActor = TargetActor;
 	Parms.Tag = std::move(Tag);
 	Parms.OnlyTriggerOnce = OnlyTriggerOnce;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	GetDefaultObj()->ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function GameplayAbilities.AbilityAsync_WaitGameplayTagQuery.WaitGameplayTagQueryOnActor
+// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// class AActor*                           TargetActor                                            (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayTagQuery&         TagQuery                                               (ConstParm, Parm, NativeAccessSpecifierPublic)
+// const EWaitGameplayTagQueryTriggerConditionTriggerCondition                                       (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const bool                              bOnlyTriggerOnce                                       (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UAbilityAsync_WaitGameplayTagQuery*ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+class UAbilityAsync_WaitGameplayTagQuery* UAbilityAsync_WaitGameplayTagQuery::WaitGameplayTagQueryOnActor(class AActor* TargetActor, const struct FGameplayTagQuery& TagQuery, const EWaitGameplayTagQueryTriggerCondition TriggerCondition, const bool bOnlyTriggerOnce)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = StaticClass()->GetFunction("AbilityAsync_WaitGameplayTagQuery", "WaitGameplayTagQueryOnActor");
+
+	Params::AbilityAsync_WaitGameplayTagQuery_WaitGameplayTagQueryOnActor Parms{};
+
+	Parms.TargetActor = TargetActor;
+	Parms.TagQuery = std::move(TagQuery);
+	Parms.TriggerCondition = TriggerCondition;
+	Parms.bOnlyTriggerOnce = bOnlyTriggerOnce;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -2454,68 +2208,6 @@ struct FGameplayEffectSpecHandle UGameplayAbility::MakeOutgoingGameplayEffectSpe
 	Func->FunctionFlags = Flgs;
 
 	return Parms.ReturnValue;
-}
-
-
-// Function GameplayAbilities.GameplayAbilityTargetActor.CancelTargeting
-// (RequiredAPI, Native, Public)
-
-void AGameplayAbilityTargetActor::CancelTargeting()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayAbilityTargetActor", "CancelTargeting");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function GameplayAbilities.GameplayAbilityTargetActor.ConfirmTargeting
-// (RequiredAPI, Native, Public)
-
-void AGameplayAbilityTargetActor::ConfirmTargeting()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayAbilityTargetActor", "ConfirmTargeting");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function GameplayAbilities.GameplayCueNotify_BurstLatent.OnBurst
-// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
-// Parameters:
-// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
-
-void AGameplayCueNotify_BurstLatent::OnBurst(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GameplayCueNotify_BurstLatent", "OnBurst");
-
-	Params::GameplayCueNotify_BurstLatent_OnBurst Parms{};
-
-	Parms.Target = Target;
-	Parms.Parameters = std::move(Parameters);
-	Parms.SpawnResults = std::move(SpawnResults);
-
-	UObject::ProcessEvent(Func, &Parms);
 }
 
 
@@ -11002,6 +10694,194 @@ void IGameplayCueInterface::ForwardGameplayCueToParent()
 }
 
 
+// Function GameplayAbilities.GameplayCueNotify_Actor.K2_EndGameplayCue
+// (RequiredAPI, Native, Public, BlueprintCallable)
+
+void AGameplayCueNotify_Actor::K2_EndGameplayCue()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Actor", "K2_EndGameplayCue");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Actor.K2_HandleGameplayCue
+// (RequiredAPI, Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EGameplayCueEvent                       EventType                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void AGameplayCueNotify_Actor::K2_HandleGameplayCue(class AActor* MyTarget, EGameplayCueEvent EventType, const struct FGameplayCueParameters& Parameters)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Actor", "K2_HandleGameplayCue");
+
+	Params::GameplayCueNotify_Actor_K2_HandleGameplayCue Parms{};
+
+	Parms.MyTarget = MyTarget;
+	Parms.EventType = EventType;
+	Parms.Parameters = std::move(Parameters);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Actor.OnActive
+// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool AGameplayCueNotify_Actor::OnActive(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnActive");
+
+	Params::GameplayCueNotify_Actor_OnActive Parms{};
+
+	Parms.MyTarget = MyTarget;
+	Parms.Parameters = std::move(Parameters);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Actor.OnExecute
+// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool AGameplayCueNotify_Actor::OnExecute(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnExecute");
+
+	Params::GameplayCueNotify_Actor_OnExecute Parms{};
+
+	Parms.MyTarget = MyTarget;
+	Parms.Parameters = std::move(Parameters);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Actor.OnOwnerDestroyed
+// (RequiredAPI, Native, Public)
+// Parameters:
+// class AActor*                           DestroyedActor                                         (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void AGameplayCueNotify_Actor::OnOwnerDestroyed(class AActor* DestroyedActor)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnOwnerDestroyed");
+
+	Params::GameplayCueNotify_Actor_OnOwnerDestroyed Parms{};
+
+	Parms.DestroyedActor = DestroyedActor;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Actor.OnRemove
+// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool AGameplayCueNotify_Actor::OnRemove(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Actor", "OnRemove");
+
+	Params::GameplayCueNotify_Actor_OnRemove Parms{};
+
+	Parms.MyTarget = MyTarget;
+	Parms.Parameters = std::move(Parameters);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Actor.WhileActive
+// (RequiredAPI, Native, Event, Public, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           MyTarget                                               (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool AGameplayCueNotify_Actor::WhileActive(class AActor* MyTarget, const struct FGameplayCueParameters& Parameters)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Actor", "WhileActive");
+
+	Params::GameplayCueNotify_Actor_WhileActive Parms{};
+
+	Parms.MyTarget = MyTarget;
+	Parms.Parameters = std::move(Parameters);
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
 // Function GameplayAbilities.GameplayCueNotify_Burst.OnBurst
 // (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent, Const)
 // Parameters:
@@ -11017,6 +10897,126 @@ void UGameplayCueNotify_Burst::OnBurst(class AActor* Target, const struct FGamep
 		Func = Class->GetFunction("GameplayCueNotify_Burst", "OnBurst");
 
 	Params::GameplayCueNotify_Burst_OnBurst Parms{};
+
+	Parms.Target = Target;
+	Parms.Parameters = std::move(Parameters);
+	Parms.SpawnResults = std::move(SpawnResults);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_BurstLatent.OnBurst
+// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void AGameplayCueNotify_BurstLatent::OnBurst(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_BurstLatent", "OnBurst");
+
+	Params::GameplayCueNotify_BurstLatent_OnBurst Parms{};
+
+	Parms.Target = Target;
+	Parms.Parameters = std::move(Parameters);
+	Parms.SpawnResults = std::move(SpawnResults);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Looping.OnApplication
+// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void AGameplayCueNotify_Looping::OnApplication(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnApplication");
+
+	Params::GameplayCueNotify_Looping_OnApplication Parms{};
+
+	Parms.Target = Target;
+	Parms.Parameters = std::move(Parameters);
+	Parms.SpawnResults = std::move(SpawnResults);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Looping.OnLoopingStart
+// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void AGameplayCueNotify_Looping::OnLoopingStart(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnLoopingStart");
+
+	Params::GameplayCueNotify_Looping_OnLoopingStart Parms{};
+
+	Parms.Target = Target;
+	Parms.Parameters = std::move(Parameters);
+	Parms.SpawnResults = std::move(SpawnResults);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Looping.OnRecurring
+// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void AGameplayCueNotify_Looping::OnRecurring(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnRecurring");
+
+	Params::GameplayCueNotify_Looping_OnRecurring Parms{};
+
+	Parms.Target = Target;
+	Parms.Parameters = std::move(Parameters);
+	Parms.SpawnResults = std::move(SpawnResults);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function GameplayAbilities.GameplayCueNotify_Looping.OnRemoval
+// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
+// Parameters:
+// class AActor*                           Target                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGameplayCueParameters&    Parameters                                             (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+// const struct FGameplayCueNotify_SpawnResult&SpawnResults                                           (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+
+void AGameplayCueNotify_Looping::OnRemoval(class AActor* Target, const struct FGameplayCueParameters& Parameters, const struct FGameplayCueNotify_SpawnResult& SpawnResults)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("GameplayCueNotify_Looping", "OnRemoval");
+
+	Params::GameplayCueNotify_Looping_OnRemoval Parms{};
 
 	Parms.Target = Target;
 	Parms.Parameters = std::move(Parameters);

@@ -48,10 +48,13 @@ public:
 	void OnNamePlateVisibilityChange(bool Visibility);
 	class AActor* NearSurvivor_IgnoreSelf(const struct FVector& Location, const struct FVector& Direction, float* OutDotProduct);
 	void InpActEvt_U_K2Node_InputDebugKeyEvent_0(const struct FKey& Key, const struct FInputActionValue& ActionValue);
-	void InpActEvt_Three_K2Node_InputKeyEvent_3(const struct FKey& Key);
-	void InpActEvt_Six_K2Node_InputKeyEvent_2(const struct FKey& Key);
-	void InpActEvt_G_K2Node_InputKeyEvent_1(const struct FKey& Key);
-	void InpActEvt_Ctrl_Shift_H_K2Node_InputKeyEvent_0(const struct FKey& Key);
+	void InpActEvt_Three_K2Node_InputKeyEvent_6(const struct FKey& Key);
+	void InpActEvt_Six_K2Node_InputKeyEvent_5(const struct FKey& Key);
+	void InpActEvt_Gamepad_RightShoulder_K2Node_InputKeyEvent_0(const struct FKey& Key);
+	void InpActEvt_Gamepad_FaceButton_Right_K2Node_InputKeyEvent_1(const struct FKey& Key);
+	void InpActEvt_Gamepad_FaceButton_Left_K2Node_InputKeyEvent_2(const struct FKey& Key);
+	void InpActEvt_G_K2Node_InputKeyEvent_4(const struct FKey& Key);
+	void InpActEvt_Ctrl_Shift_H_K2Node_InputKeyEvent_3(const struct FKey& Key);
 	void GetPawnCentorLocation(struct FVector* ReturnLocation);
 	void Finish();
 	void ExecuteUbergraph_BP_PlayerController_cLeon(int32 EntryPoint);

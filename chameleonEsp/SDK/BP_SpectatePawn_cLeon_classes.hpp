@@ -12,6 +12,7 @@
 
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "UMG_structs.hpp"
 #include "EN_cLeonGameMode_structs.hpp"
 
 
@@ -54,12 +55,16 @@ public:
 	void OnRep_CanBackBody();
 	void NamePlateUpdate();
 	void MiniReplicateMovement();
-	void InpActEvt_Two_K2Node_InputKeyEvent_4(const struct FKey& Key);
-	void InpActEvt_RightMouseButton_K2Node_InputKeyEvent_2(const struct FKey& Key);
-	void InpActEvt_One_K2Node_InputKeyEvent_0(const struct FKey& Key);
+	void InpActEvt_Two_K2Node_InputKeyEvent_8(const struct FKey& Key);
+	void InpActEvt_RightMouseButton_K2Node_InputKeyEvent_6(const struct FKey& Key);
+	void InpActEvt_One_K2Node_InputKeyEvent_4(const struct FKey& Key);
 	void InpActEvt_IA_Shot_K2Node_EnhancedInputActionEvent_0(const struct FInputActionValue& ActionValue, float ElapsedTime, float TriggeredTime, const class UInputAction* SourceAction);
-	void InpActEvt_Four_K2Node_InputKeyEvent_3(const struct FKey& Key);
-	void InpActEvt_Five_K2Node_InputKeyEvent_1(const struct FKey& Key);
+	void InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_2(const struct FKey& Key);
+	void InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_1(const struct FKey& Key);
+	void InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0(const struct FKey& Key);
+	void InpActEvt_Gamepad_DPad_Down_K2Node_InputKeyEvent_3(const struct FKey& Key);
+	void InpActEvt_Four_K2Node_InputKeyEvent_7(const struct FKey& Key);
+	void InpActEvt_Five_K2Node_InputKeyEvent_5(const struct FKey& Key);
 	void FreeCameraChange();
 	void ExecuteUbergraph_BP_SpectatePawn_cLeon(int32 EntryPoint);
 	void BackBody();

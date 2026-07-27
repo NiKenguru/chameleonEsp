@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "BP_CopyActorBase_classes.hpp"
 #include "Engine_structs.hpp"
+#include "BP_CopyActorBase_classes.hpp"
 
 
 SDK_NAMESPACE_START
@@ -38,7 +38,7 @@ public:
 
 public:
 	void SetWindTrailSize(double Distance);
-	void SetTimeStopState(bool State_SetTimeStopState);
+	void SetTimeStopState(bool State);
 	void ReceiveBeginPlay();
 	void MaxSpeedControl(class AActor* TargetActor, double* MultiplyPower);
 	double GetAttenuation(const struct FVector& v1, double power);

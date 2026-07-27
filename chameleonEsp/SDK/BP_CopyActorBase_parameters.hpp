@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "EN_DamageType_structs.hpp"
 #include "FinishFilter_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "Engine_structs.hpp"
+#include "EN_DamageType_structs.hpp"
 #include "EN_StanType_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -61,8 +61,8 @@ DUMPER7_ASSERTS_BP_CopyActorBase_C_ExecuteUbergraph_BP_CopyActorBase;
 struct BP_CopyActorBase_C_Reverse final
 {
 public:
-	struct FTransform                             NewPosition_Reverse;                               // 0x0000(0x0060)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                HitNormal_Reverse;                                 // 0x0060(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             NewPosition;                                       // 0x0000(0x0060)(BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                HitNormal;                                         // 0x0060(0x0018)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_CopyActorBase_C_Reverse;
 
@@ -109,10 +109,10 @@ DUMPER7_ASSERTS_BP_CopyActorBase_C_StanDamage;
 struct BP_CopyActorBase_C_UserConstructionScript final
 {
 public:
-	struct FTransform                             CallFunc_GetTransform_ReturnValue_UserConstructionScript; // 0x0000(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetComponentBounds_Origin_UserConstructionScript; // 0x0060(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                CallFunc_GetComponentBounds_BoxExtent_UserConstructionScript; // 0x0078(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	float                                         CallFunc_GetComponentBounds_SphereRadius_UserConstructionScript; // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTransform                             CallFunc_GetTransform_ReturnValue;                 // 0x0000(0x0060)(ConstParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetComponentBounds_Origin;                // 0x0060(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                CallFunc_GetComponentBounds_BoxExtent;             // 0x0078(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         CallFunc_GetComponentBounds_SphereRadius;          // 0x0090(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_94[0x4];                                       // 0x0094(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	double                                        K2Node_VariableSet_DefaultHeight_ImplicitCast;     // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
@@ -123,10 +123,10 @@ DUMPER7_ASSERTS_BP_CopyActorBase_C_UserConstructionScript;
 struct BP_CopyActorBase_C_GetCopyClass final
 {
 public:
-	class UStaticMeshComponent*                   CentorComponent_GetCopyClass;                      // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class UClass*                                 Class_GetCopyClass_0;                              // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	double                                        Scale_GetCopyClass;                                // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	struct FVector                                DefaultScale_GetCopyClass;                         // 0x0018(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UStaticMeshComponent*                   CentorComponent;                                   // 0x0000(0x0008)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	class UClass*                                 Class_0;                                           // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	double                                        Scale;                                             // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                DefaultScale;                                      // 0x0018(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FTransform                             CallFunc_K2_GetComponentToWorld_ReturnValue;       // 0x0030(0x0060)(IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FVector                                CallFunc_BreakTransform_Location;                  // 0x0090(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	struct FRotator                               CallFunc_BreakTransform_Rotation;                  // 0x00A8(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor)

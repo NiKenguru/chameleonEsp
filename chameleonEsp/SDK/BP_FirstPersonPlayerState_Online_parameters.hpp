@@ -56,7 +56,7 @@ public:
 DUMPER7_ASSERTS_BP_FirstPersonPlayerState_Online_C_OnCallFailed_003AED3545F20C424888CCAE2B80C441;
 
 // Function BP_FirstPersonPlayerState_Online.BP_FirstPersonPlayerState_Online_C.ExecuteUbergraph_BP_FirstPersonPlayerState_Online
-// 0x0210 (0x0210 - 0x0000)
+// 0x0220 (0x0220 - 0x0000)
 struct BP_FirstPersonPlayerState_Online_C_ExecuteUbergraph_BP_FirstPersonPlayerState_Online final
 {
 public:
@@ -98,23 +98,24 @@ public:
 	bool                                          CallFunc_IsLocalController_ReturnValue;            // 0x0129(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_12A[0x6];                                      // 0x012A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 K2Node_CustomEvent_CustomPlayerName;               // 0x0130(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	int32                                         CallFunc_Len_ReturnValue;                          // 0x0140(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_144[0x4];                                      // 0x0144(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   CallFunc_MakeLiteralText_ReturnValue;              // 0x0148(0x0010)()
-	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0158(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	uint8                                         Pad_159[0x7];                                      // 0x0159(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FString>                         CallFunc_SplitText_ReturnValue;                    // 0x0160(0x0010)(ReferenceParm)
-	class FString                                 CallFunc_SelectString_ReturnValue;                 // 0x0170(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_2;              // 0x0180(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Replace_ReturnValue;                      // 0x0190(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class AGameStateBase*                         CallFunc_GetGameState_ReturnValue;                 // 0x01A0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_3;              // 0x01A8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class UBPC_TextChatControl_C*                 CallFunc_GetComponentByClass_ReturnValue;          // 0x01B8(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
-	class FText                                   CallFunc_MakeLiteralText_ReturnValue_1;            // 0x01C0(0x0010)()
-	TArray<class FString>                         CallFunc_SplitText_ReturnValue_1;                  // 0x01D0(0x0010)(ReferenceParm)
-	class FString                                 CallFunc_Replace_ReturnValue_1;                    // 0x01E0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_4;              // 0x01F0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
-	class FString                                 CallFunc_Concat_StrStr_ReturnValue_5;              // 0x0200(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_SanitizeInappropriateWords_ReturnValue;   // 0x0140(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	int32                                         CallFunc_Len_ReturnValue;                          // 0x0150(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_154[0x4];                                      // 0x0154(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FText                                   CallFunc_MakeLiteralText_ReturnValue;              // 0x0158(0x0010)()
+	bool                                          CallFunc_Greater_IntInt_ReturnValue;               // 0x0168(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_169[0x7];                                      // 0x0169(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FString>                         CallFunc_SplitText_ReturnValue;                    // 0x0170(0x0010)(ReferenceParm)
+	class FString                                 CallFunc_SelectString_ReturnValue;                 // 0x0180(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_2;              // 0x0190(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Replace_ReturnValue;                      // 0x01A0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class AGameStateBase*                         CallFunc_GetGameState_ReturnValue;                 // 0x01B0(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_3;              // 0x01B8(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class UBPC_TextChatControl_C*                 CallFunc_GetComponentByClass_ReturnValue;          // 0x01C8(0x0008)(ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
+	class FText                                   CallFunc_MakeLiteralText_ReturnValue_1;            // 0x01D0(0x0010)()
+	TArray<class FString>                         CallFunc_SplitText_ReturnValue_1;                  // 0x01E0(0x0010)(ReferenceParm)
+	class FString                                 CallFunc_Replace_ReturnValue_1;                    // 0x01F0(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_4;              // 0x0200(0x0010)(ZeroConstructor, HasGetValueTypeHash)
+	class FString                                 CallFunc_Concat_StrStr_ReturnValue_5;              // 0x0210(0x0010)(ZeroConstructor, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_FirstPersonPlayerState_Online_C_ExecuteUbergraph_BP_FirstPersonPlayerState_Online;
 

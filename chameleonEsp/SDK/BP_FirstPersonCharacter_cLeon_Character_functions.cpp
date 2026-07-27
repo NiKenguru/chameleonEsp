@@ -585,10 +585,10 @@ void ABP_FirstPersonCharacter_cLeon_Character_C::SelectEmote(class UClass* Emote
 // Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.ChangeViewMode
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class FName                             ModeName_ChangeViewMode                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-// bool                                    Quick_ChangeViewMode                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// class FName                             ModeName                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    Quick                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_FirstPersonCharacter_cLeon_Character_C::ChangeViewMode(class FName ModeName_ChangeViewMode, bool Quick_ChangeViewMode)
+void ABP_FirstPersonCharacter_cLeon_Character_C::ChangeViewMode(class FName ModeName, bool Quick)
 {
 	static class UFunction* Func = nullptr;
 
@@ -597,8 +597,8 @@ void ABP_FirstPersonCharacter_cLeon_Character_C::ChangeViewMode(class FName Mode
 
 	Params::BP_FirstPersonCharacter_cLeon_Character_C_ChangeViewMode Parms{};
 
-	Parms.ModeName_ChangeViewMode = ModeName_ChangeViewMode;
-	Parms.Quick_ChangeViewMode = Quick_ChangeViewMode;
+	Parms.ModeName = ModeName;
+	Parms.Quick = Quick;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -649,9 +649,9 @@ void ABP_FirstPersonCharacter_cLeon_Character_C::ReceiveRestarted()
 // Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.ReceiveTick
 // (Event, Public, BlueprintEvent)
 // Parameters:
-// float                                   DeltaSeconds_ReceiveTick                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// float                                   DeltaSeconds                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_FirstPersonCharacter_cLeon_Character_C::ReceiveTick(float DeltaSeconds_ReceiveTick)
+void ABP_FirstPersonCharacter_cLeon_Character_C::ReceiveTick(float DeltaSeconds)
 {
 	static class UFunction* Func = nullptr;
 
@@ -660,7 +660,7 @@ void ABP_FirstPersonCharacter_cLeon_Character_C::ReceiveTick(float DeltaSeconds_
 
 	Params::BP_FirstPersonCharacter_cLeon_Character_C_ReceiveTick Parms{};
 
-	Parms.DeltaSeconds_ReceiveTick = DeltaSeconds_ReceiveTick;
+	Parms.DeltaSeconds = DeltaSeconds;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -775,6 +775,46 @@ void ABP_FirstPersonCharacter_cLeon_Character_C::CustomCrouch_Server_(double Hei
 
 	Parms.Height = Height;
 	Parms.Is_Crouching_Input_0 = Is_Crouching_Input_0;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_0
+// (BlueprintEvent)
+// Parameters:
+// const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_0(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_FirstPersonCharacter_cLeon_Character_C", "InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_0");
+
+	Params::BP_FirstPersonCharacter_cLeon_Character_C_InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_0 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_1
+// (BlueprintEvent)
+// Parameters:
+// const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_1(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_FirstPersonCharacter_cLeon_Character_C", "InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_1");
+
+	Params::BP_FirstPersonCharacter_cLeon_Character_C_InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_1 Parms{};
+
+	Parms.Key = std::move(Key);
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -910,19 +950,19 @@ void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_IA_Shot_K2Node_Enhanc
 }
 
 
-// Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.InpActEvt_Five_K2Node_InputKeyEvent_0
+// Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.InpActEvt_Five_K2Node_InputKeyEvent_2
 // (BlueprintEvent)
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_Five_K2Node_InputKeyEvent_0(const struct FKey& Key)
+void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_Five_K2Node_InputKeyEvent_2(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_FirstPersonCharacter_cLeon_Character_C", "InpActEvt_Five_K2Node_InputKeyEvent_0");
+		Func = Class->GetFunction("BP_FirstPersonCharacter_cLeon_Character_C", "InpActEvt_Five_K2Node_InputKeyEvent_2");
 
-	Params::BP_FirstPersonCharacter_cLeon_Character_C_InpActEvt_Five_K2Node_InputKeyEvent_0 Parms{};
+	Params::BP_FirstPersonCharacter_cLeon_Character_C_InpActEvt_Five_K2Node_InputKeyEvent_2 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -930,19 +970,19 @@ void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_Five_K2Node_InputKeyE
 }
 
 
-// Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.InpActEvt_Two_K2Node_InputKeyEvent_1
+// Function BP_FirstPersonCharacter_cLeon_Character.BP_FirstPersonCharacter_cLeon_Character_C.InpActEvt_Two_K2Node_InputKeyEvent_3
 // (BlueprintEvent)
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_Two_K2Node_InputKeyEvent_1(const struct FKey& Key)
+void ABP_FirstPersonCharacter_cLeon_Character_C::InpActEvt_Two_K2Node_InputKeyEvent_3(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_FirstPersonCharacter_cLeon_Character_C", "InpActEvt_Two_K2Node_InputKeyEvent_1");
+		Func = Class->GetFunction("BP_FirstPersonCharacter_cLeon_Character_C", "InpActEvt_Two_K2Node_InputKeyEvent_3");
 
-	Params::BP_FirstPersonCharacter_cLeon_Character_C_InpActEvt_Two_K2Node_InputKeyEvent_1 Parms{};
+	Params::BP_FirstPersonCharacter_cLeon_Character_C_InpActEvt_Two_K2Node_InputKeyEvent_3 Parms{};
 
 	Parms.Key = std::move(Key);
 

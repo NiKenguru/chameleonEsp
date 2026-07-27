@@ -359,9 +359,9 @@ void ABP_FirstPersonGameMode_V2_C::MakeUpdaeNumPlayerSettings(int32 NewConnectio
 // Function BP_FirstPersonGameMode_V2.BP_FirstPersonGameMode_V2_C.K2_PostLogin
 // (Event, Public, BlueprintEvent)
 // Parameters:
-// class APlayerController*                NewPlayer_K2_PostLogin                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class APlayerController*                NewPlayer                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_FirstPersonGameMode_V2_C::K2_PostLogin(class APlayerController* NewPlayer_K2_PostLogin)
+void ABP_FirstPersonGameMode_V2_C::K2_PostLogin(class APlayerController* NewPlayer)
 {
 	static class UFunction* Func = nullptr;
 
@@ -370,7 +370,7 @@ void ABP_FirstPersonGameMode_V2_C::K2_PostLogin(class APlayerController* NewPlay
 
 	Params::BP_FirstPersonGameMode_V2_C_K2_PostLogin Parms{};
 
-	Parms.NewPlayer_K2_PostLogin = NewPlayer_K2_PostLogin;
+	Parms.NewPlayer = NewPlayer;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
@@ -379,9 +379,9 @@ void ABP_FirstPersonGameMode_V2_C::K2_PostLogin(class APlayerController* NewPlay
 // Function BP_FirstPersonGameMode_V2.BP_FirstPersonGameMode_V2_C.K2_OnLogout
 // (Event, Public, BlueprintEvent)
 // Parameters:
-// class AController*                      ExitingController_K2_OnLogout                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
+// class AController*                      ExitingController                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash)
 
-void ABP_FirstPersonGameMode_V2_C::K2_OnLogout(class AController* ExitingController_K2_OnLogout)
+void ABP_FirstPersonGameMode_V2_C::K2_OnLogout(class AController* ExitingController)
 {
 	static class UFunction* Func = nullptr;
 
@@ -390,7 +390,7 @@ void ABP_FirstPersonGameMode_V2_C::K2_OnLogout(class AController* ExitingControl
 
 	Params::BP_FirstPersonGameMode_V2_C_K2_OnLogout Parms{};
 
-	Parms.ExitingController_K2_OnLogout = ExitingController_K2_OnLogout;
+	Parms.ExitingController = ExitingController;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

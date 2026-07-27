@@ -10,11 +10,11 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_structs.hpp"
 #include "Engine_structs.hpp"
+#include "UINavigation_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "UMG_structs.hpp"
 #include "UMG_classes.hpp"
-#include "UINavigation_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -88,7 +88,7 @@ public:
 	void PreConstruct(bool IsDesignTime_PreConstruct);
 	void PaintViewLookUpdate();
 	void OnGBufferColorPicked(const struct FLinearColor& PickedColor, float PickedMetallic, float PickedRoughness);
-	void MetallicOrRoughnessChanged(float NewMetallic, float NewRoughness);
+	void MetallicOrRoughnessChanged(float NewMetallic, float NewRoughness, float NewEmissive);
 	void GetViewportPosition(struct FVector2D* Positon);
 	void ExecuteUbergraph_WBP_PaintMode_Cursor(int32 EntryPoint);
 	void Destruct();
@@ -97,7 +97,7 @@ public:
 	void ColorPick();
 	void ColorChanged(const struct FLinearColor& NewColor);
 	void BndEvt__WBP_PaintMode_Cursor_WBP_ImageHoverButton_K2Node_ComponentBoundEvent_1_OnClick__DelegateSignature();
-	void BndEvt__WBP_PaintMode_Cursor_WBP_ControllerColorPalet_K2Node_ComponentBoundEvent_0_UpdateParamaterValues__DelegateSignature(const struct FLinearColor& Color, double Metallic, double Roughness);
+	void BndEvt__WBP_PaintMode_Cursor_WBP_ControllerColorPalet_K2Node_ComponentBoundEvent_0_UpdateParamaterValues__DelegateSignature(const struct FLinearColor& Color, double Metallic, double Roughness, double Emissive);
 	void AddSliderValue(double Value);
 	void AddCursorPosition(const struct FVector2D& AddValue);
 

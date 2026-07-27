@@ -230,19 +230,19 @@ void ABP_SpectatePawn_cLeon_C::MiniReplicateMovement()
 }
 
 
-// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Two_K2Node_InputKeyEvent_4
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Two_K2Node_InputKeyEvent_8
 // (BlueprintEvent)
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void ABP_SpectatePawn_cLeon_C::InpActEvt_Two_K2Node_InputKeyEvent_4(const struct FKey& Key)
+void ABP_SpectatePawn_cLeon_C::InpActEvt_Two_K2Node_InputKeyEvent_8(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Two_K2Node_InputKeyEvent_4");
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Two_K2Node_InputKeyEvent_8");
 
-	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Two_K2Node_InputKeyEvent_4 Parms{};
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Two_K2Node_InputKeyEvent_8 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -250,19 +250,19 @@ void ABP_SpectatePawn_cLeon_C::InpActEvt_Two_K2Node_InputKeyEvent_4(const struct
 }
 
 
-// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_2
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_6
 // (BlueprintEvent)
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void ABP_SpectatePawn_cLeon_C::InpActEvt_RightMouseButton_K2Node_InputKeyEvent_2(const struct FKey& Key)
+void ABP_SpectatePawn_cLeon_C::InpActEvt_RightMouseButton_K2Node_InputKeyEvent_6(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_RightMouseButton_K2Node_InputKeyEvent_2");
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_RightMouseButton_K2Node_InputKeyEvent_6");
 
-	Params::BP_SpectatePawn_cLeon_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_2 Parms{};
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_6 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -270,19 +270,19 @@ void ABP_SpectatePawn_cLeon_C::InpActEvt_RightMouseButton_K2Node_InputKeyEvent_2
 }
 
 
-// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_One_K2Node_InputKeyEvent_0
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_One_K2Node_InputKeyEvent_4
 // (BlueprintEvent)
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void ABP_SpectatePawn_cLeon_C::InpActEvt_One_K2Node_InputKeyEvent_0(const struct FKey& Key)
+void ABP_SpectatePawn_cLeon_C::InpActEvt_One_K2Node_InputKeyEvent_4(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_One_K2Node_InputKeyEvent_0");
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_One_K2Node_InputKeyEvent_4");
 
-	Params::BP_SpectatePawn_cLeon_C_InpActEvt_One_K2Node_InputKeyEvent_0 Parms{};
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_One_K2Node_InputKeyEvent_4 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -316,19 +316,19 @@ void ABP_SpectatePawn_cLeon_C::InpActEvt_IA_Shot_K2Node_EnhancedInputActionEvent
 }
 
 
-// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Four_K2Node_InputKeyEvent_3
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_2
 // (BlueprintEvent)
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void ABP_SpectatePawn_cLeon_C::InpActEvt_Four_K2Node_InputKeyEvent_3(const struct FKey& Key)
+void ABP_SpectatePawn_cLeon_C::InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_2(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Four_K2Node_InputKeyEvent_3");
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_2");
 
-	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Four_K2Node_InputKeyEvent_3 Parms{};
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Gamepad_FaceButton_Top_K2Node_InputKeyEvent_2 Parms{};
 
 	Parms.Key = std::move(Key);
 
@@ -336,19 +336,99 @@ void ABP_SpectatePawn_cLeon_C::InpActEvt_Four_K2Node_InputKeyEvent_3(const struc
 }
 
 
-// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Five_K2Node_InputKeyEvent_1
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_1
 // (BlueprintEvent)
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void ABP_SpectatePawn_cLeon_C::InpActEvt_Five_K2Node_InputKeyEvent_1(const struct FKey& Key)
+void ABP_SpectatePawn_cLeon_C::InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_1(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Five_K2Node_InputKeyEvent_1");
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_1");
 
-	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Five_K2Node_InputKeyEvent_1 Parms{};
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Gamepad_FaceButton_Bottom_K2Node_InputKeyEvent_1 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0
+// (BlueprintEvent)
+// Parameters:
+// const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void ABP_SpectatePawn_cLeon_C::InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0");
+
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Gamepad_DPad_Up_K2Node_InputKeyEvent_0 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Gamepad_DPad_Down_K2Node_InputKeyEvent_3
+// (BlueprintEvent)
+// Parameters:
+// const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void ABP_SpectatePawn_cLeon_C::InpActEvt_Gamepad_DPad_Down_K2Node_InputKeyEvent_3(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Gamepad_DPad_Down_K2Node_InputKeyEvent_3");
+
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Gamepad_DPad_Down_K2Node_InputKeyEvent_3 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Four_K2Node_InputKeyEvent_7
+// (BlueprintEvent)
+// Parameters:
+// const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void ABP_SpectatePawn_cLeon_C::InpActEvt_Four_K2Node_InputKeyEvent_7(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Four_K2Node_InputKeyEvent_7");
+
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Four_K2Node_InputKeyEvent_7 Parms{};
+
+	Parms.Key = std::move(Key);
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
+// Function BP_SpectatePawn_cLeon.BP_SpectatePawn_cLeon_C.InpActEvt_Five_K2Node_InputKeyEvent_5
+// (BlueprintEvent)
+// Parameters:
+// const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
+
+void ABP_SpectatePawn_cLeon_C::InpActEvt_Five_K2Node_InputKeyEvent_5(const struct FKey& Key)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_SpectatePawn_cLeon_C", "InpActEvt_Five_K2Node_InputKeyEvent_5");
+
+	Params::BP_SpectatePawn_cLeon_C_InpActEvt_Five_K2Node_InputKeyEvent_5 Parms{};
 
 	Parms.Key = std::move(Key);
 

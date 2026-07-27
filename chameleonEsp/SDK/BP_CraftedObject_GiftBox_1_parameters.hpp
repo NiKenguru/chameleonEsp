@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
-#include "ENUM_ItemBindType_structs.hpp"
-#include "CoreUObject_structs.hpp"
 #include "ENUM_HandType_structs.hpp"
+#include "CoreUObject_structs.hpp"
 #include "ENUM_ClassType_structs.hpp"
+#include "ENUM_ItemBindType_structs.hpp"
 #include "ST_ItemCoreDatas_structs.hpp"
 
 
@@ -34,9 +34,9 @@ DUMPER7_ASSERTS_BP_CraftedObject_GiftBox_1_C_ReceiveActorBeginOverlap;
 struct BP_CraftedObject_GiftBox_1_C_IsChangeImage final
 {
 public:
-	bool                                          IsInteract_IsChangeImage;                          // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsInteract;                                        // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FText                                   OverrideText_IsChangeImage;                        // 0x0008(0x0010)(Parm, OutParm)
+	class FText                                   OverrideText;                                      // 0x0008(0x0010)(Parm, OutParm)
 };
 DUMPER7_ASSERTS_BP_CraftedObject_GiftBox_1_C_IsChangeImage;
 
@@ -45,18 +45,18 @@ DUMPER7_ASSERTS_BP_CraftedObject_GiftBox_1_C_IsChangeImage;
 struct BP_CraftedObject_GiftBox_1_C_GetItemInfo final
 {
 public:
-	ENUM_HandType                                 HandType_GetItemInfo;                              // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_ClassType                                ClassType_GetItemInfo;                             // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          NotPickUp_GetItemInfo;                             // 0x0002(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_HandType                                 HandType;                                          // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_ClassType                                ClassType;                                         // 0x0001(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          NotPickUp;                                         // 0x0002(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_3[0x5];                                        // 0x0003(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRotator                               HaveRotation_GetItemInfo;                          // 0x0008(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
-	struct FVector                                Add_Position_GetItemInfo;                          // 0x0020(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          IsBoneAttach_GetItemInfo;                          // 0x0038(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	ENUM_ItemBindType                             BindType_GetItemInfo;                              // 0x0039(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FRotator                               HaveRotation;                                      // 0x0008(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
+	struct FVector                                Add_Position;                                      // 0x0020(0x0018)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsBoneAttach;                                      // 0x0038(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ENUM_ItemBindType                             BindType;                                          // 0x0039(0x0001)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_3A[0x2];                                       // 0x003A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	class FName                                   BoneName_GetItemInfo;                              // 0x003C(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   BoneName;                                          // 0x003C(0x0008)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FST_ItemCoreDatas                      CoreDatas_GetItemInfo;                             // 0x0048(0x0070)(Parm, OutParm, HasGetValueTypeHash)
+	struct FST_ItemCoreDatas                      CoreDatas;                                         // 0x0048(0x0070)(Parm, OutParm, HasGetValueTypeHash)
 };
 DUMPER7_ASSERTS_BP_CraftedObject_GiftBox_1_C_GetItemInfo;
 

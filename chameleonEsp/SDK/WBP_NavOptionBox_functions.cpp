@@ -47,9 +47,9 @@ void UWBP_NavOptionBox_C::UpdateOptions()
 // Function WBP_NavOptionBox.WBP_NavOptionBox_C.PreConstruct
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
 // Parameters:
-// bool                                    IsDesignTime_PreConstruct                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    IsDesignTime                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UWBP_NavOptionBox_C::PreConstruct(bool IsDesignTime_PreConstruct)
+void UWBP_NavOptionBox_C::PreConstruct(bool IsDesignTime)
 {
 	static class UFunction* Func = nullptr;
 
@@ -58,7 +58,7 @@ void UWBP_NavOptionBox_C::PreConstruct(bool IsDesignTime_PreConstruct)
 
 	Params::WBP_NavOptionBox_C_PreConstruct Parms{};
 
-	Parms.IsDesignTime_PreConstruct = IsDesignTime_PreConstruct;
+	Parms.IsDesignTime = IsDesignTime;
 
 	UObject::ProcessEvent(Func, &Parms);
 }

@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "BP_CopyActorBase_classes.hpp"
 #include "Engine_structs.hpp"
+#include "BP_CopyActorBase_classes.hpp"
 
 
 SDK_NAMESPACE_START
@@ -34,7 +34,7 @@ public:
 	void TimeStop(class AActor* Actor);
 	void TimerUpdate();
 	void TimeReStart(class AActor* Actor);
-	void SetTimeStopState(bool State_SetTimeStopState);
+	void SetTimeStopState(bool State);
 	void ReceiveBeginPlay();
 	void ExecuteUbergraph_BP_TimeStopArea(int32 EntryPoint);
 	void DestroyVAT();

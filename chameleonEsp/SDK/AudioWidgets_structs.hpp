@@ -12,8 +12,8 @@
 
 #include "CoreUObject_structs.hpp"
 #include "SlateCore_structs.hpp"
-#include "Engine_structs.hpp"
 #include "AudioSynesthesia_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -161,21 +161,6 @@ enum class EAudioSpectrumPlotFrequencyAxisPixelBucketMode : uint8
 	EAudioSpectrumPlotFrequencyAxisPixelBucketMode_MAX = 3,
 };
 
-// ScriptStruct AudioWidgets.SpectrogramRackUnitSettings
-// 0x0007 (0x0007 - 0x0000)
-struct FSpectrogramRackUnitSettings final
-{
-public:
-	EAudioSpectrumAnalyzerType                    AnalyzerType;                                      // 0x0000(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EFFTSize                                      FFTAnalyzerFFTSize;                                // 0x0001(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EConstantQFFTSizeEnum                         CQTAnalyzerFFTSize;                                // 0x0002(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioSpectrogramFrequencyAxisPixelBucketMode PixelPlotMode;                                     // 0x0003(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioSpectrogramFrequencyAxisScale           FrequencyScale;                                    // 0x0004(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioColorGradient                           ColorMap;                                          // 0x0005(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EOrientation                                  Orientation;                                       // 0x0006(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSpectrogramRackUnitSettings;
-
 // ScriptStruct AudioWidgets.FixedSampleSequenceRulerStyle
 // 0x0228 (0x0230 - 0x0008)
 struct FFixedSampleSequenceRulerStyle final : public FSlateWidgetStyle
@@ -266,21 +251,22 @@ public:
 };
 DUMPER7_ASSERTS_FMeterChannelInfo;
 
-// ScriptStruct AudioWidgets.AudioSpectrumPlotStyle
-// 0x0128 (0x0130 - 0x0008)
-struct FAudioSpectrumPlotStyle final : public FSlateWidgetStyle
+// ScriptStruct AudioWidgets.SpectrumAnalyzerRackUnitSettings
+// 0x0009 (0x0009 - 0x0000)
+struct FSpectrumAnalyzerRackUnitSettings final
 {
 public:
-	struct FSlateColor                            BackgroundColor;                                   // 0x0008(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateColor                            GridColor;                                         // 0x001C(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateColor                            AxisLabelColor;                                    // 0x0030(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSlateFontInfo                         AxisLabelFont;                                     // 0x0048(0x0060)(Edit, BlueprintVisible, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSlateColor                            SpectrumColor;                                     // 0x00A8(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateColor                            CrosshairColor;                                    // 0x00BC(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateFontInfo                         CrosshairLabelFont;                                // 0x00D0(0x0060)(Edit, BlueprintVisible, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrumAnalyzerBallistics              Ballistics;                                        // 0x0000(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrumAnalyzerType                    AnalyzerType;                                      // 0x0001(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EFFTSize                                      FFTAnalyzerFFTSize;                                // 0x0002(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EConstantQFFTSizeEnum                         CQTAnalyzerFFTSize;                                // 0x0003(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrumPlotTilt                        TiltSpectrum;                                      // 0x0004(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrumPlotFrequencyAxisPixelBucketMode PixelPlotMode;                                    // 0x0005(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrumPlotFrequencyAxisScale          FrequencyScale;                                    // 0x0006(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bDisplayFrequencyAxisLabels;                       // 0x0007(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bDisplaySoundLevelAxisLabels;                      // 0x0008(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FAudioSpectrumPlotStyle;
+DUMPER7_ASSERTS_FSpectrumAnalyzerRackUnitSettings;
 
 // ScriptStruct AudioWidgets.AudioMaterialWidgetStyle
 // 0x0010 (0x0018 - 0x0008)
@@ -461,22 +447,20 @@ public:
 };
 DUMPER7_ASSERTS_FAudioMaterialEnvelopeStyle;
 
-// ScriptStruct AudioWidgets.SpectrumAnalyzerRackUnitSettings
-// 0x0009 (0x0009 - 0x0000)
-struct FSpectrumAnalyzerRackUnitSettings final
+// ScriptStruct AudioWidgets.SpectrogramRackUnitSettings
+// 0x0007 (0x0007 - 0x0000)
+struct FSpectrogramRackUnitSettings final
 {
 public:
-	EAudioSpectrumAnalyzerBallistics              Ballistics;                                        // 0x0000(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioSpectrumAnalyzerType                    AnalyzerType;                                      // 0x0001(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EFFTSize                                      FFTAnalyzerFFTSize;                                // 0x0002(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EConstantQFFTSizeEnum                         CQTAnalyzerFFTSize;                                // 0x0003(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioSpectrumPlotTilt                        TiltSpectrum;                                      // 0x0004(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioSpectrumPlotFrequencyAxisPixelBucketMode PixelPlotMode;                                    // 0x0005(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EAudioSpectrumPlotFrequencyAxisScale          FrequencyScale;                                    // 0x0006(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bDisplayFrequencyAxisLabels;                       // 0x0007(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bDisplaySoundLevelAxisLabels;                      // 0x0008(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrumAnalyzerType                    AnalyzerType;                                      // 0x0000(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EFFTSize                                      FFTAnalyzerFFTSize;                                // 0x0001(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EConstantQFFTSizeEnum                         CQTAnalyzerFFTSize;                                // 0x0002(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrogramFrequencyAxisPixelBucketMode PixelPlotMode;                                     // 0x0003(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioSpectrogramFrequencyAxisScale           FrequencyScale;                                    // 0x0004(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EAudioColorGradient                           ColorMap;                                          // 0x0005(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EOrientation                                  Orientation;                                       // 0x0006(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FSpectrumAnalyzerRackUnitSettings;
+DUMPER7_ASSERTS_FSpectrogramRackUnitSettings;
 
 // ScriptStruct AudioWidgets.AudioMeterDefaultColorStyle
 // 0x0060 (0x0068 - 0x0008)
@@ -491,6 +475,22 @@ public:
 	struct FLinearColor                           MeterScaleLabelColor;                              // 0x0058(0x0010)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FAudioMeterDefaultColorStyle;
+
+// ScriptStruct AudioWidgets.AudioSpectrumPlotStyle
+// 0x0128 (0x0130 - 0x0008)
+struct FAudioSpectrumPlotStyle final : public FSlateWidgetStyle
+{
+public:
+	struct FSlateColor                            BackgroundColor;                                   // 0x0008(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateColor                            GridColor;                                         // 0x001C(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateColor                            AxisLabelColor;                                    // 0x0030(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSlateFontInfo                         AxisLabelFont;                                     // 0x0048(0x0060)(Edit, BlueprintVisible, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FSlateColor                            SpectrumColor;                                     // 0x00A8(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateColor                            CrosshairColor;                                    // 0x00BC(0x0014)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateFontInfo                         CrosshairLabelFont;                                // 0x00D0(0x0060)(Edit, BlueprintVisible, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FAudioSpectrumPlotStyle;
 
 // ScriptStruct AudioWidgets.AudioSliderStyle
 // 0x0648 (0x0650 - 0x0008)

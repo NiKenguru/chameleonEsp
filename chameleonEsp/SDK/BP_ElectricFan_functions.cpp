@@ -39,9 +39,9 @@ void ABP_ElectricFan_C::SetWindTrailSize(double Distance)
 // Function BP_ElectricFan.BP_ElectricFan_C.SetTimeStopState
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// bool                                    State_SetTimeStopState                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// bool                                    State                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void ABP_ElectricFan_C::SetTimeStopState(bool State_SetTimeStopState)
+void ABP_ElectricFan_C::SetTimeStopState(bool State)
 {
 	static class UFunction* Func = nullptr;
 
@@ -50,7 +50,7 @@ void ABP_ElectricFan_C::SetTimeStopState(bool State_SetTimeStopState)
 
 	Params::BP_ElectricFan_C_SetTimeStopState Parms{};
 
-	Parms.State_SetTimeStopState = State_SetTimeStopState;
+	Parms.State = State;
 
 	UObject::ProcessEvent(Func, &Parms);
 }
