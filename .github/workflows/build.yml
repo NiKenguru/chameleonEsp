@@ -2,6 +2,11 @@ name: Build chameleonEsp
 
 on:
   workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create release with DLL'
+        type: boolean
+        default: false
   push:
     branches: [main]
   pull_request:
@@ -25,10 +30,32 @@ jobs:
           ./build.bat
         shell: cmd
 
+      - name: Find DLL
+        id: find_dll
+        run: |
+          find . -name "chameleonEsp.dll" -type f
+        shell: cmd
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: chameleonEsp-build
-          path: chameleonEsp/x64/Release/
+          path: |
+            chameleonEsp/x64/Release/
+            **/chameleonEsp.dll
           retention-days: 7
+
+      - name: Create Release
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}-ci
+          name: CI Build ${{ github.run_number }}
+          draft: false
+          prerelease: true
+          files: |
+            **/chameleonEsp.dll
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
